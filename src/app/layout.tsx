@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
 
 export const metadata: Metadata = {
   title: "PAGANI EMBALAGENS",
@@ -30,6 +32,15 @@ export default function RootLayout({
       <body className="font-body antialiased bg-background">
         {children}
         <Toaster />
+        <Link 
+          href="https://wa.me/5519974094692" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-110 animate-pulse-whatsapp"
+          aria-label="Fale conosco pelo WhatsApp"
+        >
+          <WhatsappIcon className="h-8 w-8" />
+        </Link>
       </body>
     </html>
   );
