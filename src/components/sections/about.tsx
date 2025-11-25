@@ -28,6 +28,8 @@ const values = [
 
 export function About() {
     const aboutImage = PlaceHolderImages.find(p => p.id === 'about-warehouse');
+    const gmapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.935105207183!2d-46.99264968875323!3d-23.28189877889601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf31a5b6a7b26b%3A0x2475a3a5a435b6f3!2sR.%20Jo%C3%A3o%20Jos%C3%A9%20Pescarini%2C%20568%20-%20Res.%20Flora%2C%20Vinhedo%20-%20SP%2C%2013280-144!5e0!3m2!1spt-BR!2sbr!4v1717178877190!5m2!1spt-BR!2sbr";
+
   return (
     <div className="container px-4 md:px-6 space-y-24">
         {/* Missão, Visão, Valores */}
@@ -97,6 +99,27 @@ export function About() {
                 <Button asChild size="lg" className="hover:scale-105 transition-transform">
                     <Link href="/#contato">Fale com o time Pagani</Link>
                 </Button>
+            </div>
+        </div>
+        
+        {/* Localização */}
+        <div className="space-y-8">
+            <div className="text-center">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">Onde nos encontrar</h2>
+                <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed mt-4">Venha tomar um café e conhecer nossa estrutura.</p>
+            </div>
+            <div className="w-full">
+                <iframe
+                    src={gmapsEmbedUrl}
+                    width="100%"
+                    height="450"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-lg shadow-md"
+                    title="Localização da Pagani Embalagens"
+                ></iframe>
             </div>
         </div>
 

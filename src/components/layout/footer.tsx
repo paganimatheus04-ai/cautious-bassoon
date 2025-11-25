@@ -11,9 +11,6 @@ import {
 } from "lucide-react";
 
 export function Footer() {
-  const gmapsEmbedUrl =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.935105207183!2d-46.99264968875323!3d-23.28189877889601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf31a5b6a7b26b%3A0x2475a3a5a435b6f3!2sR.%20Jo%C3%A3o%20Jos%C3%A9%20Pescarini%2C%20568%20-%20Res.%20Flora%2C%20Vinhedo%20-%20SP%2C%2013280-144!5e0!3m2!1spt-BR!2sbr!4v1717178877190!5m2!1spt-BR!2sbr";
-
   return (
     <footer
       id="contato"
@@ -24,7 +21,7 @@ export function Footer() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 gap-12 pb-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-12 pb-12 md:grid-cols-2 lg:grid-cols-2">
           {/* Coluna Logo e Social */}
           <div className="flex flex-col items-center justify-center gap-6 text-center md:items-start md:text-left">
             <Link
@@ -67,7 +64,7 @@ export function Footer() {
           </div>
 
           {/* Coluna Contatos */}
-          <div className="space-y-6 text-center text-background md:text-left">
+          <div className="flex flex-col justify-center space-y-6 text-center text-background md:text-left">
             <a
               href="tel:+5519974094692"
               className="flex items-center justify-center gap-3 text-lg transition-colors hover:text-primary md:justify-start"
@@ -89,21 +86,6 @@ export function Footer() {
                 - SP, 13280-144
               </span>
             </div>
-          </div>
-
-          {/* Coluna Mapa */}
-          <div className="w-full lg:col-span-1">
-             <iframe
-                src={gmapsEmbedUrl}
-                width="100%"
-                height="250"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg shadow-md"
-                title="Localização da Pagani Embalagens"
-              ></iframe>
           </div>
         </div>
 
