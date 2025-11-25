@@ -16,25 +16,25 @@ const solutions = [
     id: "solution-corte-vinco",
     title: "Caixas Corte e Vinco",
     description:
-      "Produtos especiais com formatos diferenciados, pensados para encaixes perfeitos, proteção de peças e otimização de espaço na sua linha de produção.",
+      "Produtos que exigem ferramentas especiais, que em diversos modelos não necessitam de fechamento lateral. Ideais para encaixes perfeitos, proteção de peças e otimização de espaço.",
   },
   {
     id: "solution-convencional",
     title: "Caixas Convencionais",
     description:
-      "Modelos tradicionais de caixas de papelão ondulado, em diversos tamanhos e composições, ideais para armazenamento e transporte seguro e eficiente.",
+      "Modelos tradicionais da indústria de embalagens de papelão, apresentados nas mais variadas composições, ideais para armazenamento e transporte seguro e eficiente.",
   },
   {
     id: "solution-projetos-especiais",
     title: "Projetos Especiais",
     description:
-      "Desenvolvemos soluções personalizadas a partir das suas necessidades, com foco em inovação, segurança e redução de custos operacionais.",
+      "Soluções em embalagens personalizadas para as necessidades de cada cliente, produzidas sob encomenda para dar vida a ideias inovadoras com foco em redução de custos.",
   },
   {
     id: "solution-desenvolvimento-tecnico",
-    title: "Expertise em Desenvolvimento",
+    title: "Expertise em Desenvolvimento de Projetos",
     description:
-      "Time técnico dedicado a criar embalagens que reduzam danos, otimizem a logística e tragam mais eficiência às linhas de produção industriais.",
+      "Nossos profissionais são especializados no desenvolvimento de produtos com soluções eficientes, criando embalagens que reduzem danos e otimizam a logística.",
   },
 ];
 
@@ -44,41 +44,41 @@ const getImage = (id: string): ImagePlaceholder | undefined =>
 export function Solutions() {
   return (
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
             Tecnologia, Inovação e Soluções
           </h2>
           <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Desenvolvemos, fabricamos e comercializamos embalagens de papelão de alta qualidade, com foco em eficiência, segurança no transporte e adaptação ao processo de cada cliente.
+            Desenvolvemos, fabricamos e comercializamos embalagens de papelão de alta qualidade, com foco em eficiência, segurança no transporte e adaptação ao processo de cada cliente, seguindo os requisitos da Norma NBR ISO 9001-2015.
           </p>
         </div>
-        <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 sm:grid-cols-2 lg:max-w-none lg:grid-cols-4">
-          {solutions.map((solution) => {
+        <div className="grid gap-16">
+          {solutions.map((solution, index) => {
             const image = getImage(solution.id);
+            const isImageLeft = index % 2 === 0;
             return (
-              <Card
-                key={solution.title}
-                className="group overflow-hidden rounded-lg bg-background shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-2 flex flex-col"
-              >
+              <div key={solution.id} className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
+                <div className={`space-y-4 ${isImageLeft ? 'lg:order-last' : ''}`}>
+                    <h3 className="text-3xl font-bold tracking-tight text-primary">
+                        {solution.title}
+                    </h3>
+                    <p className="text-muted-foreground md:text-lg/relaxed">
+                        {solution.description}
+                    </p>
+                </div>
                 {image && (
-                  <div className="overflow-hidden">
-                    <Image
-                      src={image.imageUrl}
-                      alt={image.description}
-                      width={600}
-                      height={400}
-                      className="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      data-ai-hint={image.imageHint}
-                    />
-                   </div>
+                    <div className="overflow-hidden rounded-lg">
+                        <Image
+                            src={image.imageUrl}
+                            alt={image.description}
+                            width={600}
+                            height={400}
+                            className="aspect-video w-full object-cover transition-transform duration-300 hover:scale-105"
+                            data-ai-hint={image.imageHint}
+                        />
+                    </div>
                 )}
-                <CardHeader className="flex-grow">
-                  <CardTitle className="text-xl">{solution.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm">{solution.description}</p>
-                </CardContent>
-              </Card>
+              </div>
             );
           })}
         </div>
