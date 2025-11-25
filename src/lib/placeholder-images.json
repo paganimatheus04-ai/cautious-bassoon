@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-industrial",
+      "description": "A large industrial machine in a factory.",
+      "imageUrl": "https://images.unsplash.com/photo-1685746204661-b92400e9a79a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NjQwMjM2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "industrial factory"
+    },
+    {
+      "id": "solution-corte-vinco",
+      "description": "A die-cut cardboard box.",
+      "imageUrl": "https://images.unsplash.com/photo-1573376670329-0261ea9fde97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjYXJkYm9hcmQlMjBib3h8ZW58MHx8fHwxNzY0MDk0MDgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cardboard box"
+    },
+    {
+      "id": "solution-convencional",
+      "description": "A stack of conventional cardboard boxes.",
+      "imageUrl": "https://images.unsplash.com/photo-1762848023168-d83de886908b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3RhY2tlZCUyMGJveGVzfGVufDB8fHx8MTc2NDA5NDA4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "stacked boxes"
+    },
+    {
+      "id": "solution-projetos-especiais",
+      "description": "A custom-designed cardboard packaging.",
+      "imageUrl": "https://images.unsplash.com/photo-1634814407118-82745e40cd7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjdXN0b20lMjBwYWNrYWdpbmd8ZW58MHx8fHwxNzY0MDk0MDgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "custom packaging"
+    },
+    {
+      "id": "solution-desenvolvimento-tecnico",
+      "description": "A technical drawing of a box design.",
+      "imageUrl": "https://images.unsplash.com/photo-1721244654392-9c912a6eb236?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0ZWNobmljYWwlMjBkcmF3aW5nfGVufDB8fHx8MTc2NDAxNzg0NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "technical drawing"
+    }
+  ]
 }
