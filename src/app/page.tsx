@@ -15,16 +15,16 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <PerformanceBanner />
-        <section id="sobre" className="pt-12">
+        <section id="sobre" className="pt-12 md:pt-24 lg:pt-32">
             <About />
         </section>
-        <section id="solucoes" className="pt-12">
+        <section id="solucoes" className="pt-12 md:pt-24 lg:pt-32">
             <Solutions />
         </section>
-        <section id="servicos" className="pt-12">
+        <section id="servicos" className="pt-12 md:pt-24 lg:pt-32">
             <Services />
         </section>
-        <section id="expertise" className="pt-12">
+        <section id="expertise" className="pt-12 md:pt-24 lg:pt-32">
             <Expertise />
         </section>
         <Contact />
