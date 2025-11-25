@@ -2,36 +2,27 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Package } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/#inicio", label: "Início" },
-  { href: "/#sobre", label: "Sobre Nós" },
-  { href: "/#solucoes", label: "Soluções" },
-  { href: "/#servicos", label: "Serviços" },
+  { href: "/", label: "Início" },
+  { href: "/sobre", label: "Sobre Nós" },
+  { href: "/solucoes", label: "Soluções" },
+  { href: "/servicos", label: "Serviços" },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState("/#inicio");
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
-
-      // Simple active link logic
-      const sections = navLinks.map(link => document.querySelector(link.href.replace('/', '')));
-      let currentSection = "/#inicio";
-      sections.forEach((section, index) => {
-        if (section && section.offsetTop <= scrollPosition + 150) {
-            currentSection = navLinks[index].href;
-        }
-      });
-      setActiveLink(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -61,11 +52,10 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setActiveLink(link.href)}
                   className={cn(
                     "relative text-foreground/80 transition-colors hover:text-primary py-2",
                     "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary after:transition-transform after:duration-300",
-                    activeLink === link.href ? "text-primary after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"
+                    pathname === link.href ? "text-primary after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"
                   )}
                 >
                   {link.label.toUpperCase()}
@@ -112,7 +102,7 @@ export function Header() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="text-muted-foreground hover:text-foreground"
+                            className={cn("hover:text-foreground", pathname === link.href ? "text-foreground font-semibold" : "text-muted-foreground")}
                         >
                             {link.label}
                         </Link>

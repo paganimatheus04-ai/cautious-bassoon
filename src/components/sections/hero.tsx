@@ -55,7 +55,7 @@ export function Hero() {
               variant="outline"
               className="rounded-full px-8 text-lg font-semibold bg-transparent border-primary text-primary hover:bg-primary/10"
             >
-              <Link href="/#solucoes">Ver nossas soluções</Link>
+              <Link href="/solucoes">Ver nossas soluções</Link>
             </Button>
           </div>
             <div className="flex flex-wrap justify-center gap-4 pt-4" style={{ animationDelay: "0.7s" }}>

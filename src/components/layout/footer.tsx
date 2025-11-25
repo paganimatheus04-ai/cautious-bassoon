@@ -53,10 +53,10 @@ export function Footer() {
             </div>
              <div className="grid gap-2 text-sm">
                 <h3 className="font-semibold uppercase tracking-wider text-primary">Navegação</h3>
-                <Link href="/#inicio" className="text-muted-foreground hover:text-primary transition-colors">Início</Link>
-                <Link href="/#sobre" className="text-muted-foreground hover:text-primary transition-colors">Sobre Nós</Link>
-                <Link href="/#solucoes" className="text-muted-foreground hover:text-primary transition-colors">Soluções</Link>
-                <Link href="/#servicos" className="text-muted-foreground hover:text-primary transition-colors">Serviços</Link>
+                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Início</Link>
+                <Link href="/sobre" className="text-muted-foreground hover:text-primary transition-colors">Sobre Nós</Link>
+                <Link href="/solucoes" className="text-muted-foreground hover:text-primary transition-colors">Soluções</Link>
+                <Link href="/servicos" className="text-muted-foreground hover:text-primary transition-colors">Serviços</Link>
             </div>
             <div className="grid gap-2 text-sm">
                 <h3 className="font-semibold uppercase tracking-wider text-primary">Legal</h3>
@@ -91,4 +91,3 @@ export function Footer() {
     </footer>
   );
 }
-
