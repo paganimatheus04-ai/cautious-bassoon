@@ -6,6 +6,7 @@ import {
   Instagram,
   Youtube,
   Phone,
+  Mail,
   MapPin,
 } from "lucide-react";
 
@@ -70,6 +71,13 @@ export function Footer() {
             >
               <Phone className="h-5 w-5 text-primary" />
               <span>(19) 97409-4692</span>
+            </a>
+            <a
+              href="mailto:marciopagani18@gmail.com"
+              className="flex items-center justify-center gap-3 text-lg hover:text-primary transition-colors md:justify-start"
+            >
+              <Mail className="h-5 w-5 text-primary" />
+              <span>marciopagani18@gmail.com</span>
             </a>
             <div className="flex items-center justify-center gap-3 text-lg md:justify-start">
               <MapPin className="h-5 w-5 flex-shrink-0 text-primary" />
