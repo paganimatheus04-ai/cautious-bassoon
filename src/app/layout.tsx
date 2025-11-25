@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
 
 export const metadata: Metadata = {
-  title: "Embalagens de Papelão para Indústria | Pagani",
+  title: "Pagani Embalagens | Caixas de Papelão para Indústria",
   description:
     "Fabricamos caixas de papelão corte e vinco, convencionais e especiais. Garantimos seu lead time com pontualidade e alta capacidade produtiva. Consulte-nos.",
 };

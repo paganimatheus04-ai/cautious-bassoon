@@ -16,7 +16,7 @@ export function Hero() {
       {heroImage && (
         <Image
           src={heroImage.imageUrl}
-          alt={heroImage.description}
+          alt="Vista panorâmica da fábrica da Pagani Embalagens, com máquinas em operação, pilhas de chapas de papelão e pallets prontos para expedição, transmitindo capacidade produtiva."
           fill
           className="object-cover -z-10 brightness-[0.2]"
           priority
