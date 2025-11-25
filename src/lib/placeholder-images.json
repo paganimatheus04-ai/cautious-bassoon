@@ -2,7 +2,7 @@
   "placeholderImages": [
     {
       "id": "hero-industrial",
-      "description": "Linha de produção industrial de caixas de papelão.",
+      "description": "Vista panorâmica da fábrica da Pagani Embalagens, com máquinas em operação, pilhas de chapas de papelão e pallets prontos para expedição, transmitindo capacidade produtiva.",
       "imageUrl": "https://images.unsplash.com/photo-1579758629938-03607cc12de2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjYXJkYm9hcmQlMjBib3glMjBmYWN0b3J5fGVufDB8fHx8MTc2NDA5NzMyOXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cardboard factory"
     },

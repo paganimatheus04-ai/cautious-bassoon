@@ -5,9 +5,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
 
 export const metadata: Metadata = {
-  title: "PAGANI EMBALAGENS",
+  title: "Embalagens de Papelão para Indústria | Pagani",
   description:
-    "Soluções inteligentes em embalagens de papelão para a sua indústria.",
+    "Fabricamos caixas de papelão corte e vinco, convencionais e especiais. Garantimos seu lead time com pontualidade e alta capacidade produtiva. Consulte-nos.",
 };
 
 export default function RootLayout({

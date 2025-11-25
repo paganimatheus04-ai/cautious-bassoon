@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Zap } from "lucide-react";
 
 export function Hero() {
   const heroImage = PlaceHolderImages.find((p) => p.id === "hero-industrial");
@@ -29,13 +29,13 @@ export function Hero() {
             style={{ animationDelay: "0.1s" }}
           >
             <h1 className="font-headline text-4xl font-black tracking-tighter text-foreground sm:text-5xl xl:text-7xl/none">
-              Soluções <span className="text-primary">inteligentes</span> em embalagens de papelão para a sua indústria.
+              Sua produção abastecida com embalagens <span className="text-primary">no prazo</span>.
             </h1>
             <p
               className="mx-auto max-w-[800px] text-foreground/80 md:text-xl"
               style={{ animationDelay: "0.3s" }}
             >
-              Projetos sob medida, alta performance e atendimento próximo para quem precisa de confiança na hora de embalar, armazenar e transportar.
+              Desenvolvemos caixas corte e vinco, convencionais e projetos especiais com lead time garantido para não parar sua linha de produção.
             </p>
         
           <div
@@ -47,7 +47,10 @@ export function Hero() {
               size="lg"
               className="rounded-full px-8 text-lg font-semibold transition-transform hover:scale-105"
             >
-              <Link href="/#contato">Falar com um especialista</Link>
+              <Link href="/#contato">
+                <Zap className="mr-2 h-5 w-5" />
+                Cotar agora — resposta em 2h
+              </Link>
             </Button>
             <Button
               asChild
@@ -55,14 +58,16 @@ export function Hero() {
               variant="outline"
               className="rounded-full px-8 text-lg font-semibold bg-transparent border-primary text-primary hover:bg-primary/10"
             >
-              <Link href="/solucoes">Ver nossas soluções</Link>
+              <Link href="/sobre">Falar com especialista</Link>
             </Button>
           </div>
-            <div className="flex flex-wrap justify-center gap-4 pt-4" style={{ animationDelay: "0.7s" }}>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 pt-4" style={{ animationDelay: "0.7s" }}>
+                <Badge variant="secondary" className="gap-2 border-primary/20 border"><CheckCircle className="h-4 w-4 text-primary" />Caixas corte e vinco</Badge>
                 <Badge variant="secondary" className="gap-2 border-primary/20 border"><CheckCircle className="h-4 w-4 text-primary" />Projetos sob medida</Badge>
-                <Badge variant="secondary" className="gap-2 border-primary/20 border"><CheckCircle className="h-4 w-4 text-primary" />Atendimento para indústrias</Badge>
-                <Badge variant="secondary" className="gap-2 border-primary/20 border"><CheckCircle className="h-4 w-4 text-primary" />Qualidade e eficiência</Badge>
+                <Badge variant="secondary" className="gap-2 border-primary/20 border"><CheckCircle className="h-4 w-4 text-primary" />Logística just-in-time</Badge>
+                <Badge variant="secondary" className="gap-2 border-primary/20 border"><CheckCircle className="h-4 w-4 text-primary" />Paletização e strech</Badge>
             </div>
+            <p className="text-sm text-muted-foreground pt-2">Fornecemos para indústrias automotiva, alimentícia e farmacêutica.</p>
         </div>
       </div>
     </section>
