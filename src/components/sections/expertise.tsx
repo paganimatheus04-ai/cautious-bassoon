@@ -24,7 +24,6 @@ export function Expertise() {
   const expertiseImage = PlaceHolderImages.find((p) => p.id === "expertise-sustainable");
 
   return (
-    <section id="expertise" className="bg-background">
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
            <div className="space-y-6">
@@ -62,6 +61,5 @@ export function Expertise() {
            )}
         </div>
       </div>
-    </section>
   );
 }

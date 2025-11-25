@@ -29,8 +29,7 @@ const values = [
 export function About() {
     const aboutImage = PlaceHolderImages.find(p => p.id === 'about-warehouse');
   return (
-    <section id="sobre" className="bg-background">
-      <div className="container px-4 md:px-6 space-y-24">
+    <div className="container px-4 md:px-6 space-y-24">
         {/* Missão, Visão, Valores */}
         <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">Missão, Visão e Valores</h2>
@@ -102,6 +101,5 @@ export function About() {
         </div>
 
       </div>
-    </section>
   );
 }
