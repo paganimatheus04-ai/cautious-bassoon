@@ -96,7 +96,7 @@ export function About() {
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Quer entender como podemos otimizar as embalagens da sua indústria?</h3>
             <div className="mt-6">
                 <Button asChild size="lg" className="hover:scale-105 transition-transform">
-                    <Link href="#contato">Fale com o time Pagani</Link>
+                    <Link href="/#contato">Fale com o time Pagani</Link>
                 </Button>
             </div>
         </div>

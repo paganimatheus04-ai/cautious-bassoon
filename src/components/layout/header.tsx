@@ -8,10 +8,10 @@ import { Menu, Package } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#inicio", label: "Início" },
-  { href: "#sobre", label: "Sobre Nós" },
-  { href: "#solucoes", label: "Soluções" },
-  { href: "#servicos", label: "Serviços" },
+  { href: "/", label: "Início" },
+  { href: "/sobre", label: "Sobre Nós" },
+  { href: "/solucoes", label: "Soluções" },
+  { href: "/servicos", label: "Serviços" },
 ];
 
 export function Header() {
@@ -37,7 +37,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link
-          href="#inicio"
+          href="/"
           className="flex items-center gap-2 font-headline text-2xl font-bold"
         >
           <Package className="h-8 w-8 text-primary" />
@@ -65,7 +65,7 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-4">
           <Button asChild className="hidden rounded-full md:flex hover:scale-105 transition-transform">
-            <Link href="#contato">Solicitar Orçamento</Link>
+            <Link href="/#contato">Solicitar Orçamento</Link>
           </Button>
           <Sheet>
             <SheetTrigger asChild>
@@ -84,7 +84,7 @@ export function Header() {
             <SheetContent side="right" className="bg-background">
               <nav className="grid gap-6 p-6 text-lg font-medium">
                 <Link
-                  href="#"
+                  href="/"
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <Package className="h-6 w-6 text-primary" />
@@ -100,7 +100,7 @@ export function Header() {
                   </Link>
                 ))}
                  <Button asChild className="mt-4">
-                    <Link href="#contato">Solicitar Orçamento</Link>
+                    <Link href="/#contato">Solicitar Orçamento</Link>
                 </Button>
               </nav>
             </SheetContent>

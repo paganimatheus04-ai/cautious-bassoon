@@ -39,7 +39,7 @@ export function Footer() {
         <div className="mt-16 grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="flex flex-col gap-2">
                 <Link
-                href="#"
+                href="/"
                 className="flex items-center gap-2 font-headline text-2xl font-bold"
                 >
                 <Package className="h-7 w-7 text-primary" />
@@ -51,10 +51,10 @@ export function Footer() {
             </div>
              <div className="grid gap-2 text-sm">
                 <h3 className="font-semibold uppercase tracking-wider text-primary">Navegação</h3>
-                <Link href="#inicio" className="text-muted-foreground hover:text-primary transition-colors">Início</Link>
-                <Link href="#sobre" className="text-muted-foreground hover:text-primary transition-colors">Sobre Nós</Link>
-                <Link href="#solucoes" className="text-muted-foreground hover:text-primary transition-colors">Soluções</Link>
-                <Link href="#servicos" className="text-muted-foreground hover:text-primary transition-colors">Serviços</Link>
+                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Início</Link>
+                <Link href="/sobre" className="text-muted-foreground hover:text-primary transition-colors">Sobre Nós</Link>
+                <Link href="/solucoes" className="text-muted-foreground hover:text-primary transition-colors">Soluções</Link>
+                <Link href="/servicos" className="text-muted-foreground hover:text-primary transition-colors">Serviços</Link>
             </div>
             <div className="grid gap-2 text-sm">
                 <h3 className="font-semibold uppercase tracking-wider text-primary">Legal</h3>
