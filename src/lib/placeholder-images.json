@@ -2,33 +2,51 @@
   "placeholderImages": [
     {
       "id": "hero-industrial",
-      "description": "A large industrial machine in a factory.",
-      "imageUrl": "https://images.unsplash.com/photo-1685746204661-b92400e9a79a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NjQwMjM2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "industrial factory"
+      "description": "Linha de produção industrial de caixas de papelão.",
+      "imageUrl": "https://images.unsplash.com/photo-1579758629938-03607cc12de2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjYXJkYm9hcmQlMjBib3glMjBmYWN0b3J5fGVufDB8fHx8MTc2NDA5NzMyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cardboard factory"
     },
     {
       "id": "solution-corte-vinco",
-      "description": "A die-cut cardboard box.",
+      "description": "Detalhe de uma caixa de papelão com corte e vinco preciso.",
       "imageUrl": "https://images.unsplash.com/photo-1573376670329-0261ea9fde97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjYXJkYm9hcmQlMjBib3h8ZW58MHx8fHwxNzY0MDk0MDgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cardboard box"
     },
     {
       "id": "solution-convencional",
-      "description": "A stack of conventional cardboard boxes.",
-      "imageUrl": "https://images.unsplash.com/photo-1762848023168-d83de886908b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3RhY2tlZCUyMGJveGVzfGVufDB8fHx8MTc2NDA5NDA4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Pilha de caixas de papelão convencionais em um armazém.",
+      "imageUrl": "https://images.unsplash.com/photo-1627889312739-a5446b7a54a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzdGFja2VkJTIwYm94ZXN8ZW58MHx8fHwxNzY0MDk3Mzk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "stacked boxes"
     },
     {
       "id": "solution-projetos-especiais",
-      "description": "A custom-designed cardboard packaging.",
+      "description": "Embalagem de papelão com design customizado e inovador.",
       "imageUrl": "https://images.unsplash.com/photo-1634814407118-82745e40cd7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjdXN0b20lMjBwYWNrYWdpbmd8ZW58MHx8fHwxNzY0MDk0MDgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "custom packaging"
     },
     {
       "id": "solution-desenvolvimento-tecnico",
-      "description": "A technical drawing of a box design.",
-      "imageUrl": "https://images.unsplash.com/photo-1721244654392-9c912a6eb236?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0ZWNobmljYWwlMjBkcmF3aW5nfGVufDB8fHx8MTc2NDAxNzg0NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "technical drawing"
+      "description": "Engenheiro analisando um projeto técnico de embalagem.",
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbmdpbmVlciUyMHBsYW5uaW5nfGVufDB8fHx8MTc2NDA5NzQ5MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "engineer planning"
+    },
+    {
+      "id": "performance-banner",
+      "description": "Textura de papelão ondulado em close-up.",
+      "imageUrl": "https://images.unsplash.com/photo-1618042164217-64c7a9c34891?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXJkYm9hcmQlMjB0ZXh0dXJlfGVufDB8fHx8MTc2NDA5NzU3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cardboard texture"
+    },
+    {
+      "id": "about-warehouse",
+      "description": "Amplo galpão com caixas de papelão organizadas.",
+      "imageUrl": "https://images.unsplash.com/photo-1590132338573-25a614878345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjYXJkYm9hcmQlMjB3YXJlaG91c2V8ZW58MHx8fHwxNzY0MDk3NjI2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cardboard warehouse"
+    },
+    {
+      "id": "expertise-sustainable",
+      "description": "Estruturas internas de papelão para proteção de produtos.",
+      "imageUrl": "https://images.unsplash.com/photo-1618218165225-837c413554cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjYXJkYm9hcmQlMjBwcm90ZWN0aW9ufGVufDB8fHx8MTc2NDA5Nzc2Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cardboard protection"
     }
   ]
 }

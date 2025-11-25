@@ -1,66 +1,42 @@
-import { Boxes, Combine, Wrench, Truck, Timer } from "lucide-react";
+import { Boxes, Combine, Wrench, Truck, Timer, CheckCircle } from "lucide-react";
 
 const services = [
-  {
-    icon: <Boxes className="h-8 w-8 text-primary" />,
-    title: "Produção de Caixas",
-    description:
-      "Fabricação em larga escala com maquinário moderno, garantindo padronização e qualidade.",
-  },
-  {
-    icon: <Combine className="h-8 w-8 text-primary" />,
-    title: "Divisórias e Acessórios",
-    description:
-      "Componentes internos para acomodar e proteger seus produtos durante o transporte.",
-  },
-  {
-    icon: <Wrench className="h-8 w-8 text-primary" />,
-    title: "Projetos Sob Medida",
-    description:
-      "Análise das suas necessidades para criar a embalagem ideal em termos de design e resistência.",
-  },
-  {
-    icon: <Truck className="h-8 w-8 text-primary" />,
-    title: "Logística Personalizada",
-    description:
-      "Gerenciamos seu estoque e programamos entregas para otimizar seu fluxo de produção.",
-  },
-  {
-    icon: <Timer className="h-8 w-8 text-primary" />,
-    title: "Entrega Just-in-Time",
-    description:
-      "Receba suas embalagens no momento exato da necessidade, reduzindo custos de armazenagem.",
-  },
+  "Produção de caixas de papelão ondulado em diversos tamanhos, formatos e gramaturas;",
+  "Acessórios e divisórias internas de papelão para proteção de peças;",
+  "Engenharia e desenvolvimento de projetos especiais de embalagens;",
+  "Apoio técnico na escolha de especificações e dimensionamento das caixas;",
+  "Entrega just-in-time, alinhada ao fluxo de produção do cliente;",
+  "Logística personalizada e planejamento de lotes;",
+  "Suporte técnico contínuo.",
 ];
 
 export function Services() {
   return (
     <section id="servicos" className="bg-secondary">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm font-medium">
-            Nossos Serviços
-          </div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-            Serviços Completos para sua Embalagem
-          </h2>
-          <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Além de produzir embalagens, oferecemos um conjunto de serviços
-            para facilitar a sua operação, do desenvolvimento à entrega.
-          </p>
-        </div>
-        <div className="mx-auto grid max-w-4xl items-start gap-10 py-12 sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
-          {services.map((service, index) => (
-            <div key={service.title} className="grid gap-2 text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                {service.icon}
-              </div>
-              <h3 className="text-xl font-bold">{service.title}</h3>
-              <p className="text-sm text-muted-foreground">
-                {service.description}
-              </p>
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-24">
+            <div className="space-y-4">
+                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
+                    Serviços para a sua Indústria
+                </h2>
+                <p className="text-muted-foreground md:text-xl/relaxed">
+                    Oferecemos um portfólio completo de serviços para garantir que sua operação logística seja impecável, do desenvolvimento à entrega final.
+                </p>
+                <div className="bg-background/50 rounded-lg p-6">
+                    <h3 className="font-bold text-xl mb-4">Capacidade Produtiva Flexível</h3>
+                    <p className="text-muted-foreground">Nossa estrutura nos permite atender desde pequenos lotes emergenciais até grandes volumes recorrentes, com a mesma qualidade e compromisso.</p>
+                </div>
             </div>
-          ))}
+            <div className="space-y-6">
+              <ul className="space-y-4">
+                {services.map((service, index) => (
+                    <li key={index} className="flex items-start gap-4">
+                        <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                        <span className="text-lg text-muted-foreground">{service}</span>
+                    </li>
+                ))}
+              </ul>
+            </div>
         </div>
       </div>
     </section>

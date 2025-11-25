@@ -9,31 +9,32 @@ import {
   PlaceHolderImages,
   type ImagePlaceholder,
 } from "@/lib/placeholder-images";
+import { ArrowRight } from "lucide-react";
 
 const solutions = [
   {
     id: "solution-corte-vinco",
     title: "Caixas Corte e Vinco",
     description:
-      "Embalagens com designs precisos e personalizados, ideais para produtos que exigem um encaixe perfeito e uma apresentação superior.",
+      "Produtos especiais com formatos diferenciados, pensados para encaixes perfeitos, proteção de peças e otimização de espaço na sua linha de produção.",
   },
   {
     id: "solution-convencional",
     title: "Caixas Convencionais",
     description:
-      "Soluções versáteis e resistentes para transporte e armazenamento. As caixas maleta são a escolha econômica e eficiente para sua logística.",
+      "Modelos tradicionais de caixas de papelão ondulado, em diversos tamanhos e composições, ideais para armazenamento e transporte seguro e eficiente.",
   },
   {
     id: "solution-projetos-especiais",
     title: "Projetos Especiais",
     description:
-      "Desenvolvemos embalagens únicas, desde displays de ponto de venda a caixas com formatos exclusivos para destacar sua marca.",
+      "Desenvolvemos soluções personalizadas a partir das suas necessidades, com foco em inovação, segurança e redução de custos operacionais.",
   },
   {
     id: "solution-desenvolvimento-tecnico",
-    title: "Desenvolvimento Técnico",
+    title: "Expertise em Desenvolvimento",
     description:
-      "Nossa equipe de especialistas cria e otimiza projetos de embalagens para garantir máxima proteção, funcionalidade e redução de custos.",
+      "Time técnico dedicado a criar embalagens que reduzam danos, otimizem a logística e tragam mais eficiência às linhas de produção industriais.",
   },
 ];
 
@@ -42,28 +43,23 @@ const getImage = (id: string): ImagePlaceholder | undefined =>
 
 export function Solutions() {
   return (
-    <section id="solucoes">
+    <section id="solucoes" className="bg-secondary">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm font-medium">
-            Nossas Soluções
-          </div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-            Embalagens que Fazem a Diferença
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
+            Tecnologia, Inovação e Soluções
           </h2>
           <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Oferecemos uma gama completa de solutions em papelão ondulado,
-            projetadas para atender às necessidades específicas da sua
-            indústria.
+            Desenvolvemos, fabricamos e comercializamos embalagens de papelão de alta qualidade, com foco em eficiência, segurança no transporte e adaptação ao processo de cada cliente.
           </p>
         </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-8 py-12 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 sm:grid-cols-2 lg:max-w-none lg:grid-cols-4">
           {solutions.map((solution) => {
             const image = getImage(solution.id);
             return (
               <Card
                 key={solution.title}
-                className="group overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+                className="group overflow-hidden rounded-lg bg-background shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-2 flex flex-col"
               >
                 {image && (
                   <div className="overflow-hidden">
@@ -77,11 +73,11 @@ export function Solutions() {
                     />
                    </div>
                 )}
-                <CardHeader>
-                  <CardTitle>{solution.title}</CardTitle>
+                <CardHeader className="flex-grow">
+                  <CardTitle className="text-xl">{solution.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{solution.description}</p>
+                  <p className="text-muted-foreground text-sm">{solution.description}</p>
                 </CardContent>
               </Card>
             );

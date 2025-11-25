@@ -5,6 +5,9 @@ import { About } from "@/components/sections/about";
 import { Solutions } from "@/components/sections/solutions";
 import { Services } from "@/components/sections/services";
 import { Contact } from "@/components/sections/contact";
+import { PerformanceBanner } from "@/components/sections/performance-banner";
+import { Expertise } from "@/components/sections/expertise";
+
 
 export default function Home() {
   return (
@@ -12,11 +15,13 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <PerformanceBanner />
         <About />
         <Solutions />
+        <Expertise />
         <Services />
         <Contact />
-      </main>cFet
+      </main>
       <Footer />
     </div>
   );

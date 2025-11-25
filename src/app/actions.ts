@@ -10,6 +10,7 @@ const contactSchema = z.object({
     .min(2, "O nome da empresa deve ter pelo menos 2 caracteres."),
   email: z.string().email("Por favor, insira um e-mail válido."),
   phone: z.string().trim().min(8, "O telefone deve ter pelo menos 8 dígitos."),
+  subject: z.string().optional(),
   message: z
     .string()
     .trim()
@@ -37,6 +38,7 @@ export async function submitContactForm(
     company: formData.get("company"),
     email: formData.get("email"),
     phone: formData.get("phone"),
+    subject: formData.get("subject"),
     message: formData.get("message"),
   });
 
@@ -48,9 +50,9 @@ export async function submitContactForm(
     };
   }
 
-  // Here you would typically send an email, save to a database, etc.
-  // For this example, we'll just log it and return success.
-  console.log("Form data received:", validatedFields.data);
+  // Aqui você normalmente enviaria um e-mail, salvaria em um banco de dados, etc.
+  // Para este exemplo, apenas registraremos e retornaremos sucesso.
+  console.log("Dados do formulário recebidos:", validatedFields.data);
 
   return {
     success: true,
