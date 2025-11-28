@@ -5,6 +5,7 @@ import { Solutions } from "@/components/sections/solutions";
 import { Services } from "@/components/sections/services";
 import { Expertise } from "@/components/sections/expertise";
 import { About } from "@/components/sections/about";
+import { ImageCarousel } from "@/components/sections/image-carousel";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <ImageCarousel />
         <div id="solucoes">
           <Solutions />
         </div>
