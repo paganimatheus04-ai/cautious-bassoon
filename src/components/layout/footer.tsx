@@ -28,16 +28,17 @@ export function Footer() {
               href="/"
               className="flex items-center gap-2 text-2xl font-bold text-primary-foreground"
             >
-              <Image 
-                src="https://i.imgur.com/RkFJAQX.png" 
-                alt="Pagani Embalagens Logo" 
-                width={180} 
-                height={40} 
+              <Image
+                src="https://i.imgur.com/efHZCA9.png"
+                alt="Pagani Embalagens Logo"
+                width={180}
+                height={40}
                 className="h-auto"
               />
             </Link>
             <p className="max-w-md text-sm text-primary-foreground/80">
-              Soluções industriais em embalagens de papelão ondulado para logística, armazenagem e transporte.
+              Soluções industriais em embalagens de papelão ondulado para
+              logística, armazenagem e transporte.
             </p>
             <div className="flex items-center gap-6">
               <span
