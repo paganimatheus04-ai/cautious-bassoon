@@ -6,8 +6,19 @@ export default function SobrePage() {
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-24 lg:py-32">
-        <About />
+      <main className="relative flex-1">
+        <div 
+          className="absolute inset-0 z-0 opacity-5" 
+          style={{
+            backgroundImage: 'url("https://www.svgrepo.com/show/510821/world-map-country-and-continent.svg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+        <div className="relative z-10 py-12 md:py-24 lg:py-32">
+          <About />
+        </div>
       </main>
       <Footer />
     </div>
