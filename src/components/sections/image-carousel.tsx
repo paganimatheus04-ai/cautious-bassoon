@@ -15,22 +15,21 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 
-const carouselImages: (ImagePlaceholder | undefined)[] = [
-  PlaceHolderImages.find((p) => p.id === "carousel-1"),
-  PlaceHolderImages.find((p) => p.id === "carousel-2"),
-  PlaceHolderImages.find((p) => p.id === "carousel-3"),
-  PlaceHolderImages.find((p) => p.id === "carousel-4"),
-  PlaceHolderImages.find((p) => p.id === "carousel-5"),
-  PlaceHolderImages.find((p) => p.id === "carousel-6"),
-  PlaceHolderImages.find((p) => p.id === "solution-corte-vinco"),
-  PlaceHolderImages.find((p) => p.id === "solution-convencional"),
-  PlaceHolderImages.find((p) => p.id === "solution-projetos-especiais"),
-  PlaceHolderImages.find((p) => p.id === "solution-desenvolvimento-tecnico"),
+const carouselImageIds = [
+  "carousel-1",
+  "carousel-2",
+  "carousel-3",
+  "carousel-4",
+  "carousel-5",
+  "carousel-6",
+  "solution-corte-vinco",
+  "solution-convencional",
+  "solution-projetos-especiais",
+  "solution-desenvolvimento-tecnico",
 ];
 
-const validImages = carouselImages.filter(
-  (image): image is ImagePlaceholder => image !== undefined
-);
+const validImages: ImagePlaceholder[] = carouselImageIds.map(id => PlaceHolderImages.find(p => p.id === id)).filter((image): image is ImagePlaceholder => image !== undefined);
+
 
 export function ImageCarousel() {
   const plugin = React.useRef(
@@ -54,7 +53,8 @@ export function ImageCarousel() {
             {validImages.map((image) => (
               <CarouselItem
                 key={image.id}
-                className="md:basis-1/2 lg:basis-1/3"
+                className="md:basis-1/2 lg:basis-1/3 animate-fade-in-up"
+                style={{ animationDelay: `${validImages.indexOf(image) * 150}ms` }}
               >
                 <div className="p-1">
                   <div className="relative aspect-video overflow-hidden rounded-lg">
