@@ -120,7 +120,7 @@ export function About() {
                     size="lg"
                     className="hover:scale-105 transition-transform"
                   >
-                    <Link href="/#contato">Fale com o time Pagani</Link>
+                    <a href="https://wa.me/5519974094692" target="_blank" rel="noopener noreferrer">Fale com o time Pagani</a>
                   </Button>
                 </div>
               </div>
