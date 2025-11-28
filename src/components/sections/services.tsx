@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, MapPin } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -37,6 +37,14 @@ export function Services() {
                 </li>
               ))}
             </ul>
+             <div className="mt-8 border-t border-border pt-6">
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <MapPin className="h-5 w-5 flex-shrink-0 text-primary" />
+                <p className="font-medium">
+                  Atendimento especializado para indústrias de Vinhedo, Valinhos, Louveira, Jundiaí, Itupeva e Campinas.
+                </p>
+              </div>
+            </div>
           </div>
 
           {serviceImage && (

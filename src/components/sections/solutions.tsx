@@ -43,7 +43,7 @@ export function Solutions() {
             Tecnologia, Inovação e Soluções
           </h2>
           <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Desenvolvemos, fabricamos e comercializamos embalagens de papelão de alta qualidade, com foco em eficiência, segurança no transporte e adaptação ao processo de cada cliente, seguindo os requisitos da Norma NBR ISO 9001-2015.
+            Caixas corte e vinco, convencionais e projetos especiais produzidos com rigor técnico, adaptados exatamente ao processo e às necessidades da sua indústria. Seguimos os requisitos da Norma NBR ISO 9001-2015.
           </p>
         </div>
         

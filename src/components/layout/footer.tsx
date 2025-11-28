@@ -32,7 +32,7 @@ export function Footer() {
               <span>PAGANI</span>
             </Link>
             <p className="max-w-md text-sm text-primary-foreground/80">
-              Especialistas em embalagens industriais de papelão para logística, armazenamento e transporte.
+              Soluções industriais em embalagens de papelão ondulado para logística, armazenagem e transporte.
             </p>
             <div className="flex items-center gap-6">
               <a

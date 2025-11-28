@@ -7,7 +7,7 @@ import {
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ArrowDown, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import { Badge } from "../ui/badge";
 
 export function Hero() {
@@ -58,13 +58,19 @@ export function Hero() {
           </div>
 
           <div
-            className="animate-fade-in-up pt-4"
+            className="flex animate-fade-in-up flex-col items-center gap-4 pt-4 sm:flex-row"
             style={{ animationDelay: "400ms" }}
           >
             <Button asChild size="lg">
+              <Link href="/#contato">
+                Solicitar Orçamento
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
               <Link href="#solucoes">
-                Conheça as Soluções
-                <ArrowDown className="ml-2 h-5 w-5" />
+                Ver Soluções
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>

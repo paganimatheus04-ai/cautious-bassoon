@@ -24,8 +24,9 @@ export function WhyChooseUs() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-                Por que empresas escolhem a Pagani Embalagens?
+                O que realmente importa para quem compra embalagens industriais.
             </h2>
+            <p className="text-lg text-muted-foreground">Por que empresas escolhem a Pagani Embalagens?</p>
         </div>
         <div className="mx-auto grid max-w-5xl items-start gap-12 sm:grid-cols-1 md:grid-cols-3">
             {features.map((feature, index) => (

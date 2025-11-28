@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { About } from "@/components/sections/about";
+import { WorkProcess } from "@/components/sections/work-process";
 
 export default function SobrePage() {
   return (
@@ -19,6 +20,9 @@ export default function SobrePage() {
         />
         <div className="relative z-10">
           <About />
+          <div className="pb-24 md:pb-32">
+            <WorkProcess />
+          </div>
         </div>
       </main>
       <Footer />
