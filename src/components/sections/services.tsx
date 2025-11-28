@@ -1,6 +1,9 @@
+"use client";
+
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { ContainerScroll } from "../ui/container-scroll-animation";
 
 const services = [
   "Produção de caixas de papelão ondulado em diversos tamanhos, formatos e gramaturas;",
@@ -15,44 +18,40 @@ const services = [
 export function Services() {
   const serviceImage = PlaceHolderImages.find((p) => p.id === "services-production");
   return (
-      <div className="container px-4 md:px-6 animate-fade-in-up">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-24 items-center">
-            <div className="space-y-6">
-                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
-                        Serviços para a sua Indústria
-                    </h2>
-                    <p className="text-muted-foreground md:text-xl/relaxed">
-                        Oferecemos um portfólio completo de serviços para garantir que sua operação logística seja impecável, do desenvolvimento à entrega final.
-                    </p>
-                 </div>
-                 {serviceImage && (
-                    <div className="overflow-hidden rounded-lg group">
-                        <Image
-                            src={serviceImage.imageUrl}
-                            alt={serviceImage.description}
-                            width={800}
-                            height={600}
-                            className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            data-ai-hint={serviceImage.imageHint}
-                        />
-                    </div>
-                 )}
-            </div>
-            <div className="space-y-8">
-              <ul className="space-y-4">
-                {services.map((service, index) => (
-                    <li key={index} className="flex items-start gap-4 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
-                        <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                        <span className="text-lg text-muted-foreground">{service}</span>
-                    </li>
-                ))}
-              </ul>
-              <div className="bg-secondary/50 rounded-lg p-6 border border-border">
-                  <h3 className="font-bold text-xl mb-4 text-foreground">Capacidade Produtiva Flexível</h3>
-                  <p className="text-muted-foreground">Nossa estrutura nos permite atender desde pequenos lotes emergenciais até grandes volumes recorrentes, com a mesma qualidade e compromisso.</p>
-              </div>
-            </div>
+      <div className="container px-4 md:px-6">
+         <div className="flex flex-col overflow-hidden">
+          <ContainerScroll
+            titleComponent={
+              <>
+                <h2 className="text-4xl font-bold text-foreground sm:text-5xl">
+                  Serviços para a sua <span className="text-primary">Indústria.</span>
+                </h2>
+                <p className="max-w-3xl mx-auto mt-6 text-lg text-muted-foreground">
+                    Oferecemos um portfólio completo de serviços para garantir que sua operação logística seja impecável, do desenvolvimento à entrega final.
+                </p>
+                 <ul className="max-w-3xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-left">
+                  {services.map((service, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                          <span className="text-base text-muted-foreground">{service}</span>
+                      </li>
+                  ))}
+                </ul>
+              </>
+            }
+          >
+            {serviceImage && (
+              <Image
+                src={serviceImage.imageUrl}
+                alt={serviceImage.description}
+                height={720}
+                width={1400}
+                className="mx-auto rounded-2xl object-cover h-full object-center"
+                draggable={false}
+                data-ai-hint={serviceImage.imageHint}
+              />
+            )}
+          </ContainerScroll>
         </div>
       </div>
   );

@@ -17,7 +17,7 @@ export default function SobrePage() {
             backgroundAttachment: 'fixed'
           }}
         />
-        <div className="relative z-10 py-12 md:py-24 lg:py-32">
+        <div className="relative z-10">
           <About />
         </div>
       </main>
