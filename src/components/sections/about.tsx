@@ -32,15 +32,7 @@ export function About() {
   return (
     <div className="container px-4 md:px-6 space-y-24 md:space-y-32">
       {/* Missão, Visão, Valores */}
-      <div className="text-center">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-          Missão, Visão e Valores
-        </h2>
-        <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed mt-4">
-          Os pilares que sustentam nosso compromisso com a excelência.
-        </p>
-      </div>
-      <div className="mx-auto grid max-w-5xl items-start gap-12 sm:grid-cols-1 md:grid-cols-3">
+      <div className="mx-auto grid max-w-5xl items-start gap-12 sm:grid-cols-1 md:grid-cols-3 pt-12">
         {values.map((value) => (
           <div
             key={value.title}
