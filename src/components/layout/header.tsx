@@ -41,7 +41,7 @@ export function Header() {
               className="flex items-center"
             >
               <Image 
-                src="https://i.imgur.com/ztN7eXi.png" 
+                src="https://i.imgur.com/RkFJAQX.png" 
                 alt="Pagani Embalagens Logo" 
                 width={180} 
                 height={40} 
@@ -87,7 +87,7 @@ export function Header() {
                           className="flex items-center gap-2 text-lg font-semibold"
                         >
                           <Image 
-                            src="https://i.imgur.com/ztN7eXi.png" 
+                            src="https://i.imgur.com/RkFJAQX.png" 
                             alt="Pagani Embalagens Logo" 
                             width={150} 
                             height={33}
