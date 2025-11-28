@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import {
@@ -10,6 +12,7 @@ import {
   FileCheck,
   GaugeCircle,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const sustainabilityFeatures = [
   {
@@ -97,13 +100,12 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
         </div>
       </div>
       {commitmentImage && (
-        <div className="overflow-hidden rounded-lg group">
+        <div className="relative h-[600px] overflow-hidden rounded-lg group">
           <Image
             src={commitmentImage.imageUrl}
             alt={commitmentImage.description}
-            width={800}
-            height={800}
-            className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             data-ai-hint={commitmentImage.imageHint}
           />
         </div>
@@ -112,7 +114,7 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
   );
 
   const homeVersion = (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
+     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center">
       {/* Sustentabilidade */}
       <div className="space-y-6">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
@@ -136,13 +138,12 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
         </div>
       </div>
       {expertiseImage && (
-         <div className="overflow-hidden rounded-lg group">
+         <div className="relative h-[600px] overflow-hidden rounded-lg group">
             <Image
                 src={expertiseImage.imageUrl}
                 alt={expertiseImage.description}
-                width={800}
-                height={800}
-                className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 data-ai-hint={expertiseImage.imageHint}
             />
         </div>
