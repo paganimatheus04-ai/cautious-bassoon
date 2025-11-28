@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
 import {
   Carousel,
@@ -15,8 +13,9 @@ const carouselImages: (ImagePlaceholder | undefined)[] = [
   PlaceHolderImages.find((p) => p.id === "solution-corte-vinco"),
   PlaceHolderImages.find((p) => p.id === "solution-convencional"),
   PlaceHolderImages.find((p) => p.id === "solution-projetos-especiais"),
-  PlaceHolderImages.find((p) => p.id === "expertise-sustainable"),
+  PlaceHolderImages.find((p) => p.id === "solution-desenvolvimento-tecnico"),
   PlaceHolderImages.find((p) => p.id === "about-warehouse"),
+  PlaceHolderImages.find((p) => p.id === "expertise-sustainable"),
 ];
 
 

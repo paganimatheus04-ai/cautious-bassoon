@@ -9,25 +9,25 @@
     {
       "id": "solution-corte-vinco",
       "description": "Detalhe de uma caixa de papelão com corte e vinco preciso.",
-      "imageUrl": "https://images.unsplash.com/photo-1573376670329-0261ea9fde97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjYXJkYm9hcmQlMjBib3h8ZW58MHx8fHwxNzY0MDk0MDgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.imgur.com/YZf2TGb.jpeg",
       "imageHint": "cardboard box"
     },
     {
       "id": "solution-convencional",
       "description": "Pilha de caixas de papelão convencionais em um armazém.",
-      "imageUrl": "https://images.unsplash.com/photo-1627889312739-a5446b7a54a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzdGFja2VkJTIwYm94ZXN8ZW58MHx8fHwxNzY0MDk3Mzk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.imgur.com/kqvPg5Y.jpeg",
       "imageHint": "stacked boxes"
     },
     {
       "id": "solution-projetos-especiais",
       "description": "Embalagem de papelão com design customizado e inovador.",
-      "imageUrl": "https://images.unsplash.com/photo-1634814407118-82745e40cd7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjdXN0b20lMjBwYWNrYWdpbmd8ZW58MHx8fHwxNzY0MDk0MDgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.imgur.com/Ne2qrg4.jpeg",
       "imageHint": "custom packaging"
     },
     {
       "id": "solution-desenvolvimento-tecnico",
       "description": "Engenheiro analisando um projeto técnico de embalagem.",
-      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbmdpbmVlciUyMHBsYW5uaW5nfGVufDB8fHx8MTc2NDA5NzQ5MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.imgur.com/eNuiSWy.jpeg",
       "imageHint": "engineer planning"
     },
     {
@@ -39,13 +39,13 @@
     {
       "id": "about-warehouse",
       "description": "Amplo galpão com caixas de papelão organizadas.",
-      "imageUrl": "https://i.imgur.com/kRLFQ7o.png",
+      "imageUrl": "https://i.imgur.com/4kpNsDK.jpeg",
       "imageHint": "cardboard warehouse"
     },
     {
       "id": "expertise-sustainable",
       "description": "Estruturas internas de papelão para proteção de produtos.",
-      "imageUrl": "https://images.unsplash.com/photo-1618218165225-837c413554cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjYXJkYm9hcmQlMjBwcm90ZWN0aW9ufGVufDB8fHx8MTc2NDA5Nzc2Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.imgur.com/xugUvsR.jpeg",
       "imageHint": "cardboard protection"
     }
   ]
