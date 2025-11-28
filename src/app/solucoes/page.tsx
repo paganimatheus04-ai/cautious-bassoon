@@ -9,9 +9,7 @@ export default function SolucoesPage() {
       <Header />
       <main className="flex-1">
         <PerformanceBanner />
-        <div className="py-12 md:py-24 lg:py-32">
-          <Solutions />
-        </div>
+        <Solutions />
       </main>
       <Footer />
     </div>

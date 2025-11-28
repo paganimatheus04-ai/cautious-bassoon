@@ -1,15 +1,8 @@
 import Image from "next/image";
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   PlaceHolderImages,
   type ImagePlaceholder,
 } from "@/lib/placeholder-images";
-import { ArrowRight } from "lucide-react";
 
 const solutions = [
   {
@@ -43,8 +36,9 @@ const getImage = (id: string): ImagePlaceholder | undefined =>
 
 export function Solutions() {
   return (
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+    <section className="py-20 md:py-32 bg-background">
+      <div className="container px-4 md:px-6 space-y-16">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
             Tecnologia, Inovação e Soluções
           </h2>
@@ -52,36 +46,35 @@ export function Solutions() {
             Desenvolvemos, fabricamos e comercializamos embalagens de papelão de alta qualidade, com foco em eficiência, segurança no transporte e adaptação ao processo de cada cliente, seguindo os requisitos da Norma NBR ISO 9001-2015.
           </p>
         </div>
-        <div className="grid gap-16">
-          {solutions.map((solution, index) => {
+        
+        <div className="grid gap-8 md:grid-cols-2">
+          {solutions.map((solution) => {
             const image = getImage(solution.id);
-            const isImageLeft = index % 2 === 0;
             return (
-              <div key={solution.id} className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
-                <div className={`space-y-4 ${isImageLeft ? 'lg:order-last' : ''}`}>
-                    <h3 className="text-3xl font-bold tracking-tight text-primary">
-                        {solution.title}
-                    </h3>
-                    <p className="text-muted-foreground md:text-lg/relaxed">
-                        {solution.description}
-                    </p>
-                </div>
+              <div key={solution.id} className="relative group overflow-hidden rounded-lg">
                 {image && (
-                    <div className="overflow-hidden rounded-lg">
-                        <Image
-                            src={image.imageUrl}
-                            alt={image.description}
-                            width={600}
-                            height={400}
-                            className="aspect-video w-full object-cover transition-transform duration-300 hover:scale-105"
-                            data-ai-hint={image.imageHint}
-                        />
-                    </div>
+                  <Image
+                    src={image.imageUrl}
+                    alt={image.description}
+                    width={600}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    data-ai-hint={image.imageHint}
+                  />
                 )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex flex-col justify-end">
+                  <h3 className="text-2xl font-bold tracking-tight text-white group-hover:text-primary transition-colors">
+                    {solution.title}
+                  </h3>
+                  <p className="mt-2 text-white/90 max-w-md">
+                    {solution.description}
+                  </p>
+                </div>
               </div>
             );
           })}
         </div>
       </div>
+    </section>
   );
 }
