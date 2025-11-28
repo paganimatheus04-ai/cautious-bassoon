@@ -38,7 +38,7 @@ export function Solutions() {
   return (
     <section className="py-20 md:py-32 bg-background">
       <div className="container px-4 md:px-6 space-y-16">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center animate-fade-in-up">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
             Tecnologia, Inovação e Soluções
           </h2>
@@ -47,11 +47,11 @@ export function Solutions() {
           </p>
         </div>
         
-        <div className="grid gap-8 md:grid-cols-2">
-          {solutions.map((solution) => {
+        <div className="grid gap-8 md:grid-cols-2 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+          {solutions.map((solution, index) => {
             const image = getImage(solution.id);
             return (
-              <div key={solution.id} className="relative group overflow-hidden rounded-lg">
+              <div key={solution.id} className="relative group overflow-hidden rounded-lg" style={{ animationDelay: `${index * 150}ms` }}>
                 {image && (
                   <Image
                     src={image.imageUrl}

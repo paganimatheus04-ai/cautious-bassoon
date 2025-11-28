@@ -10,12 +10,12 @@ import {
 
 
 const carouselImages: (ImagePlaceholder | undefined)[] = [
-  PlaceHolderImages.find((p) => p.id === "solution-corte-vinco"),
-  PlaceHolderImages.find((p) => p.id === "solution-convencional"),
-  PlaceHolderImages.find((p) => p.id === "solution-projetos-especiais"),
-  PlaceHolderImages.find((p) => p.id === "solution-desenvolvimento-tecnico"),
-  PlaceHolderImages.find((p) => p.id === "about-warehouse"),
-  PlaceHolderImages.find((p) => p.id === "expertise-sustainable"),
+  PlaceHolderImages.find((p) => p.id === "carousel-1"),
+  PlaceHolderImages.find((p) => p.id === "carousel-2"),
+  PlaceHolderImages.find((p) => p.id === "carousel-3"),
+  PlaceHolderImages.find((p) => p.id === "carousel-4"),
+  PlaceHolderImages.find((p) => p.id === "carousel-5"),
+  PlaceHolderImages.find((p) => p.id === "carousel-6"),
 ];
 
 
@@ -40,7 +40,7 @@ export function Hero() {
 
       <div className="container relative z-10 px-4 md:px-6">
         <div
-            className="flex flex-col items-center justify-center space-y-8 text-center"
+            className="flex flex-col items-center justify-center space-y-8 text-center animate-fade-in-up"
           >
             <div className="space-y-4">
                 <h1 className="text-4xl font-black tracking-tighter sm:text-5xl xl:text-6xl/none">

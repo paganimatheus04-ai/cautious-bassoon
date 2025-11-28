@@ -32,11 +32,12 @@ export function About() {
   return (
     <div className="container px-4 md:px-6 space-y-24 md:space-y-32">
       {/* Missão, Visão, Valores */}
-      <div className="mx-auto grid max-w-5xl items-start gap-12 sm:grid-cols-1 md:grid-cols-3 pt-12">
-        {values.map((value) => (
+      <div className="mx-auto grid max-w-5xl items-start gap-12 sm:grid-cols-1 md:grid-cols-3 pt-12 animate-fade-in-up">
+        {values.map((value, index) => (
           <div
             key={value.title}
             className="flex flex-col items-center text-center gap-4"
+            style={{ animationDelay: `${index * 150}ms` }}
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 border border-primary/20">
               {value.icon}
@@ -50,7 +51,7 @@ export function About() {
       </div>
 
       {/* Solidez e Confiança */}
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
         <div className="space-y-4">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
             Solidez e confiança ao lado da sua empresa.
@@ -84,7 +85,7 @@ export function About() {
       </div>
 
       {/* Liderança, Expertise e Qualidade */}
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
          {expertiseImage && (
           <div className="relative overflow-hidden rounded-lg group">
              <Image

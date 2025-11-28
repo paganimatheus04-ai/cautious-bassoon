@@ -24,7 +24,7 @@ export function Expertise() {
   const expertiseImage = PlaceHolderImages.find((p) => p.id === "expertise-sustainable");
 
   return (
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
            <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
@@ -34,8 +34,8 @@ export function Expertise() {
               Nosso compromisso vai além da simples produção de caixas. Acreditamos em um ciclo de vida responsável para nossas embalagens, combinando performance industrial com respeito ao meio ambiente.
             </p>
             <div className="grid gap-6">
-              {features.map(feature => (
-                <div key={feature.title} className="flex items-start gap-4">
+              {features.map((feature, index) => (
+                <div key={feature.title} className="flex items-start gap-4" style={{ animationDelay: `${index * 150}ms` }}>
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                     {feature.icon}
                   </div>

@@ -31,9 +31,9 @@ export function Header() {
   }, []);
 
   return (
-    <header className={cn("sticky top-0 z-50 w-full transition-shadow duration-300", isScrolled ? 'shadow-lg' : '')}>
+    <header className={cn("sticky top-0 z-50 w-full transition-all duration-300", isScrolled ? 'shadow-lg' : '')}>
       <div className="bg-primary h-1" />
-      <div className={cn("bg-background/90 backdrop-blur-sm", isScrolled ? 'py-3' : 'py-4')}>
+      <div className={cn("bg-background/90 backdrop-blur-sm transition-all duration-300", isScrolled ? 'py-3' : 'py-4')}>
         <div className="container mx-auto flex h-full items-center justify-between">
             <Link
               href="/"

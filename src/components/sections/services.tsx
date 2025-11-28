@@ -15,7 +15,7 @@ const services = [
 export function Services() {
   const serviceImage = PlaceHolderImages.find((p) => p.id === "services-production");
   return (
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 animate-fade-in-up">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-24 items-center">
             <div className="space-y-6">
                  <div className="space-y-4">
@@ -42,7 +42,7 @@ export function Services() {
             <div className="space-y-8">
               <ul className="space-y-4">
                 {services.map((service, index) => (
-                    <li key={index} className="flex items-start gap-4">
+                    <li key={index} className="flex items-start gap-4" style={{ animationDelay: `${index * 100}ms` }}>
                         <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                         <span className="text-lg text-muted-foreground">{service}</span>
                     </li>
