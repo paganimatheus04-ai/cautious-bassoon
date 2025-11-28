@@ -87,13 +87,18 @@ export function Footer() {
                 <Mail className="h-5 w-5 flex-shrink-0" />
                 <span>marciopagani18@gmail.com</span>
               </a>
-              <div className="flex items-start justify-center gap-3 text-base md:justify-start md:text-lg">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=R.+Jo%C3%A3o+Jos%C3%A9+Pescarini,+568+-+SL+20+-+RESIDENCIAL+FLORA,+Vinhedo+-+SP,+13280-144"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start justify-center gap-3 text-base transition-opacity hover:opacity-80 md:justify-start md:text-lg"
+              >
                 <MapPin className="h-5 w-5 flex-shrink-0 mt-1" />
                 <span className="max-w-xs text-center md:text-left">
                   R. João José Pescarini, 568 - SL 20 - RESIDENCIAL FLORA, Vinhedo
                   - SP, 13280-144
                 </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
