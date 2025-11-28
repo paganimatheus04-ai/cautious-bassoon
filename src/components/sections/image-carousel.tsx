@@ -15,8 +15,9 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 
-// Remove duplicates by imageUrl
+// Remove duplicates by imageUrl and the broken image
 const uniqueImages = PlaceHolderImages.filter((image, index, self) =>
+  image.id !== "expertise-sustainable" &&
   index === self.findIndex((t) => (
     t.imageUrl === image.imageUrl
   ))
