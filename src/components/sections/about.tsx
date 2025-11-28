@@ -36,7 +36,7 @@ export function About() {
         {values.map((value, index) => (
           <div
             key={value.title}
-            className="flex flex-col items-center text-center gap-4"
+            className="flex flex-col items-center text-center gap-4 animate-fade-in-up"
             style={{ animationDelay: `${index * 150}ms` }}
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 border border-primary/20">
@@ -71,13 +71,13 @@ export function About() {
           </div>
         </div>
         {aboutImage && (
-          <div className="overflow-hidden rounded-lg">
+          <div className="overflow-hidden rounded-lg group">
             <Image
               src={aboutImage.imageUrl}
               alt={aboutImage.description}
               width={800}
               height={600}
-              className="aspect-video w-full object-cover"
+              className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
               data-ai-hint={aboutImage.imageHint}
             />
           </div>
@@ -93,7 +93,7 @@ export function About() {
                 alt={expertiseImage.description}
                 width={800}
                 height={600}
-                className="aspect-video w-full object-cover"
+                className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 data-ai-hint={expertiseImage.imageHint}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

@@ -14,6 +14,7 @@ export default function SobrePage() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed'
           }}
         />
         <div className="relative z-10 py-12 md:py-24 lg:py-32">

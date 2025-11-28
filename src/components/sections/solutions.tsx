@@ -51,19 +51,19 @@ export function Solutions() {
           {solutions.map((solution, index) => {
             const image = getImage(solution.id);
             return (
-              <div key={solution.id} className="relative group overflow-hidden rounded-lg" style={{ animationDelay: `${index * 150}ms` }}>
+              <div key={solution.id} className="relative group overflow-hidden rounded-lg animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
                 {image && (
                   <Image
                     src={image.imageUrl}
                     alt={image.description}
                     width={600}
                     height={400}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     data-ai-hint={image.imageHint}
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex flex-col justify-end">
-                  <h3 className="text-2xl font-bold tracking-tight text-white group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-primary">
                     {solution.title}
                   </h3>
                   <p className="mt-2 text-white/90 max-w-md">

@@ -27,13 +27,13 @@ export function Services() {
                     </p>
                  </div>
                  {serviceImage && (
-                    <div className="overflow-hidden rounded-lg">
+                    <div className="overflow-hidden rounded-lg group">
                         <Image
                             src={serviceImage.imageUrl}
                             alt={serviceImage.description}
                             width={800}
                             height={600}
-                            className="aspect-video w-full object-cover"
+                            className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
                             data-ai-hint={serviceImage.imageHint}
                         />
                     </div>
@@ -42,7 +42,7 @@ export function Services() {
             <div className="space-y-8">
               <ul className="space-y-4">
                 {services.map((service, index) => (
-                    <li key={index} className="flex items-start gap-4" style={{ animationDelay: `${index * 100}ms` }}>
+                    <li key={index} className="flex items-start gap-4 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
                         <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                         <span className="text-lg text-muted-foreground">{service}</span>
                     </li>

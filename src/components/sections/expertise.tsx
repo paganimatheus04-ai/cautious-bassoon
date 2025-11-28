@@ -35,7 +35,7 @@ export function Expertise() {
             </p>
             <div className="grid gap-6">
               {features.map((feature, index) => (
-                <div key={feature.title} className="flex items-start gap-4" style={{ animationDelay: `${index * 150}ms` }}>
+                <div key={feature.title} className="flex items-start gap-4 animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                     {feature.icon}
                   </div>
@@ -48,13 +48,13 @@ export function Expertise() {
             </div>
           </div>
           {expertiseImage && (
-             <div className="overflow-hidden rounded-lg">
+             <div className="overflow-hidden rounded-lg group">
                 <Image
                     src={expertiseImage.imageUrl}
                     alt={expertiseImage.description}
                     width={800}
                     height={800}
-                    className="aspect-square w-full object-cover"
+                    className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     data-ai-hint={expertiseImage.imageHint}
                 />
             </div>

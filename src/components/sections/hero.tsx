@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
 
 
 const carouselImages: (ImagePlaceholder | undefined)[] = [
@@ -53,6 +54,12 @@ export function Hero() {
             
             <div className="w-full max-w-4xl pt-8">
               <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 3000,
+                      stopOnInteraction: true,
+                    }),
+                  ]}
                   opts={{
                       align: "start",
                       loop: true,
@@ -63,13 +70,13 @@ export function Hero() {
                       {carouselImages.map((img, index) => img ? (
                           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                               <div className="p-1">
-                                  <div className="aspect-video overflow-hidden rounded-lg">
+                                  <div className="aspect-video overflow-hidden rounded-lg group">
                                       <Image
                                           src={img.imageUrl}
                                           alt={img.description}
                                           width={600}
                                           height={400}
-                                          className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                           data-ai-hint={img.imageHint}
                                       />
                                   </div>
