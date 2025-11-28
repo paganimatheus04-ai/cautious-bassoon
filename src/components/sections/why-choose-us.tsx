@@ -22,7 +22,7 @@ export function WhyChooseUs() {
   return (
     <section className="py-20 md:py-32 bg-secondary/30">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center text-center space-y-4 mb-12">
+        <div className="flex flex-col items-center text-center space-y-4 mb-12 animate-fade-in-up">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
                 O que realmente importa para quem compra embalagens industriais.
             </h2>
