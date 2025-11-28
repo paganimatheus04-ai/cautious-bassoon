@@ -8,7 +8,7 @@ export default function SobrePage() {
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background">
       <Header />
-      <main className="relative flex-1">
+      <main className="relative flex-1 overflow-x-hidden">
         <div 
           className="absolute inset-0 z-0 opacity-5" 
           style={{
@@ -19,7 +19,7 @@ export default function SobrePage() {
             backgroundAttachment: 'fixed'
           }}
         />
-        <div className="relative z-10 space-y-24 md:space-y-32">
+        <div className="relative z-10 space-y-12 md:space-y-24 pt-12 md:pt-0">
           <About />
           <Expertise showFullCommitment={true} />
           <div className="pb-24 md:pb-32">

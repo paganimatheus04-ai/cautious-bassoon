@@ -21,7 +21,7 @@ export function Services() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 animate-fade-in-up">
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-4xl md:text-5xl">
               Serviços para a sua Indústria.
             </h2>
             <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
@@ -33,14 +33,14 @@ export function Services() {
               {services.map((service, index) => (
                 <li key={index} className="flex items-start gap-3 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
                   <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                  <span className="text-muted-foreground">{service}</span>
+                  <span className="text-muted-foreground text-sm md:text-base">{service}</span>
                 </li>
               ))}
             </ul>
              <div className="mt-8 border-t border-border pt-6 animate-fade-in-up" style={{ animationDelay: '800ms' }}>
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <MapPin className="h-5 w-5 flex-shrink-0 text-primary" />
-                <p className="font-medium">
+              <div className="flex items-start gap-3 text-muted-foreground">
+                <MapPin className="h-5 w-5 flex-shrink-0 text-primary mt-1" />
+                <p className="font-medium text-sm md:text-base">
                   Atendimento especializado para indústrias de Vinhedo, Valinhos, Louveira, Jundiaí, Itupeva e Campinas.
                 </p>
               </div>

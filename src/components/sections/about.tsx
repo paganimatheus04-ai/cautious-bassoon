@@ -2,7 +2,6 @@
 
 import { Target, Eye, Gem } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ArrowRight } from "lucide-react";
@@ -47,8 +46,8 @@ export function About() {
                   {value.icon}
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold">{value.title}</h3>
-                  <p className="text-muted-foreground">{value.description}</p>
+                  <h3 className="text-xl md:text-2xl font-bold">{value.title}</h3>
+                  <p className="text-muted-foreground text-sm md:text-base">{value.description}</p>
                 </div>
               </div>
             ))}
@@ -73,7 +72,7 @@ export function About() {
               </div>
             )}
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold tracking-tighter text-primary sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-4xl md:text-5xl">
                 Solidez e confiança ao lado da sua empresa.
               </h2>
               <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed">
@@ -109,18 +108,18 @@ export function About() {
                   </p>
                 </div>
             </div>
-            <div className="text-center bg-secondary rounded-lg p-8">
-              <h3 className="text-2xl font-bold tracking-tight">
+            <div className="text-center bg-secondary rounded-lg p-6 md:p-8">
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight">
                 Pronto para reduzir custos e aumentar a eficiência da sua operação?
               </h3>
               <div className="mt-6">
                 <Button
                   asChild
                   size="lg"
-                  className="hover:scale-105 transition-transform"
+                  className="hover:scale-105 transition-transform w-full sm:w-auto"
                 >
                   <a href="https://wa.me/5519974094692" target="_blank" rel="noopener noreferrer">
-                    Fale com um especialista Pagani
+                    Fale com um especialista
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>

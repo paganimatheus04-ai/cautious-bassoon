@@ -88,19 +88,19 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
               className="flex items-start gap-4 animate-fade-in-up"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
                 {feature.icon}
               </div>
               <div>
                 <h3 className="text-lg font-bold">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="text-muted-foreground text-sm md:text-base">{feature.description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
       {commitmentImage && (
-        <div className="relative h-[600px] overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+        <div className="relative h-[400px] md:h-[600px] overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '400ms' }}>
           <Image
             src={commitmentImage.imageUrl}
             alt={commitmentImage.description}
@@ -114,7 +114,7 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
   );
 
   const homeVersion = (
-     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center">
+     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
       {/* Sustentabilidade */}
       <div className="space-y-6 animate-fade-in-up">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
@@ -126,19 +126,19 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
         <div className="grid gap-6">
           {sustainabilityFeatures.map((feature, index) => (
             <div key={feature.title} className="flex items-start gap-4 animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
                 {feature.icon}
               </div>
               <div>
                 <h3 className="text-lg font-bold">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="text-muted-foreground text-sm md:text-base">{feature.description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
       {expertiseImage && (
-         <div className="relative h-[600px] overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+         <div className="relative h-[400px] md:h-[600px] overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '200ms' }}>
             <Image
                 src={expertiseImage.imageUrl}
                 alt={expertiseImage.description}

@@ -40,7 +40,7 @@ export function WhyChooseUs() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <p className="text-muted-foreground text-sm md:text-base">{feature.description}</p>
                 </div>
               </div>
             ))}

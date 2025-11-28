@@ -37,17 +37,17 @@ const getImage = (id: string): ImagePlaceholder | undefined =>
 export function Solutions() {
   return (
     <section className="py-20 md:py-32 bg-background">
-      <div className="container px-4 md:px-6 space-y-16">
+      <div className="container px-4 md:px-6 space-y-12 md:space-y-16">
         <div className="flex flex-col items-center justify-center space-y-4 text-center animate-fade-in-up">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
             Tecnologia, Inovação e Soluções
           </h2>
-          <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+          <p className="max-w-[900px] text-muted-foreground text-base md:text-xl/relaxed">
             Caixas corte e vinco, convencionais e projetos especiais produzidos com rigor técnico, adaptados exatamente ao processo e às necessidades da sua indústria. Seguimos os requisitos da Norma NBR ISO 9001-2015.
           </p>
         </div>
         
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-6 md:gap-8 md:grid-cols-2">
           {solutions.map((solution, index) => {
             const image = getImage(solution.id);
             return (
@@ -62,11 +62,11 @@ export function Solutions() {
                     data-ai-hint={image.imageHint}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex flex-col justify-end">
-                  <h3 className="text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-primary">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-4 md:p-6 flex flex-col justify-end">
+                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-primary">
                     {solution.title}
                   </h3>
-                  <p className="mt-2 text-white/90 max-w-md">
+                  <p className="mt-2 text-white/90 max-w-md text-sm md:text-base">
                     {solution.description}
                   </p>
                 </div>

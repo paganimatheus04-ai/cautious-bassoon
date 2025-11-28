@@ -7,7 +7,7 @@ export default function ServicosPage() {
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background">
       <Header />
-      <main className="flex-1 space-y-24 md:space-y-32">
+      <main className="flex-1 space-y-12 md:space-y-24 overflow-x-hidden pt-12 md:pt-24">
         <Services />
         <div className="pb-24 md:pb-32">
           <Expertise />

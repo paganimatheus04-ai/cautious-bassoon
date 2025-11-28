@@ -35,7 +35,7 @@ export function Header() {
     <header className={cn("sticky top-0 z-50 w-full transition-all duration-300", isScrolled ? 'shadow-lg' : '')}>
       <div className="bg-primary h-1" />
       <div className={cn("bg-background/90 backdrop-blur-sm transition-all duration-300", isScrolled ? 'py-3' : 'py-4')}>
-        <div className="container mx-auto flex h-full items-center justify-between">
+        <div className="container mx-auto flex h-full items-center justify-between px-4 md:px-6">
             <Link
               href="/"
               className="flex items-center"
@@ -43,8 +43,8 @@ export function Header() {
               <Image 
                 src="https://i.imgur.com/RkFJAQX.png" 
                 alt="Pagani Embalagens Logo" 
-                width={180} 
-                height={40} 
+                width={160} 
+                height={36} 
                 className="h-auto"
                 priority
               />
@@ -80,11 +80,11 @@ export function Header() {
                         <span className="sr-only">Abrir menu de navegação</span>
                     </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="bg-background">
+                    <SheetContent side="right" className="bg-background w-[280px] sm:w-full">
                     <nav className="grid gap-6 p-6 text-lg font-medium">
                         <Link
                           href="/"
-                          className="flex items-center gap-2 text-lg font-semibold"
+                          className="flex items-center gap-2 text-lg font-semibold mb-4"
                         >
                           <Image 
                             src="https://i.imgur.com/RkFJAQX.png" 
@@ -97,7 +97,7 @@ export function Header() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={cn("hover:text-foreground", pathname === link.href ? "text-foreground font-semibold" : "text-muted-foreground")}
+                            className={cn("hover:text-primary transition-colors text-base", pathname === link.href ? "text-primary font-semibold" : "text-muted-foreground")}
                         >
                             {link.label}
                         </Link>

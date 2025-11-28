@@ -7,7 +7,7 @@ import {
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Badge } from "../ui/badge";
 
 export function Hero() {
@@ -16,7 +16,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative w-full overflow-hidden bg-background pt-20 pb-20 md:pt-32 md:pb-32 h-[90vh] flex items-center justify-center"
+      className="relative w-full overflow-hidden bg-background pt-20 pb-20 md:pt-32 md:pb-32 h-[80vh] md:h-[90vh] flex items-center justify-center"
     >
       {heroBg && (
         <Image
@@ -25,34 +25,35 @@ export function Hero() {
           fill
           className="object-cover -z-10 brightness-[0.2]"
           data-ai-hint={heroBg.imageHint}
+          priority
         />
       )}
       
-      <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
 
       <div className="container relative z-10 px-4 md:px-6">
         <div
-          className="flex animate-fade-in-up flex-col items-center justify-center space-y-8 text-center"
+          className="flex animate-fade-in-up flex-col items-center justify-center space-y-6 md:space-y-8 text-center"
           style={{ animationDelay: "200ms" }}
         >
           <div className="space-y-4">
-            <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-5xl md:text-7xl">
+            <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-5xl lg:text-7xl">
               SOLUÇÕES INTELIGENTES{" "}
               <span className="text-primary">NA MEDIDA DO SEU NEGÓCIO</span>
             </h1>
-            <p className="mx-auto max-w-[800px] text-xl font-medium text-foreground/90 md:text-2xl">
+            <p className="mx-auto max-w-[800px] text-lg font-medium text-foreground/90 md:text-2xl">
               Qualidade, precisão e projetos personalizados para indústrias que não podem parar.
             </p>
           </div>
           
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            <Badge variant="secondary" className="px-4 py-2 text-sm animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-x-4 md:gap-y-2">
+            <Badge variant="secondary" className="px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm animate-fade-in-up" style={{ animationDelay: "300ms" }}>
               Projetos personalizados
             </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+            <Badge variant="secondary" className="px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm animate-fade-in-up" style={{ animationDelay: "400ms" }}>
               Entregas programadas
             </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm animate-fade-in-up" style={{ animationDelay: "500ms" }}>
+            <Badge variant="secondary" className="px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm animate-fade-in-up" style={{ animationDelay: "500ms" }}>
               Qualidade consistente
             </Badge>
           </div>

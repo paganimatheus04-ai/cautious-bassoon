@@ -17,7 +17,7 @@ export function Footer() {
       className="relative mt-20 overflow-hidden bg-accent pt-20 text-accent-foreground"
     >
       <div className="absolute bottom-0 left-0 h-full w-full">
-        <div className="absolute -bottom-1/2 left-0 h-[150%] w-[75vw] origin-bottom-left -skew-x-[30deg] bg-primary shadow-lg lg:w-[60vw]" />
+        <div className="absolute -bottom-1/2 left-0 h-[150%] w-[85vw] origin-bottom-left -skew-x-[30deg] bg-primary shadow-lg md:w-[75vw] lg:w-[60vw]" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
@@ -43,25 +43,25 @@ export function Footer() {
             <div className="flex items-center gap-6">
               <span
                 aria-label="LinkedIn"
-                className="text-primary-foreground/80"
+                className="text-primary-foreground/80 transition-colors hover:text-white"
               >
                 <Linkedin className="h-6 w-6" />
               </span>
               <span
                 aria-label="Instagram"
-                className="text-primary-foreground/80"
+                className="text-primary-foreground/80 transition-colors hover:text-white"
               >
                 <Instagram className="h-6 w-6" />
               </span>
               <span
                 aria-label="Facebook"
-                className="text-primary-foreground/80"
+                className="text-primary-foreground/80 transition-colors hover:text-white"
               >
                 <Facebook className="h-6 w-6" />
               </span>
               <span
                 aria-label="YouTube"
-                className="text-primary-foreground/80"
+                className="text-primary-foreground/80 transition-colors hover:text-white"
               >
                 <Youtube className="h-6 w-6" />
               </span>
@@ -72,21 +72,21 @@ export function Footer() {
           <div className="flex flex-col justify-center space-y-6 text-center text-background md:text-left">
             <a
               href="tel:+5519974094692"
-              className="flex items-center justify-center gap-3 text-lg transition-colors hover:text-primary md:justify-start"
+              className="flex items-center justify-center gap-3 text-base transition-colors hover:text-primary md:justify-start md:text-lg"
             >
-              <Phone className="h-5 w-5 text-primary" />
+              <Phone className="h-5 w-5 flex-shrink-0 text-primary" />
               <span>(19) 97409-4692</span>
             </a>
             <a
               href="mailto:marciopagani18@gmail.com"
-              className="flex items-center justify-center gap-3 text-lg transition-colors hover:text-primary md:justify-start"
+              className="flex items-center justify-center gap-3 text-base transition-colors hover:text-primary md:justify-start md:text-lg"
             >
-              <Mail className="h-5 w-5 text-primary" />
+              <Mail className="h-5 w-5 flex-shrink-0 text-primary" />
               <span>marciopagani18@gmail.com</span>
             </a>
-            <div className="flex items-center justify-center gap-3 text-lg md:justify-start">
-              <MapPin className="h-5 w-5 flex-shrink-0 text-primary" />
-              <span className="max-w-xs">
+            <div className="flex items-start justify-center gap-3 text-base md:justify-start md:text-lg">
+              <MapPin className="h-5 w-5 flex-shrink-0 text-primary mt-1" />
+              <span className="max-w-xs text-left">
                 R. João José Pescarini, 568 - SL 20 - RESIDENCIAL FLORA, Vinhedo
                 - SP, 13280-144
               </span>
