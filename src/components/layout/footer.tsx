@@ -17,7 +17,7 @@ export function Footer() {
       className="relative mt-20 overflow-hidden bg-accent pt-20 text-accent-foreground"
     >
       <div className="absolute bottom-0 left-0 h-full w-full">
-        <div className="absolute -bottom-1/2 left-0 h-[150%] w-[85vw] origin-bottom-left -skew-x-[30deg] bg-primary shadow-lg md:w-[75vw] lg:w-[60vw]" />
+        <div className="absolute -bottom-1/2 left-0 h-[150%] w-[85vw] origin-bottom-left -skew-x-[30deg] bg-primary shadow-lg md:w-[75vw] lg:w-[50vw]" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
