@@ -44,9 +44,51 @@
     },
     {
       "id": "expertise-sustainable",
-      "description": "Estruturas internas de papelão para proteção de produtos.",
-      "imageUrl": "https://i.imgur.com/xugUvsR.jpeg",
+      "description": "Engenheiro de produção supervisionando a qualidade do papelão em uma fábrica de embalagens.",
+      "imageUrl": "https://i.imgur.com/XuZxIvm.jpeg",
       "imageHint": "cardboard protection"
+    },
+    {
+      "id": "carousel-1",
+      "description": "Linha de produção de caixas de papelão.",
+      "imageUrl": "https://i.imgur.com/YZf2TGb.jpeg",
+      "imageHint": "production line"
+    },
+    {
+      "id": "carousel-2",
+      "description": "Máquina de corte e vinco em operação.",
+      "imageUrl": "https://i.imgur.com/kqvPg5Y.jpeg",
+      "imageHint": "cutting machine"
+    },
+    {
+      "id": "carousel-3",
+      "description": "Pallets de papelão ondulado.",
+      "imageUrl": "https://i.imgur.com/Ne2qrg4.jpeg",
+      "imageHint": "cardboard pallets"
+    },
+    {
+      "id": "carousel-4",
+      "description": "Detalhe de uma caixa de papelão personalizada.",
+      "imageUrl": "https://i.imgur.com/eNuiSWy.jpeg",
+      "imageHint": "custom box"
+    },
+    {
+      "id": "carousel-5",
+      "description": "Armazém com pilhas de caixas.",
+      "imageUrl": "https://i.imgur.com/4kpNsDK.jpeg",
+      "imageHint": "warehouse boxes"
+    },
+    {
+      "id": "carousel-6",
+      "description": "Acessórios internos de papelão para proteção.",
+      "imageUrl": "https://i.imgur.com/xugUvsR.jpeg",
+      "imageHint": "protective inserts"
+    },
+    {
+      "id": "services-production",
+      "description": "Linha de produção e maquinário para fabricação de caixas de papelão.",
+      "imageUrl": "https://i.imgur.com/i4f5bM6.jpeg",
+      "imageHint": "factory machinery"
     }
   ]
 }
