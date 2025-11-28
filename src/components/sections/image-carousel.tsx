@@ -28,13 +28,20 @@ const carouselImageIds = [
   "solution-desenvolvimento-tecnico",
 ];
 
-const validImages: ImagePlaceholder[] = carouselImageIds.map(id => PlaceHolderImages.find(p => p.id === id)).filter((image): image is ImagePlaceholder => image !== undefined);
+// Move the image filtering logic outside the component to ensure it's a stable constant.
+const validImages: ImagePlaceholder[] = carouselImageIds
+  .map((id) => PlaceHolderImages.find((p) => p.id === id))
+  .filter((image): image is ImagePlaceholder => image !== undefined);
 
 
 export function ImageCarousel() {
   const plugin = React.useRef(
     Autoplay({ delay: 2500, stopOnInteraction: true })
   );
+
+  if (validImages.length === 0) {
+    return null;
+  }
 
   return (
     <section className="py-20 md:py-32 bg-secondary/30">
@@ -53,8 +60,7 @@ export function ImageCarousel() {
             {validImages.map((image, index) => (
               <CarouselItem
                 key={image.id}
-                className="md:basis-1/2 lg:basis-1/3 animate-fade-in-up"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="md:basis-1/2 lg:basis-1/3"
               >
                 <div className="p-1">
                   <div className="relative aspect-video overflow-hidden rounded-lg group">
