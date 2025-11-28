@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
-  Package,
   Linkedin,
   Facebook,
   Instagram,
@@ -28,41 +28,42 @@ export function Footer() {
               href="/"
               className="flex items-center gap-2 text-2xl font-bold text-primary-foreground"
             >
-              <Package className="h-7 w-7" />
-              <span>PAGANI</span>
+              <Image 
+                src="https://i.imgur.com/RkFJAQX.png" 
+                alt="Pagani Embalagens Logo" 
+                width={180} 
+                height={40} 
+                className="h-auto"
+              />
             </Link>
             <p className="max-w-md text-sm text-primary-foreground/80">
               Soluções industriais em embalagens de papelão ondulado para logística, armazenagem e transporte.
             </p>
             <div className="flex items-center gap-6">
-              <a
-                href="#"
+              <span
                 aria-label="LinkedIn"
-                className="text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+                className="text-primary-foreground/80"
               >
                 <Linkedin className="h-6 w-6" />
-              </a>
-              <a
-                href="#"
+              </span>
+              <span
                 aria-label="Instagram"
-                className="text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+                className="text-primary-foreground/80"
               >
                 <Instagram className="h-6 w-6" />
-              </a>
-              <a
-                href="#"
+              </span>
+              <span
                 aria-label="Facebook"
-                className="text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+                className="text-primary-foreground/80"
               >
                 <Facebook className="h-6 w-6" />
-              </a>
-              <a
-                href="#"
+              </span>
+              <span
                 aria-label="YouTube"
-                className="text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+                className="text-primary-foreground/80"
               >
                 <Youtube className="h-6 w-6" />
-              </a>
+              </span>
             </div>
           </div>
 
