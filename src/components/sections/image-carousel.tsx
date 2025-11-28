@@ -15,12 +15,21 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 
-// Remove a imagem quebrada e as duplicatas por URL
-const uniqueImages = PlaceHolderImages.filter((image, index, self) =>
-  image.id !== "expertise-sustainable" &&
-  index === self.findIndex((t) => (
-    t.imageUrl === image.imageUrl
-  ))
+const carouselImages: (ImagePlaceholder | undefined)[] = [
+  PlaceHolderImages.find((p) => p.id === "carousel-1"),
+  PlaceHolderImages.find((p) => p.id === "carousel-2"),
+  PlaceHolderImages.find((p) => p.id === "carousel-3"),
+  PlaceHolderImages.find((p) => p.id === "carousel-4"),
+  PlaceHolderImages.find((p) => p.id === "carousel-5"),
+  PlaceHolderImages.find((p) => p.id === "carousel-6"),
+  PlaceHolderImages.find((p) => p.id === "solution-corte-vinco"),
+  PlaceHolderImages.find((p) => p.id === "solution-convencional"),
+  PlaceHolderImages.find((p) => p.id === "solution-projetos-especiais"),
+  PlaceHolderImages.find((p) => p.id === "solution-desenvolvimento-tecnico"),
+];
+
+const validImages = carouselImages.filter(
+  (image): image is ImagePlaceholder => image !== undefined
 );
 
 export function ImageCarousel() {
@@ -42,18 +51,21 @@ export function ImageCarousel() {
           }}
         >
           <CarouselContent>
-            {uniqueImages.map((image) => (
-              <CarouselItem key={image.id} className="md:basis-1/2 lg:basis-1/3">
+            {validImages.map((image) => (
+              <CarouselItem
+                key={image.id}
+                className="md:basis-1/2 lg:basis-1/3"
+              >
                 <div className="p-1">
-                    <div className="relative aspect-video overflow-hidden rounded-lg">
-                      <Image
-                        src={image.imageUrl}
-                        alt={image.description}
-                        fill
-                        className="object-cover transition-transform duration-500 hover:scale-105"
-                        data-ai-hint={image.imageHint}
-                      />
-                    </div>
+                  <div className="relative aspect-video overflow-hidden rounded-lg">
+                    <Image
+                      src={image.imageUrl}
+                      alt={image.description}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                      data-ai-hint={image.imageHint}
+                    />
+                  </div>
                 </div>
               </CarouselItem>
             ))}
