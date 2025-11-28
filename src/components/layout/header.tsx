@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Package } from "lucide-react";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -37,11 +38,16 @@ export function Header() {
         <div className="container mx-auto flex h-full items-center justify-between">
             <Link
               href="/"
-              className="flex items-center gap-2 font-headline text-2xl font-bold"
+              className="flex items-center"
             >
-              <span className="font-black tracking-tighter text-foreground text-xl md:text-2xl">
-                PAGANI <span className="text-primary">EMBALAGENS</span>
-              </span>
+              <Image 
+                src="https://i.imgur.com/ztN7eXi.png" 
+                alt="Pagani Embalagens Logo" 
+                width={180} 
+                height={40} 
+                className="h-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -77,10 +83,15 @@ export function Header() {
                     <SheetContent side="right" className="bg-background">
                     <nav className="grid gap-6 p-6 text-lg font-medium">
                         <Link
-                        href="/"
-                        className="flex items-center gap-2 text-lg font-semibold"
+                          href="/"
+                          className="flex items-center gap-2 text-lg font-semibold"
                         >
-                        <span className="font-bold">PAGANI <span className="text-primary">EMBALAGENS</span></span>
+                          <Image 
+                            src="https://i.imgur.com/ztN7eXi.png" 
+                            alt="Pagani Embalagens Logo" 
+                            width={150} 
+                            height={33}
+                          />
                         </Link>
                         {navLinks.map((link) => (
                         <Link
