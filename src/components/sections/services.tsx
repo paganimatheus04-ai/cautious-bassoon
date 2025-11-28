@@ -19,8 +19,8 @@ export function Services() {
   return (
     <section className="py-20 sm:py-32">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 animate-fade-in-up">
-          <div className="space-y-6">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
+          <div className="space-y-6 animate-fade-in-up">
             <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-4xl md:text-5xl">
               Serviços para a sua Indústria.
             </h2>
@@ -41,7 +41,7 @@ export function Services() {
               <div className="flex items-start gap-3 text-muted-foreground">
                 <MapPin className="h-5 w-5 flex-shrink-0 text-primary mt-1" />
                 <p className="font-medium text-sm md:text-base">
-                  Atendimento especializado para indústrias de Vinhedo, Valinhos, Louveira, Jundiaí, Itupeva e Campinas.
+                  Atendimento especializado para indústrias no estado de São Paulo.
                 </p>
               </div>
             </div>
