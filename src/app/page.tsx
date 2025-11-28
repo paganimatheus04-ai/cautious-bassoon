@@ -6,6 +6,8 @@ import { Services } from "@/components/sections/services";
 import { Expertise } from "@/components/sections/expertise";
 import { About } from "@/components/sections/about";
 import { ImageCarousel } from "@/components/sections/image-carousel";
+import { WhyChooseUs } from "@/components/sections/why-choose-us";
+import { WorkProcess } from "@/components/sections/work-process";
 
 export default function Home() {
   return (
@@ -17,6 +19,8 @@ export default function Home() {
         <div id="solucoes">
           <Solutions />
         </div>
+        <WhyChooseUs />
+        <WorkProcess />
         <div id="servicos">
           <Services />
         </div>

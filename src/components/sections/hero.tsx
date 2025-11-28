@@ -3,35 +3,14 @@
 import Image from "next/image";
 import {
   PlaceHolderImages,
-  type ImagePlaceholder,
 } from "@/lib/placeholder-images";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
-
-const carouselImages: (ImagePlaceholder | undefined)[] = [
-  PlaceHolderImages.find((p) => p.id === "carousel-1"),
-  PlaceHolderImages.find((p) => p.id === "carousel-2"),
-  PlaceHolderImages.find((p) => p.id === "carousel-3"),
-  PlaceHolderImages.find((p) => p.id === "carousel-4"),
-  PlaceHolderImages.find((p) => p.id === "carousel-5"),
-  PlaceHolderImages.find((p) => p.id === "carousel-6"),
-];
+import { ArrowDown, CheckCircle } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 export function Hero() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
-  );
-
   const heroBg = PlaceHolderImages.find((p) => p.id === "hero-industrial");
 
   return (
@@ -61,14 +40,25 @@ export function Hero() {
               SOLUÇÕES INTELIGENTES{" "}
               <span className="text-primary">NA MEDIDA DO SEU NEGÓCIO</span>
             </h1>
-            <p className="mx-auto max-w-[800px] text-foreground/80 md:text-xl">
-              Caixas corte e vinco, convencionais e projetos especiais,
-              produzidas em escala com consistência técnica para garantir que
-              sua linha de produção nunca pare.
+            <p className="mx-auto max-w-[800px] text-xl font-medium text-foreground/90 md:text-2xl">
+              Qualidade, precisão e projetos personalizados para indústrias que não podem parar.
             </p>
           </div>
+          
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <Badge variant="secondary" className="px-4 py-2 text-sm">
+              Projetos personalizados
+            </Badge>
+            <Badge variant="secondary" className="px-4 py-2 text-sm">
+              Entregas programadas
+            </Badge>
+            <Badge variant="secondary" className="px-4 py-2 text-sm">
+              Qualidade consistente
+            </Badge>
+          </div>
+
           <div
-            className="animate-fade-in-up"
+            className="animate-fade-in-up pt-4"
             style={{ animationDelay: "400ms" }}
           >
             <Button asChild size="lg">

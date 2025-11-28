@@ -28,7 +28,7 @@ export function Expertise() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
            <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-              Expertise em Embalagens Sustentáveis & Inteligentes
+              Eficiência para sua indústria, responsabilidade para o futuro.
             </h2>
             <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
               Nosso compromisso vai além da simples produção de caixas. Acreditamos em um ciclo de vida responsável para nossas embalagens, combinando performance industrial com respeito ao meio ambiente.

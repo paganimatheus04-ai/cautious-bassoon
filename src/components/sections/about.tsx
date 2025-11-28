@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { ArrowRight } from "lucide-react";
 
 const values = [
   {
@@ -112,7 +113,7 @@ export function About() {
               </div>
               <div className="text-center bg-secondary rounded-lg p-8">
                 <h3 className="text-2xl font-bold tracking-tight">
-                  Quer otimizar as embalagens da sua indústria?
+                  Pronto para reduzir custos e aumentar a eficiência da sua operação?
                 </h3>
                 <div className="mt-6">
                   <Button
@@ -120,7 +121,10 @@ export function About() {
                     size="lg"
                     className="hover:scale-105 transition-transform"
                   >
-                    <a href="https://wa.me/5519974094692" target="_blank" rel="noopener noreferrer">Fale com o time Pagani</a>
+                    <a href="https://wa.me/5519974094692" target="_blank" rel="noopener noreferrer">
+                      Fale com um especialista Pagani
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </a>
                   </Button>
                 </div>
               </div>

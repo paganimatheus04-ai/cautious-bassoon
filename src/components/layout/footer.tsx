@@ -31,6 +31,9 @@ export function Footer() {
               <Package className="h-7 w-7" />
               <span>PAGANI</span>
             </Link>
+            <p className="max-w-md text-sm text-primary-foreground/80">
+              Especialistas em embalagens industriais de papelão para logística, armazenamento e transporte.
+            </p>
             <div className="flex items-center gap-6">
               <a
                 href="#"
