@@ -70,9 +70,11 @@ export function Footer() {
                className="absolute top-0 right-full h-full w-24 bg-primary origin-bottom-right -skew-x-[20deg] z-0 hidden md:block" 
                style={{ right: 'calc(100% - 1px)' }}
              />
-             <div className="relative z-10 flex flex-col justify-center space-y-6 text-center text-primary-foreground md:text-left md:pl-12 lg:pl-24 px-4 md:px-0">
+             <div className="relative z-10 flex flex-col justify-center space-y-6 text-primary-foreground md:pl-12 lg:pl-24 px-4 md:px-0">
               <a
-                href="tel:+5519974094692"
+                href="https://wa.me/5519974094692"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 text-base transition-opacity hover:opacity-80 md:justify-start md:text-lg"
               >
                 <Phone className="h-5 w-5 flex-shrink-0" />
@@ -85,18 +87,21 @@ export function Footer() {
                 <Mail className="h-5 w-5 flex-shrink-0" />
                 <span>marciopagani18@gmail.com</span>
               </a>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=R.+Jo%C3%A3o+Jos%C3%A9+Pescarini,+568+-+SL+20+-+RESIDENCIAL+FLORA,+Vinhedo+-+SP,+13280-144"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start justify-center gap-3 text-base transition-opacity hover:opacity-80 md:justify-start md:text-lg"
-              >
-                <MapPin className="h-5 w-5 flex-shrink-0 mt-1 text-primary-foreground" />
-                <span className="max-w-xs text-center md:text-left">
-                  R. João José Pescarini, 568 - SL 20 - RESIDENCIAL FLORA, Vinhedo
-                  - SP, 13280-144
-                </span>
-              </a>
+              <div className="flex flex-col items-center justify-center gap-3 text-center md:items-start md:text-left md:flex-row">
+                 <MapPin className="h-5 w-5 flex-shrink-0 text-primary-foreground mt-1" />
+                 <div className="text-base md:text-lg">
+                    <span className="font-semibold block">Endereço Comercial</span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=R.+Jo%C3%A3o+Jos%C3%A9+Pescarini,+568+-+SL+20+-+RESIDENCIAL+FLORA,+Vinhedo+-+SP,+13280-144"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-opacity hover:opacity-80 block max-w-xs"
+                    >
+                      R. João José Pescarini, 568 - SL 20 - RESIDENCIAL FLORA, Vinhedo
+                      - SP, 13280-144
+                    </a>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
