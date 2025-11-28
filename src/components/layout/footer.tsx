@@ -25,7 +25,7 @@ export function Footer() {
               className="flex items-center gap-2 text-2xl font-bold text-foreground"
             >
               <Image
-                src="https://i.imgur.com/RkFJAQX.png"
+                src="https://i.imgur.com/efHZCA9.png"
                 alt="Pagani Embalagens Logo"
                 width={180}
                 height={40}
@@ -65,9 +65,14 @@ export function Footer() {
           </div>
 
           {/* Coluna Contatos */}
-          <div className="relative overflow-hidden bg-primary py-12 md:py-20 md:pl-12 lg:pl-24">
-             <div className="absolute -left-12 top-0 h-full w-24 origin-bottom-left -skew-x-[20deg] bg-primary z-0 hidden md:block" />
-             <div className="relative z-10 flex flex-col justify-center space-y-6 text-center text-primary-foreground md:text-left">
+          <div className="relative bg-primary py-12 md:py-20">
+             <div className="absolute bottom-0 right-full h-full w-full bg-accent md:bg-primary" />
+             <div className="absolute top-0 right-full h-full w-full bg-primary md:bg-accent" />
+             <div 
+               className="absolute top-0 right-full h-full w-24 bg-primary origin-bottom-right -skew-x-[20deg] z-0" 
+               style={{ right: 'calc(100% - 1px)' }}
+             />
+             <div className="relative z-10 flex flex-col justify-center space-y-6 text-center text-primary-foreground md:text-left md:pl-12 lg:pl-24">
               <a
                 href="tel:+5519974094692"
                 className="flex items-center justify-center gap-3 text-base transition-opacity hover:opacity-80 md:justify-start md:text-lg"
@@ -84,7 +89,7 @@ export function Footer() {
               </a>
               <div className="flex items-start justify-center gap-3 text-base md:justify-start md:text-lg">
                 <MapPin className="h-5 w-5 flex-shrink-0 mt-1" />
-                <span className="max-w-xs text-left">
+                <span className="max-w-xs text-center md:text-left">
                   R. João José Pescarini, 568 - SL 20 - RESIDENCIAL FLORA, Vinhedo
                   - SP, 13280-144
                 </span>
