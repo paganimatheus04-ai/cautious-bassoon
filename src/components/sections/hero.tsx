@@ -1,86 +1,87 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Badge } from "@/components/ui/badge";
-import { Zap, TrendingUp, Timer, ShieldCheck } from "lucide-react";
+import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
-const kpis = [
-    { label: "Capacidade de produção", value: "12.000 unidades/dia" },
-    { label: "Lead time médio", value: "3–7 dias" },
-    { label: "Pontualidade média", value: "98%" },
+
+const carouselImages: (ImagePlaceholder | undefined)[] = [
+  PlaceHolderImages.find((p) => p.id === "solution-corte-vinco"),
+  PlaceHolderImages.find((p) => p.id === "solution-convencional"),
+  PlaceHolderImages.find((p) => p.id === "solution-projetos-especiais"),
+  PlaceHolderImages.find((p) => p.id === "expertise-sustainable"),
+  PlaceHolderImages.find((p) => p.id === "about-warehouse"),
 ];
 
 
 export function Hero() {
-  const heroImage = PlaceHolderImages.find((p) => p.id === "hero-industrial");
-
   return (
     <section
       id="inicio"
-      className="relative flex h-screen min-h-[700px] w-full items-center justify-center overflow-hidden pt-0 text-center md:pt-0 lg:pt-0"
+      className="relative w-full overflow-hidden bg-background pt-20 pb-20 md:pt-32 md:pb-32"
     >
-      {heroImage && (
-        <Image
-          src={heroImage.imageUrl}
-          alt="Vista panorâmica da fábrica da Pagani Embalagens, com máquinas em operação, pilhas de chapas de papelão e pallets prontos para expedição, transmitindo capacidade produtiva."
-          fill
-          className="object-cover -z-10 brightness-[0.2]"
-          priority
-          data-ai-hint={heroImage.imageHint}
+      <div className="absolute inset-0 z-0 bg-background">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+         <div 
+          className="absolute inset-0 opacity-5" 
+          style={{
+            backgroundImage: 'url("https://www.svgrepo.com/show/510821/world-map-country-and-continent.svg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
         />
-      )}
-      <div className="container px-4 md:px-6">
+      </div>
+
+      <div className="container relative z-10 px-4 md:px-6">
         <div
-            className="animate-fade-in-up flex flex-col items-center justify-center space-y-6"
-            style={{ animationDelay: "0.1s" }}
+            className="flex flex-col items-center justify-center space-y-8 text-center"
           >
-            <h1 className="font-headline text-4xl font-black tracking-tighter text-foreground sm:text-5xl xl:text-6xl/none">
-              Embalagens industriais com entrega garantida.
-            </h1>
-            <p
-              className="mx-auto max-w-[800px] text-foreground/80 md:text-xl"
-              style={{ animationDelay: "0.3s" }}
-            >
-              Caixas corte e vinco, convencionais e projetos especiais, produzidas em escala com consistência técnica para garantir que sua linha de produção nunca pare.
-            </p>
-        
-            <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-6 pt-4 sm:flex-row sm:gap-8">
-                {kpis.map((kpi, index) => (
-                    <div key={index} className="flex flex-col items-center justify-center gap-1 text-center">
-                    <p className="text-3xl font-bold tracking-tighter text-primary sm:text-4xl">{kpi.value}</p>
-                    <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground">{kpi.label}</p>
-                    </div>
-                ))}
+            <div className="space-y-4">
+                <h1 className="text-4xl font-black tracking-tighter sm:text-5xl xl:text-6xl/none">
+                SOLUÇÕES INTELIGENTES NA MEDIDA DO SEU NEGÓCIO
+                </h1>
+                <p className="mx-auto max-w-[800px] text-foreground/80 md:text-xl">
+                Caixas corte e vinco, convencionais e projetos especiais, produzidas em escala com consistência técnica para garantir que sua linha de produção nunca pare.
+                </p>
             </div>
-
-            <div
-                className="flex flex-col sm:flex-row gap-4 animate-fade-in-up pt-4"
-                style={{ animationDelay: "0.5s" }}
-            >
-                <Button
-                asChild
-                size="lg"
-                className="rounded-full px-8 text-lg font-semibold transition-transform hover:scale-105"
-                >
-                <Link href="/#contato">
-                    <Zap className="mr-2 h-5 w-5" />
-                    Cotar agora — resposta em 2h
-                </Link>
-                </Button>
-                <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-full px-8 text-lg font-semibold bg-transparent border-primary text-primary hover:bg-primary/10"
-                >
-                <Link href="/sobre">Falar com especialista</Link>
-                </Button>
+            
+            <div className="w-full max-w-4xl pt-8">
+              <Carousel
+                  opts={{
+                      align: "start",
+                      loop: true,
+                  }}
+                  className="w-full"
+              >
+                  <CarouselContent>
+                      {carouselImages.map((img, index) => img ? (
+                          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                              <div className="p-1">
+                                  <div className="aspect-video overflow-hidden rounded-lg">
+                                      <Image
+                                          src={img.imageUrl}
+                                          alt={img.description}
+                                          width={600}
+                                          height={400}
+                                          className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                                          data-ai-hint={img.imageHint}
+                                      />
+                                  </div>
+                              </div>
+                          </CarouselItem>
+                      ): null)}
+                  </CarouselContent>
+                  <CarouselPrevious className="ml-12 hidden sm:flex" />
+                  <CarouselNext className="mr-12 hidden sm:flex" />
+              </Carousel>
             </div>
-
-            <p className="text-sm text-muted-foreground pt-2" style={{ animationDelay: "0.7s" }}>
-                Parcerias contínuas com indústrias automotivas, alimentícias e farmacêuticas.
-            </p>
         </div>
       </div>
     </section>

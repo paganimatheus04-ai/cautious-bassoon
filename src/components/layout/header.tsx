@@ -31,29 +31,27 @@ export function Header() {
   }, []);
 
   return (
-    <header className={cn("sticky top-0 z-50 w-full transition-all duration-300", isScrolled ? 'shadow-lg' : '')}>
-      <div className="bg-primary h-2" />
-      <div className={cn("bg-background/80 backdrop-blur-sm transition-all", isScrolled ? 'py-2' : 'py-4')}>
-        <div className="container mx-auto flex items-center justify-center">
+    <header className={cn("sticky top-0 z-50 w-full transition-shadow duration-300", isScrolled ? 'shadow-lg' : '')}>
+      <div className="bg-primary h-1" />
+      <div className={cn("bg-background/90 backdrop-blur-sm", isScrolled ? 'py-3' : 'py-4')}>
+        <div className="container mx-auto flex h-full items-center justify-between">
             <Link
               href="/"
               className="flex items-center gap-2 font-headline text-2xl font-bold"
             >
-              <span className="font-black tracking-tighter text-foreground text-3xl md:text-4xl">
-                PAGANI EMBALAGENS
+              <span className="font-black tracking-tighter text-foreground text-xl md:text-2xl">
+                PAGANI <span className="text-primary">EMBALAGENS</span>
               </span>
             </Link>
-        </div>
-      </div>
-      <div className={cn("bg-background/90 backdrop-blur-sm shadow-md", isScrolled ? 'py-3' : 'py-4')}>
-        <div className="container mx-auto flex h-full items-center justify-center">
+
+            {/* Desktop Navigation */}
             <nav className="hidden items-center gap-6 text-sm font-medium lg:flex">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative text-foreground/80 transition-colors hover:text-primary py-2",
+                    "relative text-foreground/80 transition-colors hover:text-primary py-2 text-xs font-bold tracking-widest",
                     "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary after:transition-transform after:duration-300",
                     pathname === link.href ? "text-primary after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"
                   )}
@@ -62,28 +60,15 @@ export function Header() {
                 </Link>
               ))}
             </nav>
-            <div className="lg:hidden w-full flex justify-between items-center px-4">
-                 <Link
-                    href="/"
-                    className="flex items-center gap-2 font-headline text-lg font-bold"
-                    >
-                    <span
-                        className={cn(
-                        "font-black tracking-tighter transition-colors",
-                        "text-foreground"
-                        )}
-                    >
-                        PAGANI
-                    </span>
-                 </Link>
+
+            {/* Mobile Navigation */}
+            <div className="lg:hidden">
                 <Sheet>
                     <SheetTrigger asChild>
                     <Button
                         variant="outline"
                         size="icon"
-                        className={cn(
-                        "text-foreground hover:bg-accent hover:text-accent-foreground"
-                        )}
+                        className="text-foreground hover:bg-accent hover:text-accent-foreground"
                     >
                         <Menu className="h-6 w-6" />
                         <span className="sr-only">Abrir menu de navegação</span>
@@ -95,8 +80,7 @@ export function Header() {
                         href="/"
                         className="flex items-center gap-2 text-lg font-semibold"
                         >
-                        <Package className="h-6 w-6 text-primary" />
-                        <span className="font-bold">PAGANI EMBALAGENS</span>
+                        <span className="font-bold">PAGANI <span className="text-primary">EMBALAGENS</span></span>
                         </Link>
                         {navLinks.map((link) => (
                         <Link

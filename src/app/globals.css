@@ -84,15 +84,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: linear-gradient(
-        to bottom,
-        hsl(var(--background) / 1),
-        hsl(var(--background) / 0.8)
-      ),
-      url("https://www.svgrepo.com/show/510821/world-map-country-and-continent.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
   }
   section {
     @apply w-full;
