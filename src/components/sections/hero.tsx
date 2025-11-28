@@ -14,6 +14,9 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
+import { Button } from "../ui/button";
+import Link from "next/link";
+import { ArrowDown } from "lucide-react";
 
 const carouselImages: (ImagePlaceholder | undefined)[] = [
   PlaceHolderImages.find((p) => p.id === "carousel-1"),
@@ -29,72 +32,51 @@ export function Hero() {
     Autoplay({ delay: 3000, stopOnInteraction: true })
   );
 
+  const heroBg = PlaceHolderImages.find((p) => p.id === "hero-industrial");
+
   return (
     <section
       id="inicio"
-      className="relative w-full overflow-hidden bg-background pt-20 pb-20 md:pt-32 md:pb-32"
+      className="relative w-full overflow-hidden bg-background pt-20 pb-20 md:pt-32 md:pb-32 h-[90vh] flex items-center justify-center"
     >
-      <div className="absolute inset-0 z-0 bg-background">
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              'url("https://www.svgrepo.com/show/510821/world-map-country-and-continent.svg")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
+      {heroBg && (
+        <Image
+          src={heroBg.imageUrl}
+          alt={heroBg.description}
+          fill
+          className="object-cover -z-10 brightness-[0.2]"
+          data-ai-hint={heroBg.imageHint}
         />
-      </div>
+      )}
+      
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 
       <div className="container relative z-10 px-4 md:px-6">
-        <div className="flex animate-fade-in-up flex-col items-center justify-center space-y-8 text-center">
+        <div
+          className="flex animate-fade-in-up flex-col items-center justify-center space-y-8 text-center"
+          style={{ animationDelay: "200ms" }}
+        >
           <div className="space-y-4">
+            <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-5xl md:text-7xl">
+              SOLUÇÕES INTELIGENTES{" "}
+              <span className="text-primary">NA MEDIDA DO SEU NEGÓCIO</span>
+            </h1>
             <p className="mx-auto max-w-[800px] text-foreground/80 md:text-xl">
               Caixas corte e vinco, convencionais e projetos especiais,
               produzidas em escala com consistência técnica para garantir que
               sua linha de produção nunca pare.
             </p>
           </div>
-
-          <div className="w-full max-w-4xl pt-8">
-            <Carousel
-              plugins={[plugin.current]}
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
-            >
-              <CarouselContent>
-                {carouselImages.map((img, index) =>
-                  img ? (
-                    <CarouselItem
-                      key={index}
-                      className="md:basis-1/2 lg:basis-1/3"
-                    >
-                      <div className="p-1">
-                        <div className="group aspect-video overflow-hidden rounded-lg">
-                          <Image
-                            src={img.imageUrl}
-                            alt={img.description}
-                            width={600}
-                            height={400}
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            data-ai-hint={img.imageHint}
-                          />
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  ) : null
-                )}
-              </CarouselContent>
-              <CarouselPrevious className="ml-12 hidden sm:flex" />
-              <CarouselNext className="mr-12 hidden sm:flex" />
-            </Carousel>
+          <div
+            className="animate-fade-in-up"
+            style={{ animationDelay: "400ms" }}
+          >
+            <Button asChild size="lg">
+              <Link href="#solucoes">
+                Conheça as Soluções
+                <ArrowDown className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
