@@ -51,9 +51,6 @@ export function Hero() {
       <div className="container relative z-10 px-4 md:px-6">
         <div className="flex animate-fade-in-up flex-col items-center justify-center space-y-8 text-center">
           <div className="space-y-4">
-            <h1 className="text-4xl font-black tracking-tighter sm:text-5xl xl:text-6xl/none">
-              SOLUÇÕES INTELIGENTES NA MEDIDA DO SEU NEGÓCIO
-            </h1>
             <p className="mx-auto max-w-[800px] text-foreground/80 md:text-xl">
               Caixas corte e vinco, convencionais e projetos especiais,
               produzidas em escala com consistência técnica para garantir que
