@@ -17,7 +17,7 @@ const values = [
   {
     icon: <Eye className="h-8 w-8 text-primary" />,
     title: "Visão",
-    description:
+    "description":
       "Ser referência técnica e comercial em soluções de embalagens, reconhecida pela capacidade de criar projetos personalizados, práticos e de alta performance para a indústria.",
   },
   {
@@ -30,10 +30,7 @@ const values = [
 
 export function About() {
   const aboutImage = PlaceHolderImages.find((p) => p.id === "about-warehouse");
-  const expertiseImage = PlaceHolderImages.find(
-    (p) => p.id === "expertise-sustainable"
-  );
-
+  
   return (
     <section className="py-20 md:py-32">
       <div className="container px-4 md:px-6">
@@ -92,61 +89,43 @@ export function About() {
               </p>
             </div>
           </div>
-
-          {/* Liderança, Expertise e Qualidade */}
+          
+          {/* CTA Section */}
           <div
             className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 animate-fade-in-up"
             style={{ animationDelay: "400ms" }}
           >
             <div className="space-y-6">
-              <div className="space-y-3">
-                <h3 className="text-2xl font-bold text-primary">
-                  Política de Qualidade
-                </h3>
-                <p className="text-muted-foreground md:text-lg/relaxed">
-                  Nosso compromisso é com padrões rigorosos de qualidade,
-                  utilizando tecnologia e processos bem definidos. Realizamos o
-                  monitoramento constante dos resultados para garantir a
-                  conformidade e a satisfação total, alinhados às melhores
-                  práticas de gestão.
-                </p>
-              </div>
-              <div className="text-center bg-secondary rounded-lg p-8">
-                <h3 className="text-2xl font-bold tracking-tight">
-                  Pronto para reduzir custos e aumentar a eficiência da sua operação?
-                </h3>
-                <div className="mt-6">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="hover:scale-105 transition-transform"
-                  >
-                    <a href="https://wa.me/5519974094692" target="_blank" rel="noopener noreferrer">
-                      Fale com um especialista Pagani
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </a>
-                  </Button>
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-bold text-primary">
+                    Política de Qualidade
+                  </h3>
+                  <p className="text-muted-foreground md:text-lg/relaxed">
+                    Nosso compromisso é com padrões rigorosos de qualidade,
+                    utilizando tecnologia e processos bem definidos. Realizamos o
+                    monitoramento constante dos resultados para garantir a
+                    conformidade e a satisfação total, alinhados às melhores
+                    práticas de gestão.
+                  </p>
                 </div>
+            </div>
+            <div className="text-center bg-secondary rounded-lg p-8">
+              <h3 className="text-2xl font-bold tracking-tight">
+                Pronto para reduzir custos e aumentar a eficiência da sua operação?
+              </h3>
+              <div className="mt-6">
+                <Button
+                  asChild
+                  size="lg"
+                  className="hover:scale-105 transition-transform"
+                >
+                  <a href="https://wa.me/5519974094692" target="_blank" rel="noopener noreferrer">
+                    Fale com um especialista Pagani
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
               </div>
             </div>
-            {expertiseImage && (
-              <div className="relative overflow-hidden rounded-lg group">
-                <Image
-                  src={expertiseImage.imageUrl}
-                  alt={expertiseImage.description}
-                  width={800}
-                  height={600}
-                  className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  data-ai-hint={expertiseImage.imageHint}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-3xl font-bold tracking-tight text-white">
-                    Liderança & <span className="text-primary">Expertise</span>
-                  </h3>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

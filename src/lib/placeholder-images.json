@@ -95,6 +95,12 @@
       "description": "Variedade de caixas de papelão, mostrando diferentes formatos e tamanhos.",
       "imageUrl": "https://i.imgur.com/0gQiCRv.png",
       "imageHint": "box variety"
+    },
+    {
+      "id": "technical-commitment",
+      "description": "Inspeção técnica de qualidade em uma caixa de papelão.",
+      "imageUrl": "https://images.unsplash.com/photo-1516594798947-73319042c113?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxxdWFsaXR5JTIwY29udHJvbCUyMGluZHVzdHJ5fGVufDB8fHx8MTc2NDEwNDUyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "quality control"
     }
   ]
 }

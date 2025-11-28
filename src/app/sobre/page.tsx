@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { About } from "@/components/sections/about";
 import { WorkProcess } from "@/components/sections/work-process";
+import { Expertise } from "@/components/sections/expertise";
 
 export default function SobrePage() {
   return (
@@ -18,8 +19,9 @@ export default function SobrePage() {
             backgroundAttachment: 'fixed'
           }}
         />
-        <div className="relative z-10">
+        <div className="relative z-10 space-y-24 md:space-y-32">
           <About />
+          <Expertise showFullCommitment={true} />
           <div className="pb-24 md:pb-32">
             <WorkProcess />
           </div>
