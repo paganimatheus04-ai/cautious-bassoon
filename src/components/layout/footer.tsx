@@ -16,10 +16,10 @@ export function Footer() {
       id="contato"
       className="relative mt-20 bg-accent text-accent-foreground"
     >
-      <div className="container relative z-10 mx-auto px-4 md:px-6">
+      <div className="container relative z-10 mx-auto px-0 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Coluna Logo e Social */}
-          <div className="py-12 md:py-20 flex flex-col items-center justify-center gap-6 text-center md:items-start md:text-left">
+          <div className="py-12 md:py-20 flex flex-col items-center justify-center gap-6 text-center md:items-start md:text-left px-4 md:px-0">
             <Link
               href="/"
               className="flex items-center gap-2 text-2xl font-bold text-foreground"
@@ -66,13 +66,11 @@ export function Footer() {
 
           {/* Coluna Contatos */}
           <div className="relative bg-primary py-12 md:py-20">
-             <div className="absolute bottom-0 right-full h-full w-full bg-accent md:bg-primary" />
-             <div className="absolute top-0 right-full h-full w-full bg-primary md:bg-accent" />
              <div 
-               className="absolute top-0 right-full h-full w-24 bg-primary origin-bottom-right -skew-x-[20deg] z-0" 
+               className="absolute top-0 right-full h-full w-24 bg-primary origin-bottom-right -skew-x-[20deg] z-0 hidden md:block" 
                style={{ right: 'calc(100% - 1px)' }}
              />
-             <div className="relative z-10 flex flex-col justify-center space-y-6 text-center text-primary-foreground md:text-left md:pl-12 lg:pl-24">
+             <div className="relative z-10 flex flex-col justify-center space-y-6 text-center text-primary-foreground md:text-left md:pl-12 lg:pl-24 px-4 md:px-0">
               <a
                 href="tel:+5519974094692"
                 className="flex items-center justify-center gap-3 text-base transition-opacity hover:opacity-80 md:justify-start md:text-lg"
@@ -93,7 +91,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-start justify-center gap-3 text-base transition-opacity hover:opacity-80 md:justify-start md:text-lg"
               >
-                <MapPin className="h-5 w-5 flex-shrink-0 mt-1" />
+                <MapPin className="h-5 w-5 flex-shrink-0 mt-1 text-primary-foreground" />
                 <span className="max-w-xs text-center md:text-left">
                   R. João José Pescarini, 568 - SL 20 - RESIDENCIAL FLORA, Vinhedo
                   - SP, 13280-144
@@ -103,7 +101,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border py-6 text-center">
+        <div className="border-t border-border py-6 text-center px-4 md:px-0">
           <p className="text-sm text-muted-foreground" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} Pagani Embalagens. Todos os
             direitos reservados.
