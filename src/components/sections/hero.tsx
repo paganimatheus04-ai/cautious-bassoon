@@ -70,7 +70,6 @@ export function Hero() {
             <Button asChild size="lg" variant="outline">
               <Link href="#solucoes">
                 Ver Soluções
-                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>

@@ -73,7 +73,7 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
   const commitmentImage = PlaceHolderImages.find((p) => p.id === "technical-commitment");
 
   const technicalCommitmentSection = (
-    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
+    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
        <div className="space-y-6">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
           Certificações &amp; Compromisso Técnico
@@ -100,7 +100,7 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
         </div>
       </div>
       {commitmentImage && (
-        <div className="relative h-[600px] overflow-hidden rounded-lg group">
+        <div className="relative h-[600px] overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '400ms' }}>
           <Image
             src={commitmentImage.imageUrl}
             alt={commitmentImage.description}
@@ -138,7 +138,7 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
         </div>
       </div>
       {expertiseImage && (
-         <div className="relative h-[600px] overflow-hidden rounded-lg group">
+         <div className="relative h-[600px] overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '200ms' }}>
             <Image
                 src={expertiseImage.imageUrl}
                 alt={expertiseImage.description}

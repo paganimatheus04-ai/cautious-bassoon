@@ -50,11 +50,11 @@ export function ImageCarousel() {
           }}
         >
           <CarouselContent>
-            {validImages.map((image) => (
+            {validImages.map((image, index) => (
               <CarouselItem
                 key={image.id}
                 className="md:basis-1/2 lg:basis-1/3 animate-fade-in-up"
-                style={{ animationDelay: `${validImages.indexOf(image) * 150}ms` }}
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="p-1">
                   <div className="relative aspect-video overflow-hidden rounded-lg">
