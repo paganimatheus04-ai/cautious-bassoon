@@ -89,6 +89,12 @@
       "description": "Linha de produção e maquinário para fabricação de caixas de papelão.",
       "imageUrl": "https://i.imgur.com/i4f5bM6.jpeg",
       "imageHint": "factory machinery"
+    },
+    {
+      "id": "solutions-variety",
+      "description": "Variedade de caixas de papelão, mostrando diferentes formatos e tamanhos.",
+      "imageUrl": "https://i.imgur.com/0gQiCRv.png",
+      "imageHint": "box variety"
     }
   ]
 }
