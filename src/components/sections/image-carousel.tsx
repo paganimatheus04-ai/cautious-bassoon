@@ -64,6 +64,7 @@ export function ImageCarousel() {
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       data-ai-hint={image.imageHint}
+                      priority={index === 0}
                     />
                   </div>
                 </div>
