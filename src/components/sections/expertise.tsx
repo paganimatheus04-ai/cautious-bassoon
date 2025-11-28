@@ -116,7 +116,7 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
   const homeVersion = (
      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center">
       {/* Sustentabilidade */}
-      <div className="space-y-6">
+      <div className="space-y-6 animate-fade-in-up">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
           Eficiência para sua indústria, responsabilidade para o futuro.
         </h2>
@@ -152,7 +152,7 @@ export function Expertise({ showFullCommitment = false }: { showFullCommitment?:
   );
 
   return (
-    <div className="container px-4 md:px-6 py-20 md:py-32 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+    <div className="container px-4 md:px-6 py-20 md:py-32">
       {showFullCommitment ? technicalCommitmentSection : homeVersion}
     </div>
   );

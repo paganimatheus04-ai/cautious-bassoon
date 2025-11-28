@@ -2,7 +2,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function PerformanceBanner() {
-  const bannerImage = PlaceHolderImages.find((p) => p.id === "solutions-variety");
+  const bannerImage = PlaceHolderImages.find((p) => p.id === "performance-banner");
 
   return (
     <section className="relative w-full py-20 md:py-28 lg:py-32 overflow-hidden text-center">

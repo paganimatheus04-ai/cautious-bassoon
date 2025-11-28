@@ -37,7 +37,7 @@ export function Services() {
                 </li>
               ))}
             </ul>
-             <div className="mt-8 border-t border-border pt-6">
+             <div className="mt-8 border-t border-border pt-6 animate-fade-in-up" style={{ animationDelay: '800ms' }}>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="h-5 w-5 flex-shrink-0 text-primary" />
                 <p className="font-medium">

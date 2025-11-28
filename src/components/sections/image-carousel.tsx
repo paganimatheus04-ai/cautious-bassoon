@@ -38,7 +38,7 @@ export function ImageCarousel() {
 
   return (
     <section className="py-20 md:py-32 bg-secondary/30">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 animate-fade-in-up">
         <Carousel
           plugins={[plugin.current]}
           className="w-full"
@@ -57,12 +57,12 @@ export function ImageCarousel() {
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="p-1">
-                  <div className="relative aspect-video overflow-hidden rounded-lg">
+                  <div className="relative aspect-video overflow-hidden rounded-lg group">
                     <Image
                       src={image.imageUrl}
                       alt={image.description}
                       fill
-                      className="object-cover transition-transform duration-500 hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       data-ai-hint={image.imageHint}
                     />
                   </div>

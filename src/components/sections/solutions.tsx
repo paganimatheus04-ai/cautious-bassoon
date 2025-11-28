@@ -47,7 +47,7 @@ export function Solutions() {
           </p>
         </div>
         
-        <div className="grid gap-8 md:grid-cols-2 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+        <div className="grid gap-8 md:grid-cols-2">
           {solutions.map((solution, index) => {
             const image = getImage(solution.id);
             return (

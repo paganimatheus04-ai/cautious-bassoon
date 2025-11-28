@@ -46,20 +46,20 @@ export function Hero() {
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <Badge variant="secondary" className="px-4 py-2 text-sm animate-fade-in-up" style={{ animationDelay: "300ms" }}>
               Projetos personalizados
             </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <Badge variant="secondary" className="px-4 py-2 text-sm animate-fade-in-up" style={{ animationDelay: "400ms" }}>
               Entregas programadas
             </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <Badge variant="secondary" className="px-4 py-2 text-sm animate-fade-in-up" style={{ animationDelay: "500ms" }}>
               Qualidade consistente
             </Badge>
           </div>
 
           <div
             className="flex animate-fade-in-up flex-col items-center gap-4 pt-4 sm:flex-row"
-            style={{ animationDelay: "400ms" }}
+            style={{ animationDelay: "600ms" }}
           >
             <Button asChild size="lg">
               <Link href="/#contato">

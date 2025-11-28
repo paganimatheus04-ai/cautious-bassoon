@@ -36,7 +36,7 @@ export function About() {
       <div className="container px-4 md:px-6">
         <div className="grid gap-16 md:gap-24">
           {/* Missão, Visão, Valores */}
-          <div className="mx-auto grid max-w-5xl items-start gap-12 sm:grid-cols-1 md:grid-cols-3 pt-12 animate-fade-in-up">
+          <div className="mx-auto grid max-w-5xl items-start gap-12 sm:grid-cols-1 md:grid-cols-3 pt-12">
             {values.map((value, index) => (
               <div
                 key={value.title}
