@@ -3,7 +3,6 @@
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { ContainerScroll } from "../ui/container-scroll-animation";
 
 const services = [
   "Produção de caixas de papelão ondulado em diversos tamanhos, formatos e gramaturas;",
@@ -18,41 +17,42 @@ const services = [
 export function Services() {
   const serviceImage = PlaceHolderImages.find((p) => p.id === "services-production");
   return (
-      <div className="container px-4 md:px-6">
-         <div className="flex flex-col overflow-hidden">
-          <ContainerScroll
-            titleComponent={
-              <>
-                <h2 className="text-4xl font-bold text-foreground sm:text-5xl">
-                  Serviços para a sua <span className="text-primary">Indústria.</span>
-                </h2>
-                <p className="max-w-3xl mx-auto mt-6 text-lg text-muted-foreground">
-                    Oferecemos um portfólio completo de serviços para garantir que sua operação logística seja impecável, do desenvolvimento à entrega final.
-                </p>
-                 <ul className="max-w-3xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-left">
-                  {services.map((service, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                          <span className="text-base text-muted-foreground">{service}</span>
-                      </li>
-                  ))}
-                </ul>
-              </>
-            }
-          >
-            {serviceImage && (
+    <section className="py-20 sm:py-32">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-5xl">
+              Serviços para a sua Indústria.
+            </h2>
+            <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
+              Oferecemos um portfólio completo de serviços para garantir que sua
+              operação logística seja impecável, do desenvolvimento à entrega
+              final.
+            </p>
+            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {services.map((service, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                  <span className="text-muted-foreground">{service}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {serviceImage && (
+            <div className="overflow-hidden rounded-lg group">
               <Image
                 src={serviceImage.imageUrl}
                 alt={serviceImage.description}
-                height={720}
-                width={1400}
-                className="mx-auto rounded-2xl object-cover h-full object-center"
-                draggable={false}
+                width={800}
+                height={600}
+                className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 data-ai-hint={serviceImage.imageHint}
               />
-            )}
-          </ContainerScroll>
+            </div>
+          )}
         </div>
       </div>
+    </section>
   );
 }
