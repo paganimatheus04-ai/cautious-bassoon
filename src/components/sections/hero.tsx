@@ -62,10 +62,10 @@ export function Hero() {
             style={{ animationDelay: "600ms" }}
           >
             <Button asChild size="lg">
-              <Link href="/#contato">
+              <a href="https://wa.me/5519974094692" target="_blank" rel="noopener noreferrer">
                 Solicitar Orçamento
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              </a>
             </Button>
             <Button asChild size="lg" variant="outline">
               <Link href="#solucoes">
