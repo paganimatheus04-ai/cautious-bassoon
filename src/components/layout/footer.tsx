@@ -87,10 +87,12 @@ export function Footer() {
                 <Mail className="h-5 w-5 flex-shrink-0" />
                 <span>marciopagani18@gmail.com</span>
               </a>
-              <div className="flex items-center justify-center gap-3 text-center md:items-start md:text-left md:flex-row">
-                 <MapPin className="h-5 w-5 flex-shrink-0 text-primary-foreground mt-1" />
-                 <div className="text-base md:text-lg">
-                    <span className="font-semibold block">Endereço Comercial</span>
+              <div className="flex flex-col items-center gap-1 text-center md:items-start md:text-left">
+                <div className="flex items-center gap-3 text-base md:text-lg">
+                    <MapPin className="h-5 w-5 flex-shrink-0" />
+                    <span className="font-semibold">Endereço Comercial</span>
+                </div>
+                 <div className="text-base md:text-lg md:pl-[2.05rem]">
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=R.+Jo%C3%A3o+Jos%C3%A9+Pescarini,+568+-+SALA+23+-+RESIDENCIAL+FLORA,+Vinhedo+-+SP,+13280-144"
                       target="_blank"
