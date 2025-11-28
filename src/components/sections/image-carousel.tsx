@@ -33,7 +33,7 @@ const validImages: ImagePlaceholder[] = carouselImageIds.map(id => PlaceHolderIm
 
 export function ImageCarousel() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 2500, stopOnInteraction: true })
   );
 
   return (
