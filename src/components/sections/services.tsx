@@ -38,11 +38,16 @@ export function Services() {
               ))}
             </ul>
              <div className="mt-8 border-t border-border pt-6 animate-fade-in-up" style={{ animationDelay: '800ms' }}>
-              <div className="flex items-start gap-3 text-muted-foreground">
-                <MapPin className="h-5 w-5 flex-shrink-0 text-primary mt-1" />
-                <p className="font-medium text-sm md:text-base">
-                  Atendimento especializado para indústrias no estado de São Paulo.
-                </p>
+              <div className="flex flex-col gap-4 text-muted-foreground">
+                <div className="flex items-start gap-3">
+                  <MapPin className="h-5 w-5 flex-shrink-0 text-primary mt-1" />
+                  <div>
+                    <p className="font-bold text-foreground">Área de Atuação:</p>
+                    <p className="text-sm md:text-base">
+                      Atendemos Vinhedo, Valinhos, Louveira, Jundiaí e toda a região de Campinas, garantindo agilidade e proximidade técnica.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

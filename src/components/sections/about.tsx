@@ -1,10 +1,10 @@
 "use client";
 
-import { Target, Eye, Gem } from "lucide-react";
+import { Target, Eye, Gem, Award, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const values = [
   {
@@ -89,16 +89,22 @@ export function About() {
             </div>
           </div>
           
-          {/* CTA Section */}
+          {/* Política de Qualidade + Selo ISO */}
           <div
             className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 animate-fade-in-up"
             style={{ animationDelay: "400ms" }}
           >
             <div className="space-y-6">
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-bold text-primary">
-                    Política de Qualidade
-                  </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-2xl font-bold text-primary">
+                      Política de Qualidade
+                    </h3>
+                    <Badge variant="outline" className="border-primary text-primary px-3 py-1 flex items-center gap-2">
+                      <Award className="h-4 w-4" />
+                      NBR ISO 9001-2015
+                    </Badge>
+                  </div>
                   <p className="text-muted-foreground md:text-lg/relaxed">
                     Nosso compromisso é com padrões rigorosos de qualidade,
                     utilizando tecnologia e processos bem definidos. Realizamos o
@@ -108,7 +114,7 @@ export function About() {
                   </p>
                 </div>
             </div>
-            <div className="text-center bg-secondary rounded-lg p-6 md:p-8">
+            <div className="text-center bg-secondary/30 rounded-lg p-6 md:p-8 border border-primary/10">
               <h3 className="text-xl md:text-2xl font-bold tracking-tight">
                 Pronto para reduzir custos e aumentar a eficiência da sua operação?
               </h3>
@@ -116,10 +122,10 @@ export function About() {
                 <Button
                   asChild
                   size="lg"
-                  className="hover:scale-105 transition-transform w-full sm:w-auto"
+                  className="hover:scale-105 transition-transform w-full sm:w-auto font-bold"
                 >
-                  <a href="https://wa.me/5519974094692" target="_blank" rel="noopener noreferrer">
-                    Fale com um especialista
+                  <a href="#orcamento">
+                    Solicitar Orçamento Agora
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>

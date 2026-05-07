@@ -8,6 +8,8 @@ import { About } from "@/components/sections/about";
 import { ImageCarousel } from "@/components/sections/image-carousel";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { WorkProcess } from "@/components/sections/work-process";
+import { QuoteForm } from "@/components/sections/quote-form";
+import { Testimonials } from "@/components/sections/testimonials";
 
 export default function Home() {
   return (
@@ -24,6 +26,8 @@ export default function Home() {
         <div id="servicos">
           <Services />
         </div>
+        <Testimonials />
+        <QuoteForm />
         <div id="sobre">
           <About />
         </div>

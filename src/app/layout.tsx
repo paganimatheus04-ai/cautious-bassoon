@@ -15,6 +15,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const whatsappMessage = encodeURIComponent("Olá! Vim pelo site e gostaria de solicitar um orçamento.");
+  
   return (
     <html lang="pt-BR" className="dark">
       <head>
@@ -29,11 +31,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-body antialiased bg-background">
+      <body className="font-body antialiased bg-background text-foreground">
         {children}
         <Toaster />
         <Link 
-          href="https://wa.me/5519974094692" 
+          href={`https://wa.me/5519974094692?text=${whatsappMessage}`} 
           target="_blank" 
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-110 animate-pulse-whatsapp"
