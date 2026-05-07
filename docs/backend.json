@@ -1,0 +1,163 @@
+{
+  "entities": {
+    "QuoteRequest": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "QuoteRequest",
+      "type": "object",
+      "description": "Represents a request for a packaging quote submitted by a user through the 'Solicitar Orçamento' functionality.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the QuoteRequest entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The full name of the person making the quote request."
+        },
+        "company": {
+          "type": "string",
+          "description": "The name of the company associated with the quote request."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address for contact regarding the quote request.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "The telephone number for contact regarding the quote request."
+        },
+        "message": {
+          "type": "string",
+          "description": "Detailed message describing the user's packaging needs or specific requirements for the quote."
+        },
+        "requestDate": {
+          "type": "string",
+          "description": "The date and time when the quote request was submitted.",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "The current processing status of the quote request (e.g., 'New', 'Pending', 'Processed', 'Archived')."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "message",
+        "requestDate",
+        "status"
+      ]
+    },
+    "ContactMessage": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactMessage",
+      "type": "object",
+      "description": "Stores general contact messages submitted by users through the 'Contato' form.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ContactMessage entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The full name of the person sending the message."
+        },
+        "company": {
+          "type": "string",
+          "description": "The name of the company associated with the sender, if provided."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address for responding to the contact message.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "The telephone number for contact, if provided."
+        },
+        "message": {
+          "type": "string",
+          "description": "The content of the contact message."
+        },
+        "submissionDate": {
+          "type": "string",
+          "description": "The date and time when the contact message was submitted.",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "The current processing status of the message (e.g., 'New', 'Read', 'Replied', 'Archived')."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "message",
+        "submissionDate",
+        "status"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/quoteRequests/{quoteRequestId}",
+        "definition": {
+          "entityName": "QuoteRequest",
+          "schema": {
+            "$ref": "#/backend/entities/QuoteRequest"
+          },
+          "description": "Stores individual packaging quote requests submitted by users. Submissions can be anonymous, while viewing, updating, and deleting are restricted to authenticated administrators. Does not include denormalized authorization fields as access is determined by the reader's global admin role.",
+          "params": [
+            {
+              "name": "quoteRequestId",
+              "description": "The unique identifier for a specific quote request."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/contactMessages/{messageId}",
+        "definition": {
+          "entityName": "ContactMessage",
+          "schema": {
+            "$ref": "#/backend/entities/ContactMessage"
+          },
+          "description": "Stores general contact messages submitted by users. Submissions can be anonymous, while viewing, updating, and deleting are restricted to authenticated administrators. Does not include denormalized authorization fields as access is determined by the reader's global admin role.",
+          "params": [
+            {
+              "name": "messageId",
+              "description": "The unique identifier for a specific contact message."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roles_admin/{adminUid}",
+        "definition": {
+          "entityName": "admin",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Defines users who have administrator privileges. The document ID is the user's UID. This collection is used for global role-based access control and ensures authorization independence by explicitly listing administrators. Managed securely, typically via Cloud Functions, not directly by clients.",
+          "params": [
+            {
+              "name": "adminUid",
+              "description": "The unique Firebase Authentication UID of an administrator."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to securely handle anonymous submissions for 'QuoteRequest' and 'ContactMessage' entities, while providing secure and scalable access for administrators. Each entity is placed in its own top-level collection: `/quoteRequests` and `/contactMessages`. This approach ensures **Structural Segregation** as all documents within each collection share the same security posture (public write, admin-only read/update/delete).\n\n**Authorization Independence** is achieved by centralizing administrator role management. Instead of embedding owner IDs or complex membership maps within each request/message document (which would lead to inefficient `get()` calls in security rules), an explicit `/roles_admin/{adminUid}` collection is introduced. This collection acts as the definitive source for identifying who is an administrator. Security rules can then check `if exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid))` to grant administrative access. This completely avoids hierarchical authorization dependencies and allows for atomic operations (e.g., an admin can update a message status without needing to fetch its parent or check a denormalized field on the message itself).\n\n**Querying for All Pages (QAPs)** is fully supported for administrators. Since all documents within `/quoteRequests` and `/contactMessages` have a homogeneous security posture (viewable by any administrator), a simple `allow read: if exists(...)` rule on these collections means that administrators can perform unfiltered `list` queries. The security rules do not act as filters; they either grant full access to the collection or deny it, thereby making `list` operations secure and efficient without requiring additional client-side filtering or complex rule logic. This design ensures that an administrator can fetch all quote requests or contact messages in a single query, which directly addresses the user's question about \"where to see the data when someone sends it\" by providing a clear, secure, and performant collection for an admin interface to query."
+  }
+}
