@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -23,10 +24,14 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
+import { useFirestore } from "@/firebase";
+import { collection, doc } from "firebase/firestore";
+import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
 
 const formSchema = z.object({
   nome: z.string().min(2, "Nome é obrigatório"),
   empresa: z.string().min(2, "Nome da empresa é obrigatório"),
+  email: z.string().email("E-mail inválido"),
   telefone: z.string().min(8, "Telefone válido é obrigatório"),
   cidade: z.string().min(2, "Cidade é obrigatória"),
   tipoEmbalagem: z.string({
@@ -37,11 +42,13 @@ const formSchema = z.object({
 });
 
 export function QuoteForm() {
+  const db = useFirestore();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       nome: "",
       empresa: "",
+      email: "",
       telefone: "",
       cidade: "",
       quantidade: "",
@@ -50,10 +57,29 @@ export function QuoteForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    if (!db) return;
+
+    const quoteRequestsRef = collection(db, "quoteRequests");
+    const newDocRef = doc(quoteRequestsRef);
+    const id = newDocRef.id;
+
+    const submissionData = {
+      ...values,
+      id,
+      requestDate: new Date().toISOString(),
+      status: "New",
+      // Mapeando para os nomes de propriedades definidos no backend.json se necessário
+      name: values.nome,
+      company: values.empresa,
+      phone: values.telefone,
+      message: values.mensagem || "Sem mensagem adicional",
+    };
+
+    setDocumentNonBlocking(newDocRef, submissionData, { merge: true });
+
     toast({
       title: "Solicitação enviada!",
-      description: "Em breve um de nossos especialistas entrará em contato.",
+      description: "Recebemos seu pedido. Em breve um de nossos especialistas entrará em contato.",
     });
     form.reset();
   }
@@ -116,6 +142,19 @@ export function QuoteForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>E-mail Corporativo</FormLabel>
+                        <FormControl>
+                          <Input placeholder="seu@email.com.br" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
                     name="telefone"
                     render={({ field }) => (
                       <FormItem>
@@ -127,6 +166,9 @@ export function QuoteForm() {
                       </FormItem>
                     )}
                   />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
                     name="cidade"
@@ -140,9 +182,6 @@ export function QuoteForm() {
                       </FormItem>
                     )}
                   />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
                     name="tipoEmbalagem"
@@ -166,20 +205,21 @@ export function QuoteForm() {
                       </FormItem>
                     )}
                   />
-                  <FormField
-                    control={form.control}
-                    name="quantidade"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Quantidade Estimada</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ex: 500 unidades" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                 </div>
+
+                <FormField
+                  control={form.control}
+                  name="quantidade"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Quantidade Estimada</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Ex: 500 unidades" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 <FormField
                   control={form.control}

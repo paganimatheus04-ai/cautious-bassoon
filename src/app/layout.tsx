@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
+import { FirebaseClientProvider } from "@/firebase";
 
 export const metadata: Metadata = {
   title: "Pagani Embalagens | Caixas de Papelão para Indústria",
@@ -32,8 +33,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased bg-background text-foreground">
-        {children}
-        <Toaster />
+        <FirebaseClientProvider>
+          {children}
+          <Toaster />
+        </FirebaseClientProvider>
         <Link 
           href={`https://wa.me/5519974094692?text=${whatsappMessage}`} 
           target="_blank" 
