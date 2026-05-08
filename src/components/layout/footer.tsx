@@ -45,7 +45,7 @@ export function Footer() {
             
             <p className="max-w-md text-sm text-muted-foreground font-medium">
               Soluções industriais em embalagens de papelão ondulado para
-              logística, armazenagem e transporte com alta performance.
+              logística, armazenagem e transporte com alto desempenho.
             </p>
             <div className="flex items-center gap-6">
               {[

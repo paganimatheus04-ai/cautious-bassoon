@@ -28,7 +28,7 @@ export function ProblemsSolved() {
             Problemas que resolvemos todo dia
           </h2>
           <p className="max-w-3xl text-muted-foreground text-lg md:text-xl font-medium">
-            Se você já passou por algum desses, a gente entende — e resolve.
+            Se você já passou por algum desses, a gente entende e resolve.
           </p>
         </motion.div>
 

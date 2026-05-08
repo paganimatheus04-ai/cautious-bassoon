@@ -8,7 +8,7 @@ const features = [
   {
     icon: <Clock className="h-10 w-10 text-primary" />,
     title: "Entrega que não falha",
-    description: "Programamos cada lote junto com o seu calendário de produção. Você sabe exatamente quando a caixa chega — e ela chega.",
+    description: "Programamos cada lote junto com o seu calendário de produção. Você sabe exatamente quando a caixa chega: e ela chega.",
   },
   {
     icon: <Beaker className="h-10 w-10 text-primary" />,
@@ -23,7 +23,7 @@ const features = [
   {
     icon: <User className="h-10 w-10 text-primary" />,
     title: "Você fala com quem decide",
-    description: "Sem call center, sem robô. Atendimento direto com o responsável técnico do seu projeto — do orçamento à entrega.",
+    description: "Sem call center, sem robô. Atendimento direto com o responsável técnico do seu projeto: do orçamento à entrega.",
   },
   {
     icon: <Recycle className="h-10 w-10 text-primary" />,

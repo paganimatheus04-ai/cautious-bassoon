@@ -39,9 +39,9 @@ export function Hero() {
           
           <div className="flex flex-wrap justify-center gap-4 mb-4">
             {[
-              { icon: <ShieldCheck className="h-4 w-4" />, label: "Projetos personalizados" },
-              { icon: <Clock className="h-4 w-4" />, label: "Entregas programadas" },
-              { icon: <CheckCircle className="h-4 w-4" />, label: "Qualidade consistente" },
+              { icon: <ShieldCheck className="h-4 w-4" />, label: "Projeto sob medida" },
+              { icon: <Clock className="h-4 w-4" />, label: "Prazo garantido" },
+              { icon: <CheckCircle className="h-4 w-4" />, label: "Material com laudo" },
             ].map((badge) => (
               <motion.div
                 key={badge.label}

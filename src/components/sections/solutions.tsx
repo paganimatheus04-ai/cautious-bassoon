@@ -36,7 +36,7 @@ const solutions = [
     id: "performance-banner",
     title: "Chapas e Miolo de Papelão",
     description:
-      "Chapas planas para proteção de superfícies e reforço estrutural. O miolo (honeycomb) oferece alta resistência com baixíssimo peso — tendência para substituir madeira em embalagens de exportação.",
+      "Chapas planas para proteção de superfícies e reforço estrutural. O miolo (honeycomb) oferece alta resistência com baixíssimo peso: tendência para substituir madeira em embalagens de exportação.",
     extra: "Tendência crescente em 2025/2026: o honeycomb de papelão reduz peso, custo de frete e atende regulamentações fitossanitárias internacionais (NIMF-15).",
   },
   {
@@ -68,7 +68,7 @@ export function Solutions({ detailed = false }: SolutionsProps) {
             O que fabricamos
           </h2>
           <p className="max-w-[900px] text-muted-foreground text-lg md:text-xl font-medium">
-            Do projeto à entrega — embalagens industriais para quem não aceita improvisar.
+            Da criação à entrega: embalagens industriais para indústrias que não param.
           </p>
         </motion.div>
         

@@ -44,7 +44,7 @@ export function Testimonials() {
             O que nossos clientes dizem
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-xl font-medium tracking-tight">
-            Feedback real de quem vive o dia a dia da indústria.
+            Feedback real de quem usa no dia a dia.
           </p>
         </motion.div>
 

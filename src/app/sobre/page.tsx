@@ -52,7 +52,7 @@ export default function SobrePage() {
                     A Pagani Embalagens nasceu de uma observação simples: a maioria dos fornecedores de embalagem trata caixa como commodity. Vende pelo preço, some no problema.
                   </p>
                   <p>
-                    Nós escolhemos o caminho oposto. Cada cliente que atendemos tem um processo diferente, um produto diferente, uma necessidade diferente. Nossa função não é empurrar o modelo mais barato — é entender o que você precisa e desenvolver a solução certa.
+                    Nós escolhemos o caminho oposto. Cada cliente que atendemos tem um processo diferente, um produto diferente, uma necessidade diferente. Nossa função não é empurrar o modelo mais barato: é entender o que você precisa e desenvolver a solução certa.
                   </p>
                   <p>
                     Estamos em Vinhedo, no coração do polo industrial de Campinas. Próximos dos nossos clientes. Rápidos quando precisam. Técnicos quando o projeto exige.

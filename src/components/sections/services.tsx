@@ -13,7 +13,7 @@ const servicesCards = [
   {
     icon: <Settings className="h-10 w-10 text-primary" />,
     title: "Projetos Técnicos",
-    description: "Engenharia e desenvolvimento de embalagens especiais, com apoio técnico em especificações e dimensionamento."
+    description: "Engenharia de embalagens especiais com apoio técnico em especificações e dimensionamento."
   },
   {
     icon: <Truck className="h-10 w-10 text-primary" />,
@@ -23,7 +23,7 @@ const servicesCards = [
   {
     icon: <Headset className="h-10 w-10 text-primary" />,
     title: "Suporte Contínuo",
-    description: "Acompanhamento técnico em todas as etapas, do desenvolvimento à entrega final."
+    description: "Acompanhamento técnico em todas as etapas: do desenvolvimento à entrega final."
   }
 ];
 
@@ -40,6 +40,9 @@ export function Services() {
           <h2 className="text-4xl font-black tracking-tighter text-primary sm:text-5xl md:text-7xl uppercase">
             Nossos Serviços
           </h2>
+          <p className="mt-4 text-muted-foreground text-lg md:text-xl font-medium">
+            Tudo que sua operação precisa em um único fornecedor.
+          </p>
         </motion.div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
