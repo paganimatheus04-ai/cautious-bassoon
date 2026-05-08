@@ -95,7 +95,7 @@ export function QuoteForm() {
             viewport={{ once: true }}
             className="text-center space-y-4"
           >
-            <h2 className="text-4xl font-black tracking-tighter text-primary sm:text-5xl md:text-7xl uppercase">
+            <h2 className="text-4xl font-black tracking-tighter text-foreground sm:text-5xl md:text-7xl uppercase">
               Solicite seu Orçamento
             </h2>
             <p className="text-xl md:text-2xl text-foreground font-bold italic tracking-tight">

@@ -45,7 +45,7 @@ export function Solutions() {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center space-y-4 text-center"
         >
-          <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-primary drop-shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+          <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-foreground uppercase">
             O que fabricamos
           </h2>
         </motion.div>

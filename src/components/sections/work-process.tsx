@@ -37,13 +37,12 @@ export function WorkProcess() {
           viewport={{ once: true }}
           className="flex flex-col items-center text-center space-y-4 mb-20"
         >
-          <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-primary uppercase">
+          <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-foreground uppercase">
             Como Trabalhamos
           </h2>
         </motion.div>
         
         <div className="relative">
-          {/* Linha de conexão animada */}
           <div className="absolute left-0 top-[60px] w-full h-1 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 -z-10 hidden md:block" />
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">

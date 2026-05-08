@@ -32,7 +32,7 @@ export function Expertise() {
           viewport={{ once: true }}
           className="flex flex-col items-center text-center space-y-4 mb-20"
         >
-          <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-primary uppercase">
+          <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-foreground uppercase">
             Sustentabilidade
           </h2>
           <p className="max-w-3xl text-muted-foreground text-lg md:text-xl font-medium">

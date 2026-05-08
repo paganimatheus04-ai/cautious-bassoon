@@ -4,8 +4,6 @@ import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
 import { Solutions } from "@/components/sections/solutions";
 import { Services } from "@/components/sections/services";
-import { Expertise } from "@/components/sections/expertise";
-import { About } from "@/components/sections/about";
 import { ImageCarousel } from "@/components/sections/image-carousel";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { WorkProcess } from "@/components/sections/work-process";
@@ -31,17 +29,9 @@ export default function Home() {
           <Services />
         </div>
         
-        {/* Sustentabilidade movida para antes do formulário */}
-        <Expertise />
-        
         <Testimonials />
         
         <QuoteForm />
-        
-        <div id="sobre">
-          {/* About agora contém apenas Solidez e Confiança para a Home */}
-          <About homeOnly />
-        </div>
       </main>
       <Footer />
     </div>
