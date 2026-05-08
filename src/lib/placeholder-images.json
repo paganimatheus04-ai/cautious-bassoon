@@ -9,19 +9,19 @@
     {
       "id": "solution-corte-vinco",
       "description": "Detalhe de uma caixa de papelão com corte e vinco preciso.",
-      "imageUrl": "https://i.imgur.com/aOUhj4U.png",
+      "imageUrl": "https://i.imgur.com/pekpfBJ.jpeg",
       "imageHint": "cardboard box"
     },
     {
       "id": "solution-convencional",
       "description": "Pilha de caixas de papelão convencionais em um armazém.",
-      "imageUrl": "https://i.imgur.com/8fVpugo.png",
+      "imageUrl": "https://i.imgur.com/EEdR9Ye.jpeg",
       "imageHint": "stacked boxes"
     },
     {
       "id": "solution-projetos-especiais",
       "description": "Embalagem de papelão com design customizado e inovador.",
-      "imageUrl": "https://i.imgur.com/pOZhCtb.png",
+      "imageUrl": "https://i.imgur.com/qoiPAbg.jpeg",
       "imageHint": "custom packaging"
     },
     {
@@ -33,7 +33,7 @@
     {
       "id": "performance-banner",
       "description": "Textura de papelão ondulado em close-up.",
-      "imageUrl": "https://images.unsplash.com/photo-1618042164217-64c7a9c34891?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXJkYm9hcmQlMjB0ZXh0dXJlfGVufDB8fHx8MTc2NDA5NzU3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.imgur.com/m42h8lr.jpeg",
       "imageHint": "cardboard texture"
     },
     {
@@ -81,7 +81,7 @@
     {
       "id": "carousel-6",
       "description": "Acessórios internos de papelão para proteção.",
-      "imageUrl": "https://i.imgur.com/xugUvsR.jpeg",
+      "imageUrl": "https://i.imgur.com/vn9bYqu.jpeg",
       "imageHint": "protective inserts"
     },
     {
@@ -101,6 +101,12 @@
       "description": "Inspeção técnica de qualidade em uma caixa de papelão.",
       "imageUrl": "https://i.imgur.com/g7eV6yb.png",
       "imageHint": "quality control"
+    },
+    {
+      "id": "solution-trays",
+      "description": "Bandejas e tabuleiros de papelão para indústria.",
+      "imageUrl": "https://i.imgur.com/udmDKnG.jpeg",
+      "imageHint": "cardboard trays"
     }
   ]
 }
