@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -92,27 +92,33 @@ export function Header() {
                         <span className="sr-only">Abrir menu</span>
                     </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="bg-background/95 backdrop-blur-md w-[280px]">
+                    <SheetContent side="right" className="bg-background/95 backdrop-blur-md w-[280px] border-l border-primary/10">
                     <nav className="grid gap-6 p-6 text-lg font-medium">
-                        <Link
-                          href="/"
-                          className="flex items-center gap-2 text-lg font-semibold mb-8"
-                        >
-                          <Image 
-                            src="https://i.imgur.com/RkFJAQX.png" 
-                            alt="Pagani Embalagens Logo" 
-                            width={150} 
-                            height={33}
-                          />
-                        </Link>
+                        <SheetClose asChild>
+                          <Link
+                            href="/"
+                            className="flex items-center gap-2 text-lg font-semibold mb-8"
+                          >
+                            <Image 
+                              src="https://i.imgur.com/RkFJAQX.png" 
+                              alt="Pagani Embalagens Logo" 
+                              width={150} 
+                              height={33}
+                            />
+                          </Link>
+                        </SheetClose>
                         {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className={cn("hover:text-primary transition-colors text-base font-bold tracking-widest", pathname === link.href ? "text-primary" : "text-muted-foreground")}
-                        >
-                            {link.label.toUpperCase()}
-                        </Link>
+                          <SheetClose asChild key={link.href}>
+                            <Link
+                                href={link.href}
+                                className={cn(
+                                  "hover:text-primary transition-colors text-base font-bold tracking-widest", 
+                                  pathname === link.href ? "text-primary" : "text-muted-foreground"
+                                )}
+                            >
+                                {link.label.toUpperCase()}
+                            </Link>
+                          </SheetClose>
                         ))}
                     </nav>
                     </SheetContent>
