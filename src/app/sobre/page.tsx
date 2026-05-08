@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Header } from "@/components/layout/header";
@@ -9,7 +8,7 @@ import { Expertise } from "@/components/sections/expertise";
 import { motion } from "framer-motion";
 import { AnimatedNumber } from "@/components/ui/animated-number";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Link from "link/link";
 import { ArrowRight } from "lucide-react";
 
 export default function SobrePage() {
@@ -71,7 +70,7 @@ export default function SobrePage() {
               {[
                 { label: "Projetos entregues", value: 500, suffix: "+" },
                 { label: "de pontualidade", value: 98, suffix: "% " },
-                { label: "anos de experiência", value: 10, suffix: "+" },
+                { label: "anos no mercado", value: 11, suffix: "" },
               ].map((stat, i) => (
                 <motion.div 
                   key={stat.label}

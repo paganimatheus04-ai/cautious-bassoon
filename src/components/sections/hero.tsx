@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -43,14 +42,14 @@ export function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-6 max-w-5xl"
           >
-            <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-6xl lg:text-8xl leading-tight">
+            <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-6xl lg:text-8xl leading-tight uppercase">
               SOLUÇÕES INTELIGENTES{" "}
               <span className="text-primary drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]">NA MEDIDA DO SEU NEGÓCIO</span>
             </h1>
             <div className="mx-auto max-w-[800px] text-xl font-bold text-foreground/80 md:text-3xl tracking-wide flex flex-col gap-2 md:gap-3">
-              <span>Embalagens sob medida.</span>
-              <span>Entrega no prazo.</span>
-              <span>Sem surpresas.</span>
+              <span className="block">Embalagens sob medida.</span>
+              <span className="block">Entrega no prazo.</span>
+              <span className="block">Sem surpresas.</span>
             </div>
           </motion.div>
 
@@ -78,7 +77,7 @@ export function Hero() {
             {[
               { label: "Projetos entregues", value: 500, suffix: "+" },
               { label: "de pontualidade", value: 98, suffix: "% " },
-              { label: "anos de experiência", value: 10, suffix: "+" },
+              { label: "anos no mercado", value: 11, suffix: "" },
             ].map((stat, i) => (
               <motion.div 
                 key={stat.label}
