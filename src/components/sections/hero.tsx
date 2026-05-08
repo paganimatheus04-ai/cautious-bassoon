@@ -63,7 +63,7 @@ export function Hero() {
           >
             <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-6xl lg:text-8xl leading-tight uppercase">
               EMBALAGENS QUE <br/>
-              <span className="text-primary drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]">NÃO PARAM SUA PRODUÇÃO.</span>
+              <span className="text-primary drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]">NÃO PARAM SUA PRODUÇÃO</span>
             </h1>
             <div className="mx-auto max-w-[800px] text-xl font-bold text-foreground/80 md:text-3xl tracking-wide flex flex-col gap-2 md:gap-3">
               <span className="block">Entrega no prazo.</span>
