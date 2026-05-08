@@ -47,9 +47,11 @@ export function Hero() {
               SOLUÇÕES INTELIGENTES{" "}
               <span className="text-primary drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]">NA MEDIDA DO SEU NEGÓCIO</span>
             </h1>
-            <p className="mx-auto max-w-[800px] text-xl font-bold text-foreground/80 md:text-3xl tracking-wide">
-              Embalagens sob medida. Entrega no prazo. Sem surpresas.
-            </p>
+            <div className="mx-auto max-w-[800px] text-xl font-bold text-foreground/80 md:text-3xl tracking-wide flex flex-col gap-2 md:gap-3">
+              <span>Embalagens sob medida.</span>
+              <span>Entrega no prazo.</span>
+              <span>Sem surpresas.</span>
+            </div>
           </motion.div>
 
           <motion.div
