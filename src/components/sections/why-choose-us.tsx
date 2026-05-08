@@ -1,24 +1,34 @@
 
 "use client";
 
-import { Check, Edit, Zap } from "lucide-react";
+import { Clock, Beaker, Ruler, User, Recycle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const features = [
   {
-    icon: <Zap className="h-10 w-10 text-primary" />,
-    title: "Alta consistência",
-    description: "Zero variação crítica que afete sua linha de produção industrial.",
+    icon: <Clock className="h-10 w-10 text-primary" />,
+    title: "Entrega que não falha",
+    description: "Programamos cada lote junto com o seu calendário de produção. Você sabe exatamente quando a caixa chega — e ela chega.",
   },
   {
-    icon: <Edit className="h-10 w-10 text-primary" />,
-    title: "Projetos sob medida",
-    description: "Criados para reduzir danos, peso e custo logístico real.",
+    icon: <Beaker className="h-10 w-10 text-primary" />,
+    title: "Material com laudo técnico",
+    description: "Trabalhamos com chapas de papelão com especificação técnica rastreável. Gramatura, composição e resistência documentadas em cada pedido.",
   },
   {
-    icon: <Check className="h-10 w-10 text-primary" />,
-    title: "Agilidade Total",
-    description: "Entregas programadas, sem interrupções para sua indústria.",
+    icon: <Ruler className="h-10 w-10 text-primary" />,
+    title: "Medida exata, sempre",
+    description: "Cada projeto passa por validação dimensional antes de ir para produção. Tolerância máxima de ±1mm. Sem surpresas na linha de montagem.",
+  },
+  {
+    icon: <User className="h-10 w-10 text-primary" />,
+    title: "Você fala com quem decide",
+    description: "Sem call center, sem robô. Atendimento direto com o responsável técnico do seu projeto — do orçamento à entrega.",
+  },
+  {
+    icon: <Recycle className="h-10 w-10 text-primary" />,
+    title: "Papelão 100% reciclável",
+    description: "Toda nossa produção utiliza matéria-prima reciclada e reciclável. Conformidade com as exigências de ESG e certificações ambientais.",
   },
 ];
 
@@ -35,17 +45,20 @@ export function WhyChooseUs() {
             <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-primary uppercase">
                 Por que a Pagani?
             </h2>
+            <p className="max-w-2xl text-muted-foreground text-lg md:text-xl font-medium">
+              Porque embalagem ruim custa mais caro do que embalagem boa.
+            </p>
         </motion.div>
         
-        <div className="mx-auto grid max-w-6xl items-start gap-8 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl items-start gap-8 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="flex flex-col items-center text-center p-8 rounded-3xl border border-primary/10 bg-white/5 backdrop-blur-xl hover:border-primary/40 transition-all duration-500 hover:-translate-y-2 group shadow-2xl"
+                transition={{ delay: index * 0.1 }}
+                className="flex flex-col items-center text-center p-8 rounded-3xl border border-primary/10 bg-white/5 backdrop-blur-xl hover:border-primary/40 transition-all duration-500 hover:-translate-y-2 group shadow-2xl h-full"
               >
                 <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 mb-6 group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(249,115,22,0.1)]">
                   {feature.icon}

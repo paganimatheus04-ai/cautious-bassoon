@@ -1,3 +1,4 @@
+
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Solutions } from "@/components/sections/solutions";
@@ -9,7 +10,7 @@ export default function SolucoesPage() {
       <Header />
       <main className="flex-1 overflow-x-hidden">
         <PerformanceBanner />
-        <Solutions />
+        <Solutions detailed={true} />
       </main>
       <Footer />
     </div>

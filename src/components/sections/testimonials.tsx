@@ -11,21 +11,21 @@ const testimonials = [
     name: "Ricardo Silva",
     role: "Gerente de Suprimentos",
     company: "Indústria Automotiva",
-    text: "A pontualidade da Pagani é fundamental para nossa linha de produção. Desde que iniciamos a parceria, nunca tivemos atrasos que comprometessem nosso cronograma.",
+    text: "Antes da Pagani, tínhamos em média 2 ocorrências por mês de caixa fora de medida. Nos últimos 8 meses: zero. Isso tem valor direto na nossa linha de montagem e reduz paradas desnecessárias.",
     initials: "RS",
   },
   {
     name: "Amanda Costa",
     role: "Coordenadora de Logística",
     company: "Exportadora de Alimentos",
-    text: "Desenvolveram um projeto especial de colmeia interna que reduziu nossas perdas por avaria em 15% durante o transporte de longa distância. Expertise técnica real.",
+    text: "Desenvolvemos uma colmeia interna especial que reduziu as perdas por avaria em transporte em 15%. Nenhum outro fornecedor tinha topado o desafio técnico de prototipar isso com a agilidade que precisávamos.",
     initials: "AC",
   },
   {
     name: "Marcos Oliveira",
     role: "Diretor de Operações",
     company: "Metalúrgica Regional",
-    text: "O atendimento consultivo faz toda a diferença. Eles não apenas vendem caixas, eles entendem o processo industrial e sugerem melhorias que otimizam nosso custo logístico.",
+    text: "O que me fez fidelizar foi o atendimento técnico pós-venda. Quando tivemos uma urgência de pico de produção, o Marcio atendeu pessoalmente e resolveu a entrega no mesmo dia. Suporte real.",
     initials: "MO",
   },
 ];
@@ -41,10 +41,10 @@ export function Testimonials() {
           className="flex flex-col items-center text-center space-y-4 mb-20"
         >
           <h2 className="text-4xl font-black tracking-tighter text-primary sm:text-5xl md:text-7xl uppercase">
-            Depoimentos
+            O que nossos clientes dizem
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-xl font-medium tracking-tight">
-            O que nossos clientes dizem sobre a nossa parceria.
+            Feedback real de quem vive o dia a dia da indústria.
           </p>
         </motion.div>
 

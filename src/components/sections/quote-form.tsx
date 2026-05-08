@@ -85,7 +85,7 @@ export function QuoteForm() {
   }
 
   return (
-    <section id="orcamento" className="py-24 md:py-32 bg-secondary/5 relative overflow-hidden">
+    <section id="orcamento" className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center max-w-4xl mx-auto space-y-12">
           
@@ -99,7 +99,7 @@ export function QuoteForm() {
               Solicite seu Orçamento
             </h2>
             <p className="text-xl md:text-2xl text-foreground font-bold italic tracking-tight">
-              Conte o que você precisa. A gente resolve.
+              Conte o que você precisa. Respondemos em até 2 horas úteis.
             </p>
           </motion.div>
 
@@ -196,10 +196,10 @@ export function QuoteForm() {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent className="bg-background/95 backdrop-blur-xl border-primary/20">
-                            <SelectItem value="simples">Caixa Simples</SelectItem>
-                            <SelectItem value="reforcada">Caixa Reforçada</SelectItem>
-                            <SelectItem value="bandeja">Bandeja</SelectItem>
-                            <SelectItem value="especial">Projeto Especial</SelectItem>
+                            <SelectItem value="simples">Caixa Simples (RSC)</SelectItem>
+                            <SelectItem value="reforcada">Caixa Reforçada (Parede Dupla)</SelectItem>
+                            <SelectItem value="bandeja">Bandeja / Tabuleiro</SelectItem>
+                            <SelectItem value="especial">Projeto Especial / Corte e Vinco</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -240,10 +240,17 @@ export function QuoteForm() {
                   )}
                 />
 
-                <Button type="submit" size="lg" className="w-full h-16 font-black text-xl rounded-2xl bg-primary hover:bg-primary/90 shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all hover:scale-[1.01] active:scale-[0.99] uppercase tracking-widest">
-                  Quero meu orçamento
-                  <Send className="ml-3 h-6 w-6" />
-                </Button>
+                <div className="space-y-4">
+                  <Button type="submit" size="lg" className="w-full h-16 font-black text-xl rounded-2xl bg-primary hover:bg-primary/90 shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all hover:scale-[1.01] active:scale-[0.99] uppercase tracking-widest">
+                    Quero meu orçamento
+                    <Send className="ml-3 h-6 w-6" />
+                  </Button>
+                  <p className="text-center text-xs text-muted-foreground flex justify-center gap-4 font-medium">
+                    <span>✓ Sem compromisso</span>
+                    <span>✓ Resposta em até 2h</span>
+                    <span>✓ Atendimento direto com o técnico</span>
+                  </p>
+                </div>
               </form>
             </Form>
           </motion.div>

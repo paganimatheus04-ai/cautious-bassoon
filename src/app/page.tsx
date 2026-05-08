@@ -9,6 +9,7 @@ import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { WorkProcess } from "@/components/sections/work-process";
 import { QuoteForm } from "@/components/sections/quote-form";
 import { Testimonials } from "@/components/sections/testimonials";
+import { ProblemsSolved } from "@/components/sections/problems-solved";
 
 export default function Home() {
   return (
@@ -28,6 +29,8 @@ export default function Home() {
         <div id="servicos">
           <Services />
         </div>
+
+        <ProblemsSolved />
         
         <Testimonials />
         

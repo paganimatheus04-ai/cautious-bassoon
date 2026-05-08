@@ -8,22 +8,22 @@ const steps = [
   {
     icon: <Briefcase className="h-10 w-10 text-primary" />,
     title: 'Diagnóstico',
-    description: 'Entendemos sua demanda, volumes e tipo de operação.',
+    description: 'Você conta o que precisa — volume, produto, processo logístico. A gente escuta antes de propor qualquer coisa.',
   },
   {
     icon: <DraftingCompass className="h-10 w-10 text-primary" />,
     title: 'Projeto',
-    description: 'Desenvolvemos as embalagens mais eficientes para o seu uso.',
+    description: 'Desenvolvemos o protótipo com base nas suas especificações. Você aprova antes de qualquer produção.',
   },
   {
     icon: <Factory className="h-10 w-10 text-primary" />,
     title: 'Produção',
-    description: 'Fabricação com rigor técnico e controle de qualidade.',
+    description: 'Fabricação com controle de qualidade em cada etapa. Gramatura, medida e resistência conferidos.',
   },
   {
     icon: <Truck className="h-10 w-10 text-primary" />,
     title: 'Entrega',
-    description: 'Logística ágil, contínua e alinhada ao seu fluxo industrial.',
+    description: 'Prazo combinado é prazo cumprido. Você recebe a confirmação da data com antecedência.',
   },
 ];
 
@@ -38,7 +38,7 @@ export function WorkProcess() {
           className="flex flex-col items-center text-center space-y-4 mb-20"
         >
           <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-foreground uppercase">
-            Como Trabalhamos
+            Como funciona trabalhar com a gente
           </h2>
         </motion.div>
         

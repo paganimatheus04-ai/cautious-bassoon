@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Header } from "@/components/layout/header";
@@ -29,7 +30,7 @@ export default function SobrePage() {
                  Quem está por trás <span className="text-primary">da Pagani?</span>
                </h1>
                <p className="mx-auto max-w-[800px] text-xl font-bold text-muted-foreground md:text-3xl tracking-wide italic">
-                 Uma empresa familiar de Vinhedo, construída com propósito.
+                 Uma empresa de Vinhedo, construída para resolver problemas reais de quem usa embalagem todo dia.
                </p>
              </motion.div>
            </div>
@@ -46,12 +47,17 @@ export default function SobrePage() {
                 className="space-y-8"
               >
                 <h2 className="text-4xl md:text-6xl font-black text-primary uppercase">Nossa História</h2>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-medium">
-                  A Pagani Embalagens nasceu da necessidade real do mercado industrial da região de Campinas: encontrar um fornecedor de embalagens que entendesse o processo produtivo do cliente, não apenas vendesse caixas.
-                </p>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-medium">
-                  Somos uma empresa de Vinhedo, com atendimento próximo, ágil e consultivo. Cada projeto que desenvolvemos começa com uma pergunta simples: qual é o seu problema? A caixa vem depois.
-                </p>
+                <div className="space-y-6 text-lg md:text-xl text-muted-foreground leading-relaxed font-medium">
+                  <p>
+                    A Pagani Embalagens nasceu de uma observação simples: a maioria dos fornecedores de embalagem trata caixa como commodity. Vende pelo preço, some no problema.
+                  </p>
+                  <p>
+                    Nós escolhemos o caminho oposto. Cada cliente que atendemos tem um processo diferente, um produto diferente, uma necessidade diferente. Nossa função não é empurrar o modelo mais barato — é entender o que você precisa e desenvolver a solução certa.
+                  </p>
+                  <p>
+                    Estamos em Vinhedo, no coração do polo industrial de Campinas. Próximos dos nossos clientes. Rápidos quando precisam. Técnicos quando o projeto exige.
+                  </p>
+                </div>
               </motion.div>
               <div className="relative aspect-video lg:aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 bg-secondary/20">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
@@ -69,8 +75,8 @@ export default function SobrePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
               {[
                 { label: "Projetos entregues", value: 500, suffix: "+" },
-                { label: "de pontualidade", value: 98, suffix: "% " },
-                { label: "anos no mercado", value: 11, suffix: "" },
+                { label: "Índice de pontualidade", value: 98, suffix: "% " },
+                { label: "Anos no mercado", value: 11, suffix: "+" },
               ].map((stat, i) => (
                 <motion.div 
                   key={stat.label}
@@ -106,7 +112,7 @@ export default function SobrePage() {
               whileInView={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-7xl font-black text-primary-foreground uppercase"
             >
-              Pronto para começar?
+              Pronto para ter um fornecedor que não te deixa na mão?
             </motion.h2>
             <motion.div
               initial={{ opacity: 0 }}
