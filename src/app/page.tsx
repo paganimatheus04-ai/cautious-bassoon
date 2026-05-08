@@ -1,3 +1,4 @@
+
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
@@ -15,23 +16,32 @@ export default function Home() {
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background">
       <Header />
-      <main className="flex-1 overflow-x-hidden">
+      <main className="flex-1">
         <Hero />
         <ImageCarousel />
+        
         <div id="solucoes">
           <Solutions />
         </div>
+        
         <WhyChooseUs />
         <WorkProcess />
+        
         <div id="servicos">
           <Services />
         </div>
-        <Testimonials />
-        <QuoteForm />
-        <div id="sobre">
-          <About />
-        </div>
+        
+        {/* Sustentabilidade movida para antes do formulário */}
         <Expertise />
+        
+        <Testimonials />
+        
+        <QuoteForm />
+        
+        <div id="sobre">
+          {/* About agora contém apenas Solidez e Confiança para a Home */}
+          <About homeOnly />
+        </div>
       </main>
       <Footer />
     </div>

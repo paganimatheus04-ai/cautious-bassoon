@@ -27,6 +27,7 @@ import { Send } from "lucide-react";
 import { useFirestore } from "@/firebase";
 import { collection, doc } from "firebase/firestore";
 import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
+import { motion } from "framer-motion";
 
 const formSchema = z.object({
   nome: z.string().min(2, "Nome é obrigatório"),
@@ -68,7 +69,6 @@ export function QuoteForm() {
       id,
       requestDate: new Date().toISOString(),
       status: "New",
-      // Mapeando para os nomes de propriedades definidos no backend.json se necessário
       name: values.nome,
       company: values.empresa,
       phone: values.telefone,
@@ -79,46 +79,47 @@ export function QuoteForm() {
 
     toast({
       title: "Solicitação enviada!",
-      description: "Recebemos seu pedido. Em breve um de nossos especialistas entrará em contato.",
+      description: "Recebemos seu pedido. Em breve entraremos em contato.",
     });
     form.reset();
   }
 
   return (
-    <section id="orcamento" className="py-20 md:py-32 bg-secondary/20">
+    <section id="orcamento" className="py-24 md:py-32 bg-secondary/5 relative overflow-hidden">
       <div className="container px-4 md:px-6">
-        <div className="grid gap-12 lg:grid-cols-2 items-start">
-          <div className="space-y-6 animate-fade-in-up">
-            <h2 className="text-3xl font-black tracking-tighter text-primary sm:text-4xl md:text-5xl">
-              SOLICITE SEU ORÇAMENTO
+        <div className="flex flex-col items-center max-w-4xl mx-auto space-y-12">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4"
+          >
+            <h2 className="text-4xl font-black tracking-tighter text-primary sm:text-5xl md:text-7xl uppercase">
+              Solicite seu Orçamento
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Preencha o formulário abaixo e receba uma proposta personalizada
-              para as necessidades da sua empresa. Atendimento ágil e consultivo.
+            <p className="text-xl md:text-2xl text-foreground font-bold italic tracking-tight">
+              Conte o que você precisa. A gente resolve.
             </p>
-            <div className="bg-primary/10 border border-primary/20 p-6 rounded-lg">
-              <h4 className="font-bold text-primary mb-2">Por que pedir um orçamento conosco?</h4>
-              <ul className="space-y-2 text-sm">
-                <li>• Projetos otimizados para redução de custos</li>
-                <li>• Análise técnica de resistência e empilhamento</li>
-                <li>• Suporte no desenvolvimento de protótipos</li>
-                <li>• Flexibilidade em lotes de produção</li>
-              </ul>
-            </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-background p-6 md:p-8 rounded-xl border shadow-2xl animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="w-full bg-white/5 p-8 md:p-12 rounded-[2.5rem] border border-white/5 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)]"
+          >
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
                     name="nome"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nome Completo</FormLabel>
+                        <FormLabel className="font-bold text-foreground">Nome Completo</FormLabel>
                         <FormControl>
-                          <Input placeholder="Seu nome" {...field} />
+                          <Input className="bg-white/5 border-white/10 h-12 rounded-xl" placeholder="Seu nome" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -129,9 +130,9 @@ export function QuoteForm() {
                     name="empresa"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Empresa</FormLabel>
+                        <FormLabel className="font-bold text-foreground">Empresa</FormLabel>
                         <FormControl>
-                          <Input placeholder="Nome da sua empresa" {...field} />
+                          <Input className="bg-white/5 border-white/10 h-12 rounded-xl" placeholder="Nome da sua empresa" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -139,15 +140,15 @@ export function QuoteForm() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>E-mail Corporativo</FormLabel>
+                        <FormLabel className="font-bold text-foreground">E-mail Corporativo</FormLabel>
                         <FormControl>
-                          <Input placeholder="seu@email.com.br" {...field} />
+                          <Input className="bg-white/5 border-white/10 h-12 rounded-xl" placeholder="seu@email.com.br" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -158,9 +159,9 @@ export function QuoteForm() {
                     name="telefone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Telefone / WhatsApp</FormLabel>
+                        <FormLabel className="font-bold text-foreground">Telefone / WhatsApp</FormLabel>
                         <FormControl>
-                          <Input placeholder="(00) 00000-0000" {...field} />
+                          <Input className="bg-white/5 border-white/10 h-12 rounded-xl" placeholder="(00) 00000-0000" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -168,15 +169,15 @@ export function QuoteForm() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
                     name="cidade"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Cidade</FormLabel>
+                        <FormLabel className="font-bold text-foreground">Cidade</FormLabel>
                         <FormControl>
-                          <Input placeholder="Sua cidade" {...field} />
+                          <Input className="bg-white/5 border-white/10 h-12 rounded-xl" placeholder="Sua cidade" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -187,14 +188,14 @@ export function QuoteForm() {
                     name="tipoEmbalagem"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Tipo de Embalagem</FormLabel>
+                        <FormLabel className="font-bold text-foreground">Tipo de Embalagem</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="bg-white/5 border-white/10 h-12 rounded-xl">
                               <SelectValue placeholder="Selecione o tipo" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent>
+                          <SelectContent className="bg-background/95 backdrop-blur-xl border-primary/20">
                             <SelectItem value="simples">Caixa Simples</SelectItem>
                             <SelectItem value="reforcada">Caixa Reforçada</SelectItem>
                             <SelectItem value="bandeja">Bandeja</SelectItem>
@@ -212,9 +213,9 @@ export function QuoteForm() {
                   name="quantidade"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Quantidade Estimada</FormLabel>
+                      <FormLabel className="font-bold text-foreground">Quantidade Estimada</FormLabel>
                       <FormControl>
-                        <Input placeholder="Ex: 500 unidades" {...field} />
+                        <Input className="bg-white/5 border-white/10 h-12 rounded-xl" placeholder="Ex: 500 unidades" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -226,11 +227,11 @@ export function QuoteForm() {
                   name="mensagem"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Mensagem Adicional (Opcional)</FormLabel>
+                      <FormLabel className="font-bold text-foreground">Mensagem Adicional</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Descreva detalhes do seu projeto ou dúvidas específicas"
-                          className="min-h-[100px]"
+                          placeholder="Como podemos ajudar no seu projeto?"
+                          className="min-h-[120px] bg-white/5 border-white/10 rounded-2xl resize-none"
                           {...field} 
                         />
                       </FormControl>
@@ -239,13 +240,13 @@ export function QuoteForm() {
                   )}
                 />
 
-                <Button type="submit" size="lg" className="w-full font-bold text-lg hover:scale-[1.02] transition-transform">
+                <Button type="submit" size="lg" className="w-full h-16 font-black text-xl rounded-2xl bg-primary hover:bg-primary/90 shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all hover:scale-[1.01] active:scale-[0.99] uppercase tracking-widest">
                   Quero meu orçamento
-                  <Send className="ml-2 h-5 w-5" />
+                  <Send className="ml-3 h-6 w-6" />
                 </Button>
               </form>
             </Form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -8,59 +9,59 @@ import {
   Phone,
   Mail,
   MapPin,
+  CheckCircle,
 } from "lucide-react";
 
 export function Footer() {
+  const whatsappLink = "https://wa.me/5519974094692?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.";
+
   return (
     <footer
       id="contato"
-      className="relative mt-20 bg-accent text-accent-foreground"
+      className="relative mt-20 bg-accent text-accent-foreground overflow-hidden"
     >
       <div className="container relative z-10 mx-auto px-0 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Coluna Logo e Social */}
-          <div className="py-12 md:py-20 flex flex-col items-center justify-center gap-6 text-center md:items-start md:text-left px-4 md:px-0">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-2xl font-bold text-foreground"
-            >
-              <Image
-                src="https://i.imgur.com/efHZCA9.png"
-                alt="Pagani Embalagens Logo"
-                width={180}
-                height={40}
-                className="h-auto"
-              />
-            </Link>
-            <p className="max-w-md text-sm text-muted-foreground">
+          <div className="py-12 md:py-20 flex flex-col items-center justify-center gap-8 text-center md:items-start md:text-left px-4 md:px-0">
+            <div className="flex flex-col md:flex-row items-center gap-4">
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-2xl font-bold text-foreground"
+              >
+                <Image
+                  src="https://i.imgur.com/efHZCA9.png"
+                  alt="Pagani Embalagens Logo"
+                  width={180}
+                  height={40}
+                  className="h-auto"
+                />
+              </Link>
+              <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-[10px] font-black uppercase tracking-widest text-primary shadow-[0_0_10px_rgba(249,115,22,0.2)]">
+                <CheckCircle className="h-3 w-3" />
+                NBR ISO 9001-2015
+              </div>
+            </div>
+            
+            <p className="max-w-md text-sm text-muted-foreground font-medium">
               Soluções industriais em embalagens de papelão ondulado para
-              logística, armazenagem e transporte.
+              logística, armazenagem e transporte com alta performance.
             </p>
             <div className="flex items-center gap-6">
-              <span
-                aria-label="LinkedIn"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Linkedin className="h-6 w-6" />
-              </span>
-              <span
-                aria-label="Instagram"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Instagram className="h-6 w-6" />
-              </span>
-              <span
-                aria-label="Facebook"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Facebook className="h-6 w-6" />
-              </span>
-              <span
-                aria-label="YouTube"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Youtube className="h-6 w-6" />
-              </span>
+              {[
+                { icon: <Linkedin className="h-6 w-6" />, label: "LinkedIn" },
+                { icon: <Instagram className="h-6 w-6" />, label: "Instagram" },
+                { icon: <Facebook className="h-6 w-6" />, label: "Facebook" },
+                { icon: <Youtube className="h-6 w-6" />, label: "YouTube" },
+              ].map((social) => (
+                <span
+                  key={social.label}
+                  aria-label={social.label}
+                  className="text-muted-foreground transition-all duration-300 hover:text-primary hover:scale-110 cursor-pointer"
+                >
+                  {social.icon}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -70,34 +71,42 @@ export function Footer() {
                className="absolute top-0 right-full h-full w-24 bg-primary origin-bottom-right -skew-x-[20deg] z-0 hidden md:block" 
                style={{ right: 'calc(100% - 1px)' }}
              />
-             <div className="relative z-10 flex flex-col justify-center space-y-6 text-primary-foreground md:pl-12 lg:pl-24 px-4 md:px-0">
+             <div className="relative z-10 flex flex-col justify-center space-y-8 text-primary-foreground md:pl-12 lg:pl-24 px-4 md:px-0">
               <a
-                href="https://wa.me/5519974094692"
+                href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 text-base transition-opacity hover:opacity-80 md:justify-start md:text-lg"
+                className="flex items-center justify-center gap-4 text-base transition-all hover:translate-x-2 md:justify-start md:text-xl font-black"
               >
-                <Phone className="h-5 w-5 flex-shrink-0" />
+                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white/20">
+                  <Phone className="h-5 w-5" />
+                </div>
                 <span>(19) 97409-4692</span>
               </a>
+              
               <a
                 href="mailto:marciopagani18@gmail.com"
-                className="flex items-center justify-center gap-3 text-base transition-opacity hover:opacity-80 md:justify-start md:text-lg"
+                className="flex items-center justify-center gap-4 text-base transition-all hover:translate-x-2 md:justify-start md:text-xl font-black"
               >
-                <Mail className="h-5 w-5 flex-shrink-0" />
+                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white/20">
+                  <Mail className="h-5 w-5" />
+                </div>
                 <span>marciopagani18@gmail.com</span>
               </a>
-              <div className="flex flex-col items-center gap-1 text-center md:items-start md:text-left">
-                <div className="flex items-center gap-3 text-base md:text-lg">
-                    <MapPin className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-semibold">Endereço Comercial</span>
+
+              <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-4 text-xl font-black">
+                    <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white/20">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <span>Endereço Comercial</span>
                 </div>
-                 <div className="text-base md:text-lg md:pl-[2.05rem]">
+                 <div className="text-base md:text-lg md:pl-[3.5rem] max-w-sm mx-auto md:mx-0 font-bold opacity-90">
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=R.+Jo%C3%A3o+Jos%C3%A9+Pescarini,+568+-+SALA+23+-+RESIDENCIAL+FLORA,+Vinhedo+-+SP,+13280-144"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition-opacity hover:opacity-80 block max-w-xs"
+                      className="transition-opacity hover:opacity-80 block"
                     >
                       R. João José Pescarini, 568 - SALA 23 - RESIDENCIAL FLORA, Vinhedo
                       - SP, 13280-144
@@ -108,10 +117,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border py-6 text-center px-4 md:px-0">
-          <p className="text-sm text-muted-foreground" suppressHydrationWarning>
-            &copy; {new Date().getFullYear()} Pagani Embalagens. Todos os
-            direitos reservados.
+        <div className="border-t border-white/5 py-8 text-center px-4 md:px-0">
+          <p className="text-xs text-muted-foreground font-bold tracking-widest" suppressHydrationWarning>
+            &copy; {new Date().getFullYear()} PAGANI EMBALAGENS. TODOS OS DIREITOS RESERVADOS.
           </p>
         </div>
       </div>

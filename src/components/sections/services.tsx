@@ -1,70 +1,82 @@
+
 "use client";
 
-import { CheckCircle, MapPin } from "lucide-react";
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Box, Settings, Truck, Headset, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
-const services = [
-  "Produção de caixas de papelão ondulado em diversos tamanhos, formatos e gramaturas;",
-  "Acessórios e divisórias internas de papelão para proteção de peças;",
-  "Engenharia e desenvolvimento de projetos especiais de embalagens;",
-  "Apoio técnico na escolha de especificações e dimensionamento das caixas;",
-  "Entrega just-in-time, alinhada ao fluxo de produção do cliente;",
-  "Logística personalizada e planejamento de lotes;",
-  "Suporte técnico contínuo.",
+const servicesCards = [
+  {
+    icon: <Box className="h-10 w-10 text-primary" />,
+    title: "Produção Completa",
+    description: "Caixas onduladas em todos os tamanhos, formatos e gramaturas, com acessórios e divisórias internas."
+  },
+  {
+    icon: <Settings className="h-10 w-10 text-primary" />,
+    title: "Projetos Técnicos",
+    description: "Engenharia e desenvolvimento de embalagens especiais, com apoio técnico em especificações e dimensionamento."
+  },
+  {
+    icon: <Truck className="h-10 w-10 text-primary" />,
+    title: "Entrega Just-in-Time",
+    description: "Logística personalizada e planejamento de lotes alinhados ao fluxo de produção do seu negócio."
+  },
+  {
+    icon: <Headset className="h-10 w-10 text-primary" />,
+    title: "Suporte Contínuo",
+    description: "Acompanhamento técnico em todas as etapas, do desenvolvimento à entrega final."
+  }
 ];
 
 export function Services() {
-  const serviceImage = PlaceHolderImages.find((p) => p.id === "services-production");
   return (
-    <section className="py-20 sm:py-32">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
-          <div className="space-y-6 animate-fade-in-up">
-            <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-4xl md:text-5xl">
-              Serviços para a sua Indústria.
-            </h2>
-            <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-              Oferecemos um portfólio completo de serviços para garantir que sua
-              operação logística seja impecável, do desenvolvimento à entrega
-              final.
-            </p>
-            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {services.map((service, index) => (
-                <li key={index} className="flex items-start gap-3 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
-                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                  <span className="text-muted-foreground text-sm md:text-base">{service}</span>
-                </li>
-              ))}
-            </ul>
-             <div className="mt-8 border-t border-border pt-6 animate-fade-in-up" style={{ animationDelay: '800ms' }}>
-              <div className="flex flex-col gap-4 text-muted-foreground">
-                <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 flex-shrink-0 text-primary mt-1" />
-                  <div>
-                    <p className="font-bold text-foreground">Área de Atuação:</p>
-                    <p className="text-sm md:text-base">
-                      Atendemos Vinhedo, Valinhos, Louveira, Jundiaí e toda a região de Campinas, garantindo agilidade e proximidade técnica.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl font-black tracking-tighter text-primary sm:text-5xl md:text-7xl uppercase">
+            Nossos Serviços
+          </h2>
+        </motion.div>
 
-          {serviceImage && (
-            <div className="overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-              <Image
-                src={serviceImage.imageUrl}
-                alt={serviceImage.description}
-                width={800}
-                height={600}
-                className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                data-ai-hint={serviceImage.imageHint}
-              />
-            </div>
-          )}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {servicesCards.map((service, index) => (
+            <motion.div 
+              key={service.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="p-8 rounded-[2rem] border border-white/5 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-500 group shadow-2xl hover:border-primary/30"
+            >
+              <div className="mb-6 h-16 w-16 flex items-center justify-center rounded-2xl bg-primary/10 group-hover:scale-110 transition-transform">
+                {service.icon}
+              </div>
+              <h3 className="text-2xl font-black mb-4 tracking-tight group-hover:text-primary transition-colors">{service.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+            </motion.div>
+          ))}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="mt-20 p-8 rounded-[2.5rem] bg-primary/5 border border-primary/10 flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left shadow-inner"
+        >
+          <div className="h-16 w-16 flex items-center justify-center rounded-full bg-primary/20 animate-pulse">
+            <MapPin className="h-8 w-8 text-primary" />
+          </div>
+          <div>
+            <h4 className="text-xl md:text-2xl font-black text-foreground">📍 Área de Atuação</h4>
+            <p className="text-muted-foreground text-sm md:text-lg font-medium">
+              Atendemos Vinhedo, Valinhos, Louveira, Jundiaí e toda a região de Campinas
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

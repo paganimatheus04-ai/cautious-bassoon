@@ -1,48 +1,60 @@
+
+"use client";
+
 import { Check, Edit, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
 const features = [
   {
-    icon: <Zap className="h-8 w-8 text-primary" />,
-    title: "Alta consistência de produção",
-    description: "Zero variação crítica que afete sua linha de produção.",
+    icon: <Zap className="h-10 w-10 text-primary" />,
+    title: "Alta consistência",
+    description: "Zero variação crítica que afete sua linha de produção industrial.",
   },
   {
-    icon: <Edit className="h-8 w-8 text-primary" />,
+    icon: <Edit className="h-10 w-10 text-primary" />,
     title: "Projetos sob medida",
-    description: "Criados para reduzir danos, peso e custo logístico.",
+    description: "Criados para reduzir danos, peso e custo logístico real.",
   },
   {
-    icon: <Check className="h-8 w-8 text-primary" />,
-    title: "Agilidade e comprometimento",
+    icon: <Check className="h-10 w-10 text-primary" />,
+    title: "Agilidade Total",
     description: "Entregas programadas, sem interrupções para sua indústria.",
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-20 md:py-32 bg-secondary/30">
+    <section className="py-24 md:py-32 relative overflow-hidden bg-secondary/10">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center text-center space-y-4 mb-12 animate-fade-in-up">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-                O que realmente importa para quem compra embalagens industriais.
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center text-center space-y-4 mb-20"
+        >
+            <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-primary uppercase">
+                Por que a Pagani?
             </h2>
-            <p className="text-lg text-muted-foreground">Por que empresas escolhem a Pagani Embalagens?</p>
-        </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-12 sm:grid-cols-1 md:grid-cols-3">
+        </motion.div>
+        
+        <div className="mx-auto grid max-w-6xl items-start gap-8 md:grid-cols-3">
             {features.map((feature, index) => (
-              <div
+              <motion.div
                 key={feature.title}
-                className="flex flex-col items-center text-center gap-4 animate-fade-in-up"
-                style={{ animationDelay: `${index * 150}ms` }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="flex flex-col items-center text-center p-8 rounded-3xl border border-primary/10 bg-white/5 backdrop-blur-xl hover:border-primary/40 transition-all duration-500 hover:-translate-y-2 group shadow-2xl"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-background/50 border border-primary/20">
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 mb-6 group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(249,115,22,0.1)]">
                   {feature.icon}
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm md:text-base">{feature.description}</p>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-black text-foreground group-hover:text-primary transition-colors uppercase tracking-tight">{feature.title}</h3>
+                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed">{feature.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
       </div>

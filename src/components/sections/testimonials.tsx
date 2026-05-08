@@ -1,8 +1,10 @@
+
 "use client";
 
 import { Quote } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -30,39 +32,54 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-20 md:py-32 bg-secondary/10">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center text-center space-y-4 mb-16 animate-fade-in-up">
-          <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-4xl md:text-5xl">
-            O QUE NOSSOS CLIENTES DIZEM
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center text-center space-y-4 mb-20"
+        >
+          <h2 className="text-4xl font-black tracking-tighter text-primary sm:text-5xl md:text-7xl uppercase">
+            Depoimentos
           </h2>
-          <p className="max-w-[800px] text-muted-foreground md:text-xl/relaxed">
-            Parcerias sólidas baseadas em confiança, qualidade e resultados práticos para a indústria.
+          <p className="max-w-[800px] text-muted-foreground md:text-xl font-medium tracking-tight">
+            O que nossos clientes dizem sobre a nossa parceria.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t, index) => (
-            <Card key={index} className="bg-background border-primary/10 hover:border-primary/30 transition-colors animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
-              <CardHeader className="pb-4">
-                <Quote className="h-8 w-8 text-primary mb-4 opacity-50" />
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <p className="text-muted-foreground italic leading-relaxed">
-                  "{t.text}"
-                </p>
-                <div className="flex items-center gap-4 border-t border-primary/10 pt-6">
-                  <Avatar className="h-12 w-12 border-2 border-primary/20">
-                    <AvatarFallback className="bg-primary/10 text-primary font-bold">{t.initials}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h4 className="font-bold text-foreground">{t.name}</h4>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
-                    <p className="text-xs font-semibold text-primary">{t.company}</p>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15, duration: 0.6 }}
+            >
+              <Card className="h-full bg-white/5 border-white/5 backdrop-blur-lg hover:border-primary/30 transition-all duration-500 rounded-3xl p-4 shadow-2xl">
+                <CardHeader className="pb-4">
+                  <div className="h-12 w-12 flex items-center justify-center rounded-xl bg-primary/10">
+                    <Quote className="h-6 w-6 text-primary" />
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardHeader>
+                <CardContent className="space-y-8">
+                  <p className="text-foreground/90 italic leading-relaxed text-base md:text-lg">
+                    "{t.text}"
+                  </p>
+                  <div className="flex items-center gap-4 border-t border-white/10 pt-8">
+                    <Avatar className="h-14 w-14 border-2 border-primary/30 shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+                      <AvatarFallback className="bg-primary/20 text-primary font-black text-lg">{t.initials}</AvatarFallback>
+                    </Avatar>
+                    <div className="flex flex-col">
+                      <h4 className="font-black text-foreground text-lg tracking-tight">{t.name}</h4>
+                      <p className="text-xs font-bold text-primary uppercase tracking-widest">{t.company}</p>
+                      <p className="text-xs text-muted-foreground font-medium">{t.role}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

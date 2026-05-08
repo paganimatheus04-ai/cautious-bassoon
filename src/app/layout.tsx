@@ -1,9 +1,11 @@
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
 import { FirebaseClientProvider } from "@/firebase";
+import { CustomCursor } from "@/components/ui/custom-cursor";
 
 export const metadata: Metadata = {
   title: "Pagani Embalagens | Caixas de Papelão para Indústria",
@@ -32,7 +34,8 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-body antialiased bg-background text-foreground">
+      <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
+        <CustomCursor />
         <FirebaseClientProvider>
           {children}
           <Toaster />

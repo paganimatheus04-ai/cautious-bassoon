@@ -1,33 +1,34 @@
+
+"use client";
+
 import Image from "next/image";
-import {
-  PlaceHolderImages,
-  type ImagePlaceholder,
-} from "@/lib/placeholder-images";
+import { motion } from "framer-motion";
+import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
 
 const solutions = [
   {
     id: "solution-corte-vinco",
     title: "Caixas Corte e Vinco",
     description:
-      "Produtos que exigem ferramentas especiais, que em diversos modelos não necessitam de fechamento lateral. Ideais para encaixes perfeitos, proteção de peças e otimização de espaço.",
+      "Produtos que exigem ferramentas especiais, que em diversos modelos não necessitam de fechamento lateral. Ideais para encaixes perfeitos.",
   },
   {
     id: "solution-convencional",
     title: "Caixas Convencionais",
     description:
-      "Modelos tradicionais da indústria de embalagens de papelão, apresentados nas mais variadas composições, ideais para armazenamento e transporte seguro e eficiente.",
+      "Modelos tradicionais da indústria de embalagens de papelão, ideais para armazenamento e transporte seguro e eficiente.",
   },
   {
     id: "solution-projetos-especiais",
     title: "Projetos Especiais",
     description:
-      "Soluções em embalagens personalizadas para as necessidades de cada cliente, produzidas sob encomenda para dar vida a ideias inovadoras com foco em redução de custos.",
+      "Soluções personalizadas produzidas sob encomenda para dar vida a ideias inovadoras com foco em redução de custos.",
   },
   {
     id: "solution-desenvolvimento-tecnico",
-    title: "Expertise em Desenvolvimento de Projetos",
+    title: "Desenvolvimento de Projetos",
     description:
-      "Nossos profissionais são especializados no desenvolvimento de produtos com soluções eficientes, criando embalagens que reduzem danos e otimizam a logística.",
+      "Nossos profissionais são especializados no desenvolvimento de produtos com soluções eficientes, otimizando sua logística.",
   },
 ];
 
@@ -36,41 +37,54 @@ const getImage = (id: string): ImagePlaceholder | undefined =>
 
 export function Solutions() {
   return (
-    <section className="py-20 md:py-32 bg-background">
-      <div className="container px-4 md:px-6 space-y-12 md:space-y-16">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center animate-fade-in-up">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
-            Tecnologia, Inovação e Soluções
+    <section className="py-20 md:py-32 relative bg-background overflow-hidden">
+      <div className="container px-4 md:px-6 space-y-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center space-y-4 text-center"
+        >
+          <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-primary drop-shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+            O que fabricamos
           </h2>
-          <p className="max-w-[900px] text-muted-foreground text-base md:text-xl/relaxed">
-            Caixas corte e vinco, convencionais e projetos especiais produzidos com rigor técnico, adaptados exatamente ao processo e às necessidades da sua indústria. Seguimos os requisitos da Norma NBR ISO 9001-2015.
-          </p>
-        </div>
+        </motion.div>
         
-        <div className="grid gap-6 md:gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {solutions.map((solution, index) => {
             const image = getImage(solution.id);
             return (
-              <div key={solution.id} className="relative group overflow-hidden rounded-lg animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
-                {image && (
-                  <Image
-                    src={image.imageUrl}
-                    alt={image.description}
-                    width={600}
-                    height={400}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    data-ai-hint={image.imageHint}
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-4 md:p-6 flex flex-col justify-end">
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-primary">
+              <motion.div 
+                key={solution.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15, duration: 0.6 }}
+                className="relative group overflow-hidden rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm"
+              >
+                <div className="relative aspect-video">
+                  {image && (
+                    <Image
+                      src={image.imageUrl}
+                      alt={image.description}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+                      data-ai-hint={image.imageHint}
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent transition-opacity group-hover:opacity-90" />
+                </div>
+                
+                <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                  <h3 className="text-2xl md:text-3xl font-black tracking-tight text-white transition-colors group-hover:text-primary">
                     {solution.title}
                   </h3>
-                  <p className="mt-2 text-white/90 max-w-md text-sm md:text-base">
+                  <p className="mt-3 text-white/70 max-w-sm text-sm md:text-base leading-relaxed">
                     {solution.description}
                   </p>
+                  <div className="mt-6 h-1 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

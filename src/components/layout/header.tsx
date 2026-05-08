@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -8,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -32,9 +34,16 @@ export function Header() {
   }, []);
 
   return (
-    <header className={cn("sticky top-0 z-50 w-full transition-all duration-300", isScrolled ? 'shadow-lg' : '')}>
-      <div className="bg-primary h-1" />
-      <div className={cn("bg-background/90 backdrop-blur-sm transition-all duration-300", isScrolled ? 'py-3' : 'py-4')}>
+    <motion.header 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300", 
+        isScrolled ? 'bg-background/80 backdrop-blur-xl border-b border-primary/10 shadow-2xl' : 'bg-transparent'
+      )}
+    >
+      <div className="bg-primary h-1 w-full" />
+      <div className={cn("transition-all duration-300", isScrolled ? 'py-2' : 'py-4')}>
         <div className="container mx-auto flex h-full items-center justify-between px-4 md:px-6">
             <Link
               href="/"
@@ -51,13 +60,13 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden items-center gap-6 text-sm font-medium lg:flex">
+            <nav className="hidden items-center gap-8 text-sm font-medium lg:flex">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative text-foreground/80 transition-colors hover:text-primary py-2 text-xs font-bold tracking-widest",
+                    "relative text-foreground/70 transition-colors hover:text-primary py-2 text-xs font-bold tracking-[0.2em]",
                     "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary after:transition-transform after:duration-300",
                     pathname === link.href ? "text-primary after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"
                   )}
@@ -65,6 +74,9 @@ export function Header() {
                   {link.label.toUpperCase()}
                 </Link>
               ))}
+              <Button asChild size="sm" className="bg-primary hover:bg-primary/90 rounded-full px-6 font-bold shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                <a href="#orcamento">ORÇAMENTO</a>
+              </Button>
             </nav>
 
             {/* Mobile Navigation */}
@@ -74,17 +86,17 @@ export function Header() {
                     <Button
                         variant="outline"
                         size="icon"
-                        className="text-foreground hover:bg-accent hover:text-accent-foreground"
+                        className="text-foreground hover:bg-accent hover:text-accent-foreground border-primary/20"
                     >
                         <Menu className="h-6 w-6" />
-                        <span className="sr-only">Abrir menu de navegação</span>
+                        <span className="sr-only">Abrir menu</span>
                     </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="bg-background w-[280px] sm:w-full">
+                    <SheetContent side="right" className="bg-background/95 backdrop-blur-md w-[280px]">
                     <nav className="grid gap-6 p-6 text-lg font-medium">
                         <Link
                           href="/"
-                          className="flex items-center gap-2 text-lg font-semibold mb-4"
+                          className="flex items-center gap-2 text-lg font-semibold mb-8"
                         >
                           <Image 
                             src="https://i.imgur.com/RkFJAQX.png" 
@@ -97,9 +109,9 @@ export function Header() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={cn("hover:text-primary transition-colors text-base", pathname === link.href ? "text-primary font-semibold" : "text-muted-foreground")}
+                            className={cn("hover:text-primary transition-colors text-base font-bold tracking-widest", pathname === link.href ? "text-primary" : "text-muted-foreground")}
                         >
-                            {link.label}
+                            {link.label.toUpperCase()}
                         </Link>
                         ))}
                     </nav>
@@ -108,6 +120,6 @@ export function Header() {
             </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

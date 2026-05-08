@@ -1,159 +1,64 @@
+
 "use client";
 
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import {
-  Leaf,
-  Recycle,
-  Lightbulb,
-  Scaling,
-  CopyCheck,
-  ScanLine,
-  FileCheck,
-  GaugeCircle,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Leaf, Recycle, Lightbulb } from "lucide-react";
 
 const sustainabilityFeatures = [
   {
-    icon: <Leaf className="h-7 w-7 text-primary" />,
-    title: "Uso Responsável de Matéria-Prima",
-    description:
-      "Priorizamos materiais certificados e processos que minimizam o impacto ambiental desde a origem.",
+    icon: <Leaf className="h-8 w-8 text-primary" />,
+    title: "Matéria-Prima Responsável",
+    description: "Priorizamos materiais certificados e processos que minimizam o impacto ambiental desde a origem.",
   },
   {
-    icon: <Recycle className="h-7 w-7 text-primary" />,
-    title: "Otimização e Reciclagem",
-    description:
-      "Nossos projetos visam a redução de desperdícios e incentivam a reciclagem e a logística reversa sempre que possível.",
+    icon: <Recycle className="h-8 w-8 text-primary" />,
+    title: "Reciclagem Ativa",
+    description: "Nossos projetos visam a redução de desperdícios e incentivam a reciclagem e logística reversa.",
   },
   {
-    icon: <Lightbulb className="h-7 w-7 text-primary" />,
+    icon: <Lightbulb className="h-8 w-8 text-primary" />,
     title: "Inovação Sustentável",
-    description:
-      "Buscamos constantemente novas tecnologias e designs que ofereçam máxima proteção com o mínimo de material.",
+    description: "Buscamos novas tecnologias que ofereçam máxima proteção com o mínimo de material possível.",
   },
 ];
 
-const commitmentFeatures = [
-  {
-    icon: <Scaling className="h-7 w-7 text-primary" />,
-    title: "Controle Dimensional",
-    description:
-      "Conferência das medidas e cortes para garantir encaixe perfeito e estabilidade no uso.",
-  },
-  {
-    icon: <CopyCheck className="h-7 w-7 text-primary" />,
-    title: "Padronização dos Lotes",
-    description:
-      "Processos que reduzem variação e garantem repetibilidade mesmo em grandes volumes.",
-  },
-  {
-    icon: <ScanLine className="h-7 w-7 text-primary" />,
-    title: "Rastreabilidade Interna",
-    description:
-      "Identificação e histórico de produção para total controle e segurança operacional.",
-  },
-  {
-    icon: <FileCheck className="h-7 w-7 text-primary" />,
-    title: "Matéria-Prima Certificada",
-    description:
-      "Utilização de papelão e insumos com especificações e laudos técnicos.",
-  },
-  {
-    icon: <GaugeCircle className="h-7 w-7 text-primary" />,
-    title: "Monitoramento Contínuo",
-    description:
-      "Avaliação técnica constante na produção para assegurar conformidade e zero desvios críticos.",
-  },
-];
-
-export function Expertise({ showFullCommitment = false }: { showFullCommitment?: boolean }) {
-  const expertiseImage = PlaceHolderImages.find((p) => p.id === "expertise-sustainable");
-  const commitmentImage = PlaceHolderImages.find((p) => p.id === "technical-commitment");
-
-  const technicalCommitmentSection = (
-    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-       <div className="space-y-6">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-          Certificações &amp; Compromisso Técnico
-        </h2>
-        <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-          Nosso processo produtivo segue padrões rigorosos que garantem precisão, consistência e segurança em cada lote de embalagens. Trabalhamos com controle técnico e práticas alinhadas às melhores metodologias da indústria de papelão ondulado.
-        </p>
-        <div className="grid gap-6">
-          {commitmentFeatures.map((feature, index) => (
-            <div
-              key={feature.title}
-              className="flex items-start gap-4 animate-fade-in-up"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-                {feature.icon}
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm md:text-base">{feature.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      {commitmentImage && (
-        <div className="relative h-[400px] md:h-[600px] overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-          <Image
-            src={commitmentImage.imageUrl}
-            alt={commitmentImage.description}
-            fill
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            data-ai-hint={commitmentImage.imageHint}
-          />
-        </div>
-      )}
-    </div>
-  );
-
-  const homeVersion = (
-     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
-      {/* Sustentabilidade */}
-      <div className="space-y-6 animate-fade-in-up">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-          Eficiência para sua indústria, responsabilidade para o futuro.
-        </h2>
-        <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-          Nosso compromisso vai além da simples produção de caixas. Acreditamos em um ciclo de vida responsável para nossas embalagens, combinando performance industrial com respeito ao meio ambiente.
-        </p>
-        <div className="grid gap-6">
-          {sustainabilityFeatures.map((feature, index) => (
-            <div key={feature.title} className="flex items-start gap-4 animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-                {feature.icon}
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm md:text-base">{feature.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      {expertiseImage && (
-         <div className="relative h-[400px] md:h-[600px] overflow-hidden rounded-lg group animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-            <Image
-                src={expertiseImage.imageUrl}
-                alt={expertiseImage.description}
-                fill
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                data-ai-hint={expertiseImage.imageHint}
-            />
-        </div>
-       )}
-    </div>
-  );
-
+export function Expertise() {
   return (
-    <div className="container px-4 md:px-6 py-20 md:py-32">
-      {showFullCommitment ? technicalCommitmentSection : homeVersion}
-    </div>
+    <section className="py-24 md:py-32 bg-secondary/10 relative overflow-hidden">
+      <div className="container px-4 md:px-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center text-center space-y-4 mb-20"
+        >
+          <h2 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl text-primary uppercase">
+            Sustentabilidade
+          </h2>
+          <p className="max-w-3xl text-muted-foreground text-lg md:text-xl font-medium">
+            Eficiência industrial com responsabilidade para o futuro.
+          </p>
+        </motion.div>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {sustainabilityFeatures.map((feature, index) => (
+            <motion.div 
+              key={feature.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15 }}
+              className="p-10 rounded-[2.5rem] bg-white/5 border border-white/5 hover:border-primary/20 backdrop-blur-xl transition-all duration-500 group shadow-2xl"
+            >
+              <div className="mb-6 h-16 w-16 flex items-center justify-center rounded-2xl bg-primary/10 group-hover:rotate-12 transition-transform">
+                {feature.icon}
+              </div>
+              <h3 className="text-2xl font-black mb-4 tracking-tight">{feature.title}</h3>
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
