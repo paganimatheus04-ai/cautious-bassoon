@@ -8,7 +8,7 @@ import { Expertise } from "@/components/sections/expertise";
 import { motion } from "framer-motion";
 import { AnimatedNumber } from "@/components/ui/animated-number";
 import { Button } from "@/components/ui/button";
-import Link from "link/link";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export default function SobrePage() {
