@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -132,7 +131,7 @@ export default function AdminPage() {
               <div className="space-y-2">
                 <h3 className="text-xl font-bold">Erro de Acesso</h3>
                 <p className="text-muted-foreground">Você precisa estar logado como administrador para ver esta página.</p>
-              }
+              </div>
             </CardContent>
           </Card>
         ) : !requests || requests.length === 0 ? (
