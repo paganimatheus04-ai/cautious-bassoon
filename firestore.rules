@@ -2,16 +2,13 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Permite leitura pública para facilitar o acesso administrativo via senha master no front-end
     match /quoteRequests/{quoteRequestId} {
       allow read: if true; 
-      // Criação pública para novos leads
       allow create: if request.resource.data.id == quoteRequestId;
-      // Impede deleção ou atualização pública por segurança
-      allow update, delete: if false;
+      // Permite atualização e exclusão para o gerenciamento via senha mestra no front-end
+      allow update, delete: if true;
     }
 
-    // Mantém as outras coleções protegidas
     match /{document=**} {
       allow read, write: if false;
     }
