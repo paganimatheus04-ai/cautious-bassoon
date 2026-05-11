@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { useCollection, useMemoFirebase } from '@/firebase';
@@ -27,7 +27,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { 
   Loader2, 
@@ -46,6 +46,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function AdminPage() {
   const db = useFirestore();
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Evita erros de hidratação garantindo que o componente montou no cliente
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const quoteRequestsQuery = useMemoFirebase(() => {
     if (!db) return null;
@@ -62,10 +68,16 @@ export default function AdminPage() {
 
   const handleDelete = (id: string) => {
     if (!db) return;
-    if (confirm('Tem certeza que deseja remover este lead permanentemente?')) {
+    if (typeof window !== 'undefined' && window.confirm('Tem certeza que deseja remover este lead permanentemente?')) {
       const docRef = doc(db, 'quoteRequests', id);
       deleteDocumentNonBlocking(docRef);
     }
+  };
+
+  const formatDateSafely = (dateStr: string | undefined) => {
+    if (!dateStr) return 'N/A';
+    const date = new Date(dateStr);
+    return isValid(date) ? format(date, "dd/MM HH:mm", { locale: ptBR }) : 'Data Inválida';
   };
 
   const getStatusBadge = (status: string) => {
@@ -82,6 +94,8 @@ export default function AdminPage() {
         return <Badge variant="outline">{status}</Badge>;
     }
   };
+
+  if (!isMounted) return null;
 
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
@@ -177,7 +191,7 @@ export default function AdminPage() {
                             {getStatusBadge(req.status || 'New')}
                             <div className="flex items-center gap-2 text-muted-foreground text-[10px] font-bold uppercase tracking-wider">
                               <Clock className="h-3 w-3" />
-                              {req.requestDate ? format(new Date(req.requestDate), "dd/MM HH:mm", { locale: ptBR }) : 'N/A'}
+                              {formatDateSafely(req.requestDate)}
                             </div>
                           </div>
                         </TableCell>
@@ -199,13 +213,13 @@ export default function AdminPage() {
                         <TableCell className="py-6 align-top">
                           <div className="space-y-1">
                             <Badge variant="secondary" className="text-[9px] font-black uppercase tracking-tighter">
-                              {req.tipoEmbalagem}
+                              {req.tipoEmbalagem || 'N/A'}
                             </Badge>
                             <div className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground">
-                              <Package className="h-3 w-3" /> {req.quantidade}
+                              <Package className="h-3 w-3" /> {req.quantidade || 'N/A'}
                             </div>
                             <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground/60 uppercase">
-                              <MapPin className="h-2.5 w-2.5" /> {req.cidade}
+                              <MapPin className="h-2.5 w-2.5" /> {req.cidade || 'N/A'}
                             </div>
                           </div>
                         </TableCell>
