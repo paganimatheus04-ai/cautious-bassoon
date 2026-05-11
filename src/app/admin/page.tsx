@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -18,11 +19,10 @@ import {
   Inbox, 
   Phone, 
   Clock, 
-  MoreVertical,
   Trash2,
-  AlertCircle,
   ShieldCheck,
-  Copy
+  Copy,
+  ChevronDown
 } from 'lucide-react';
 import { 
   DropdownMenu,
@@ -40,7 +40,6 @@ export default function AdminPage() {
   const { user, isUserLoading } = useUser();
   const [isMounted, setIsMounted] = useState(false);
 
-  // Garante que o componente só renderize no cliente
   useEffect(() => {
     setIsMounted(true);
     if (!isUserLoading && !user && auth) {
@@ -79,7 +78,7 @@ export default function AdminPage() {
   };
 
   const formatDateSafely = (dateStr: any) => {
-    if (!dateStr || typeof dateStr !== 'string') return 'N/A';
+    if (!dateStr) return 'N/A';
     try {
       const date = new Date(dateStr);
       return isValid(date) ? format(date, "dd/MM HH:mm", { locale: ptBR }) : 'Data Inválida';
@@ -88,7 +87,6 @@ export default function AdminPage() {
     }
   };
 
-  // Se não estiver montado no cliente, mostra apenas um loader básico para evitar erro de hidratação
   if (!isMounted) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
@@ -109,31 +107,32 @@ export default function AdminPage() {
         </div>
 
         {error ? (
-          <div className="bg-white/5 border border-primary/20 rounded-[2rem] p-8 md:p-12 text-center space-y-8">
+          <div className="bg-white/5 border border-primary/20 rounded-[2rem] p-8 md:p-12 text-center space-y-8 animate-fade-in-up">
             <div className="h-20 w-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
               <ShieldCheck className="h-10 w-10 text-primary" />
             </div>
             <div className="max-w-2xl mx-auto space-y-4">
               <h2 className="text-2xl font-black uppercase">Acesso Restrito ao Banco de Dados</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Para visualizar os orçamentos, seu ID de usuário precisa estar na lista de administradores no Firebase Console.
+                O site está funcionando, mas seu usuário ainda não tem permissão para ver os orçamentos.
               </p>
               
               <div className="bg-background border border-white/10 p-4 rounded-xl flex items-center justify-between gap-4 max-w-md mx-auto">
-                <code className="text-xs font-mono text-primary truncate">{user?.uid || 'Carregando ID...'}</code>
+                <code className="text-xs font-mono text-primary truncate">{user?.uid || 'Carregando...'}</code>
                 <Button variant="ghost" size="sm" onClick={copyUid} className="shrink-0">
                   <Copy className="h-4 w-4 mr-2" /> Copiar ID
                 </Button>
               </div>
 
               <div className="text-left bg-white/5 p-6 rounded-2xl space-y-3 mt-8">
-                <p className="font-bold text-sm uppercase text-primary">Como liberar seu acesso:</p>
-                <ol className="text-xs text-muted-foreground space-y-2 list-decimal pl-4 leading-relaxed">
+                <p className="font-bold text-sm uppercase text-primary">Como liberar seu acesso agora:</p>
+                <ol className="text-xs text-muted-foreground space-y-3 list-decimal pl-4 leading-relaxed">
                   <li>Acesse o <b>Firebase Console</b> do seu projeto.</li>
                   <li>Vá em <b>Firestore Database</b>.</li>
-                  <li>Crie uma coleção chamada <code>roles_admin</code>.</li>
-                  <li>Crie um documento com o ID igual ao seu <b>ID copiado acima</b>.</li>
-                  <li>Pronto! Recarregue esta página.</li>
+                  <li>Clique em "Iniciar Coleção" e crie uma chamada <code>roles_admin</code>.</li>
+                  <li>No campo <b>ID do Documento</b>, cole o seu <b>ID que você copiou acima</b>.</li>
+                  <li>Dentro do documento, adicione um campo <code>isAdmin</code> do tipo <code>boolean</code> com o valor <code>true</code>.</li>
+                  <li>Pronto! Recarregue esta página e os dados aparecerão.</li>
                 </ol>
               </div>
             </div>
@@ -147,7 +146,7 @@ export default function AdminPage() {
           <div className="border-2 border-dashed border-white/10 rounded-[3rem] py-32 text-center">
              <Inbox className="h-16 w-16 text-white/10 mx-auto mb-6" />
              <h3 className="text-xl font-black uppercase">Nenhum orçamento recebido</h3>
-             <p className="text-muted-foreground">As solicitações feitas no formulário aparecerão aqui.</p>
+             <p className="text-muted-foreground">As solicitações feitas no site aparecerão aqui instantaneamente.</p>
           </div>
         ) : (
           <div className="grid gap-6">
@@ -170,19 +169,22 @@ export default function AdminPage() {
 
                   <div className="flex flex-wrap gap-4 text-xs font-medium text-muted-foreground">
                     <span className="flex items-center gap-1.5"><Phone className="h-3 w-3" /> {req.phone || 'N/A'}</span>
-                    <span className="px-2 py-0.5 bg-white/5 rounded-md">📦 {req.tipoEmbalagem || 'Padrão'}</span>
+                    <span className="px-2 py-0.5 bg-white/5 rounded-md">📦 {req.tipoEmbalagem || 'Não especificado'}</span>
                     <span className="px-2 py-0.5 bg-white/5 rounded-md">🔢 {req.quantidade || 'N/A'}</span>
+                    <span className="px-2 py-0.5 bg-white/5 rounded-md">📍 {req.cidade || 'N/A'}</span>
                   </div>
 
                   <p className="text-sm leading-relaxed text-muted-foreground bg-black/20 p-4 rounded-2xl italic">
-                    "{req.message}"
+                    "{req.message || req.mensagem}"
                   </p>
                 </div>
 
                 <div className="flex md:flex-col gap-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="outline" className="rounded-xl font-bold">Ações</Button>
+                      <Button variant="outline" className="rounded-xl font-bold gap-2">
+                        Ações <ChevronDown className="h-4 w-4" />
+                      </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="bg-popover border-white/10 rounded-xl">
                       <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Pending')} className="text-xs cursor-pointer">Marcar Pendente</DropdownMenuItem>
@@ -190,7 +192,7 @@ export default function AdminPage() {
                       <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Archived')} className="text-xs cursor-pointer">Arquivar</DropdownMenuItem>
                       <div className="h-px bg-white/5 my-1" />
                       <DropdownMenuItem onClick={() => handleDelete(req.id)} className="text-xs text-destructive cursor-pointer font-bold">
-                        <Trash2 className="h-3 w-3 mr-2" /> Remover
+                        <Trash2 className="h-3 w-3 mr-2" /> Remover Lead
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
