@@ -40,6 +40,7 @@ export default function AdminPage() {
   const { user, isUserLoading } = useUser();
   const [isMounted, setIsMounted] = useState(false);
 
+  // Garante que o componente só renderize no cliente
   useEffect(() => {
     setIsMounted(true);
     if (!isUserLoading && !user && auth) {
@@ -77,8 +78,8 @@ export default function AdminPage() {
     }
   };
 
-  const formatDateSafely = (dateStr: string | undefined) => {
-    if (!dateStr) return 'N/A';
+  const formatDateSafely = (dateStr: any) => {
+    if (!dateStr || typeof dateStr !== 'string') return 'N/A';
     try {
       const date = new Date(dateStr);
       return isValid(date) ? format(date, "dd/MM HH:mm", { locale: ptBR }) : 'Data Inválida';
@@ -87,7 +88,14 @@ export default function AdminPage() {
     }
   };
 
-  if (!isMounted) return null;
+  // Se não estiver montado no cliente, mostra apenas um loader básico para evitar erro de hidratação
+  if (!isMounted) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
@@ -188,7 +196,7 @@ export default function AdminPage() {
                   </DropdownMenu>
                   
                   <Button asChild variant="secondary" className="rounded-xl font-bold">
-                    <a href={`https://wa.me/55${req.phone?.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer">
+                    <a href={req.phone ? `https://wa.me/55${req.phone.replace(/\D/g, '')}` : '#'} target="_blank" rel="noopener noreferrer">
                       WhatsApp
                     </a>
                   </Button>
