@@ -42,13 +42,11 @@ import {
   CheckCircle2,
   AlertCircle
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export default function AdminPage() {
   const db = useFirestore();
   const [isMounted, setIsMounted] = useState(false);
 
-  // Evita erros de hidratação garantindo que o componente montou no cliente
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -76,8 +74,12 @@ export default function AdminPage() {
 
   const formatDateSafely = (dateStr: string | undefined) => {
     if (!dateStr) return 'N/A';
-    const date = new Date(dateStr);
-    return isValid(date) ? format(date, "dd/MM HH:mm", { locale: ptBR }) : 'Data Inválida';
+    try {
+      const date = new Date(dateStr);
+      return isValid(date) ? format(date, "dd/MM HH:mm", { locale: ptBR }) : 'Data Inválida';
+    } catch (e) {
+      return 'Erro na data';
+    }
   };
 
   const getStatusBadge = (status: string) => {
@@ -91,174 +93,158 @@ export default function AdminPage() {
       case 'Archived':
         return <Badge variant="secondary">ARQUIVADO</Badge>;
       default:
-        return <Badge variant="outline">{status}</Badge>;
+        return <Badge variant="outline">{status || 'Lead'}</Badge>;
     }
   };
 
-  if (!isMounted) return null;
+  if (!isMounted) {
+    return (
+      <div className="flex min-h-screen flex-col bg-background">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Header />
-      <main className="flex-1 container mx-auto px-4 py-12 md:py-24 max-w-7xl">
+      <main className="flex-1 container mx-auto px-4 py-12 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-2"
-          >
+          <div className="space-y-2">
             <div className="flex items-center gap-2 text-primary font-bold tracking-widest uppercase text-xs">
-              <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-              Gestão de Leads em Tempo Real
+              <div className="h-2 w-2 rounded-full bg-primary" />
+              Gestão de Leads
             </div>
             <h1 className="text-4xl font-black tracking-tighter uppercase">
               Painel de <span className="text-primary">Controle</span>
             </h1>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="flex gap-4"
-          >
-            <Card className="bg-white/5 border-white/10 backdrop-blur-xl px-6 py-3 rounded-2xl flex items-center gap-4">
+          <div className="flex gap-4">
+            <Card className="bg-white/5 border-white/10 px-6 py-3 rounded-2xl flex items-center gap-4">
                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Inbox className="h-5 w-5 text-primary" />
                </div>
                <div>
-                  <p className="text-[10px] font-black uppercase text-muted-foreground leading-none mb-1">Total Recebido</p>
-                  <p className="text-2xl font-black leading-none">{requests?.length || 0}</p>
+                  <p className="text-[10px] font-black uppercase text-muted-foreground leading-none mb-1">Total</p>
+                  <p className="text-2xl font-black leading-none">{requests ? requests.length : 0}</p>
                </div>
             </Card>
-          </motion.div>
+          </div>
         </div>
 
         {isLoading ? (
-          <div className="flex h-96 items-center justify-center flex-col gap-4">
-            <Loader2 className="h-12 w-12 animate-spin text-primary" />
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Sincronizando Leads...</p>
+          <div className="flex h-64 items-center justify-center flex-col gap-4">
+            <Loader2 className="h-10 w-10 animate-spin text-primary" />
+            <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Sincronizando dados...</p>
           </div>
         ) : error ? (
-          <Card className="border-destructive bg-destructive/10 backdrop-blur-xl rounded-[2rem]">
-            <CardContent className="pt-8 text-center space-y-4">
-              <AlertCircle className="h-12 w-12 text-destructive mx-auto" />
+          <Card className="border-destructive bg-destructive/10 rounded-2xl">
+            <CardContent className="p-8 text-center space-y-4">
+              <AlertCircle className="h-10 w-10 text-destructive mx-auto" />
               <div className="space-y-2">
-                <h3 className="text-xl font-bold">Erro de Acesso</h3>
-                <p className="text-muted-foreground">Você precisa estar logado como administrador para ver esta página.</p>
+                <h3 className="text-xl font-bold">Acesso Restrito</h3>
+                <p className="text-muted-foreground text-sm">Este painel é exclusivo para administradores autorizados.</p>
               </div>
             </CardContent>
           </Card>
         ) : !requests || requests.length === 0 ? (
-          <Card className="bg-white/5 border-dashed border-white/10 rounded-[3rem] py-32">
+          <Card className="bg-white/5 border-dashed border-white/10 rounded-[2rem] py-24">
             <CardContent className="flex flex-col items-center justify-center gap-6">
-              <Inbox className="h-16 w-16 text-muted-foreground/20" />
-              <div className="text-center space-y-2">
-                <h3 className="text-2xl font-black uppercase tracking-tight">Sem orçamentos por enquanto</h3>
-                <p className="text-muted-foreground font-medium">Os novos pedidos aparecerão aqui instantaneamente.</p>
+              <Inbox className="h-12 w-12 text-muted-foreground/20" />
+              <div className="text-center space-y-1">
+                <h3 className="text-xl font-black uppercase">Nenhum pedido encontrado</h3>
+                <p className="text-muted-foreground text-sm">Os orçamentos do site aparecerão aqui automaticamente.</p>
               </div>
             </CardContent>
           </Card>
         ) : (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="grid gap-6"
-          >
-            <div className="overflow-hidden rounded-[2rem] border border-white/5 bg-white/5 backdrop-blur-2xl">
-              <Table>
-                <TableHeader className="bg-white/5">
-                  <TableRow className="border-b border-white/5 hover:bg-transparent">
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 px-8 text-white">Status / Data</TableHead>
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 text-white">Cliente</TableHead>
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 text-white">Especificação</TableHead>
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 text-white">Mensagem</TableHead>
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 pr-8 text-right text-white">Ações</TableHead>
+          <div className="rounded-2xl border border-white/5 bg-white/5 overflow-hidden">
+            <Table>
+              <TableHeader className="bg-white/5">
+                <TableRow className="border-b border-white/5 hover:bg-transparent">
+                  <TableHead className="text-[10px] font-black uppercase tracking-widest py-4 px-6">Status / Data</TableHead>
+                  <TableHead className="text-[10px] font-black uppercase tracking-widest py-4">Cliente</TableHead>
+                  <TableHead className="text-[10px] font-black uppercase tracking-widest py-4">Especificação</TableHead>
+                  <TableHead className="text-[10px] font-black uppercase tracking-widest py-4">Mensagem</TableHead>
+                  <TableHead className="text-[10px] font-black uppercase tracking-widest py-4 px-6 text-right">Ações</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {requests.map((req) => (
+                  <TableRow key={req.id} className="border-b border-white/5 hover:bg-white/[0.02]">
+                    <TableCell className="py-4 px-6 align-top">
+                      <div className="space-y-2">
+                        {getStatusBadge(req.status)}
+                        <div className="flex items-center gap-1.5 text-[9px] font-bold text-muted-foreground uppercase">
+                          <Clock className="h-3 w-3" />
+                          {formatDateSafely(req.requestDate)}
+                        </div>
+                      </div>
+                    </TableCell>
+                    <TableCell className="py-4 align-top">
+                      <div className="space-y-1">
+                        <p className="font-bold text-sm">{req.name || 'Sem nome'}</p>
+                        <p className="text-[10px] font-bold text-primary uppercase">{req.company || 'Particular'}</p>
+                        <a 
+                          href={`tel:${req.phone}`} 
+                          className="text-[10px] text-muted-foreground hover:text-primary flex items-center gap-1"
+                        >
+                          <Phone className="h-3 w-3" /> {req.phone || 'N/A'}
+                        </a>
+                      </div>
+                    </TableCell>
+                    <TableCell className="py-4 align-top">
+                      <div className="space-y-1">
+                        <Badge variant="secondary" className="text-[9px] px-1.5 py-0">
+                          {req.tipoEmbalagem || 'Padrão'}
+                        </Badge>
+                        <div className="flex items-center gap-1 text-[10px] text-muted-foreground font-medium">
+                          <Package className="h-3 w-3" /> {req.quantidade || 'N/A'}
+                        </div>
+                        <div className="flex items-center gap-1 text-[9px] text-muted-foreground/60 uppercase">
+                          <MapPin className="h-3 w-3" /> {req.cidade || 'N/A'}
+                        </div>
+                      </div>
+                    </TableCell>
+                    <TableCell className="py-4 align-top max-w-[200px]">
+                      <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">
+                        {req.message}
+                      </p>
+                    </TableCell>
+                    <TableCell className="py-4 px-6 align-top text-right">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" size="icon" className="h-8 w-8">
+                            <MoreVertical className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="bg-popover border-white/10">
+                          <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Pending')} className="text-xs cursor-pointer">
+                            Marcar Pendente
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Processed')} className="text-xs cursor-pointer">
+                            Marcar Respondido
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Archived')} className="text-xs cursor-pointer">
+                            Arquivar
+                          </DropdownMenuItem>
+                          <div className="h-px bg-white/5 my-1" />
+                          <DropdownMenuItem onClick={() => handleDelete(req.id)} className="text-xs text-destructive cursor-pointer">
+                            Remover Lead
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
                   </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <AnimatePresence>
-                    {requests.map((req, index) => (
-                      <motion.tr 
-                        key={req.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ delay: index * 0.03 }}
-                        className={`group border-b border-white/5 hover:bg-white/[0.02] transition-colors ${req.status === 'Archived' ? 'opacity-50' : ''}`}
-                      >
-                        <TableCell className="py-6 px-8 align-top">
-                          <div className="space-y-2">
-                            {getStatusBadge(req.status || 'New')}
-                            <div className="flex items-center gap-2 text-muted-foreground text-[10px] font-bold uppercase tracking-wider">
-                              <Clock className="h-3 w-3" />
-                              {formatDateSafely(req.requestDate)}
-                            </div>
-                          </div>
-                        </TableCell>
-                        <TableCell className="py-6 align-top">
-                          <div className="space-y-1">
-                            <p className="font-black text-foreground tracking-tight">{req.name}</p>
-                            <p className="text-xs font-bold text-primary uppercase flex items-center gap-1">
-                              <Building className="h-3 w-3" /> {req.company}
-                            </p>
-                            <a 
-                              href={`https://wa.me/55${req.phone?.replace(/\D/g, '')}`} 
-                              target="_blank" 
-                              className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
-                            >
-                              <Phone className="h-3 w-3" /> {req.phone}
-                            </a>
-                          </div>
-                        </TableCell>
-                        <TableCell className="py-6 align-top">
-                          <div className="space-y-1">
-                            <Badge variant="secondary" className="text-[9px] font-black uppercase tracking-tighter">
-                              {req.tipoEmbalagem || 'N/A'}
-                            </Badge>
-                            <div className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground">
-                              <Package className="h-3 w-3" /> {req.quantidade || 'N/A'}
-                            </div>
-                            <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground/60 uppercase">
-                              <MapPin className="h-2.5 w-2.5" /> {req.cidade || 'N/A'}
-                            </div>
-                          </div>
-                        </TableCell>
-                        <TableCell className="py-6 align-top max-w-xs">
-                          <p className="text-xs font-medium text-muted-foreground leading-relaxed line-clamp-3 group-hover:line-clamp-none transition-all">
-                            {req.message}
-                          </p>
-                        </TableCell>
-                        <TableCell className="py-6 pr-8 align-top text-right">
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-white/10">
-                                <MoreVertical className="h-4 w-4" />
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end" className="bg-background/95 backdrop-blur-xl border-white/10">
-                              <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Pending')} className="gap-2 cursor-pointer">
-                                <Clock className="h-4 w-4 text-yellow-500" /> Marcar Pendente
-                              </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Processed')} className="gap-2 cursor-pointer">
-                                <CheckCircle2 className="h-4 w-4 text-green-500" /> Marcar Respondido
-                              </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Archived')} className="gap-2 cursor-pointer">
-                                <Inbox className="h-4 w-4 text-muted-foreground" /> Arquivar
-                              </DropdownMenuItem>
-                              <div className="h-px bg-white/10 my-1" />
-                              <DropdownMenuItem onClick={() => handleDelete(req.id)} className="gap-2 text-destructive cursor-pointer focus:text-destructive">
-                                <Trash2 className="h-4 w-4" /> Deletar Lead
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        </TableCell>
-                      </motion.tr>
-                    ))}
-                  </AnimatePresence>
-                </TableBody>
-              </Table>
-            </div>
-          </motion.div>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         )}
       </main>
       <Footer />
