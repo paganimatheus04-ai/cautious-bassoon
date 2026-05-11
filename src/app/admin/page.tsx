@@ -38,7 +38,6 @@ import {
   MapPin, 
   Package, 
   Clock, 
-  ExternalLink,
   MoreVertical,
   Trash2,
   CheckCircle2,
@@ -64,7 +63,7 @@ export default function AdminPage() {
 
   const handleDelete = (id: string) => {
     if (!db) return;
-    if (confirm('Tem certeza que deseja remover este orçamento permanentemente?')) {
+    if (confirm('Tem certeza que deseja remover este lead permanentemente?')) {
       const docRef = doc(db, 'quoteRequests', id);
       deleteDocumentNonBlocking(docRef);
     }
@@ -124,7 +123,7 @@ export default function AdminPage() {
         {isLoading ? (
           <div className="flex h-96 items-center justify-center flex-col gap-4">
             <Loader2 className="h-12 w-12 animate-spin text-primary" />
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Sincronizando banco de dados...</p>
+            <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Sincronizando Leads...</p>
           </div>
         ) : error ? (
           <Card className="border-destructive bg-destructive/10 backdrop-blur-xl rounded-[2rem]">
@@ -132,8 +131,8 @@ export default function AdminPage() {
               <AlertCircle className="h-12 w-12 text-destructive mx-auto" />
               <div className="space-y-2">
                 <h3 className="text-xl font-bold">Erro de Acesso</h3>
-                <p className="text-muted-foreground">Verifique suas permissões no Firestore para visualizar os dados.</p>
-              </div>
+                <p className="text-muted-foreground">Você precisa estar logado como administrador para ver esta página.</p>
+              }
             </CardContent>
           </Card>
         ) : !requests || requests.length === 0 ? (
@@ -156,11 +155,11 @@ export default function AdminPage() {
               <Table>
                 <TableHeader className="bg-white/5">
                   <TableRow className="border-b border-white/5 hover:bg-transparent">
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 px-8">Status / Data</TableHead>
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6">Cliente</TableHead>
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6">Especificação</TableHead>
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6">Mensagem</TableHead>
-                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 pr-8 text-right">Ações</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 px-8 text-white">Status / Data</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 text-white">Cliente</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 text-white">Especificação</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 text-white">Mensagem</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 pr-8 text-right text-white">Ações</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -189,7 +188,11 @@ export default function AdminPage() {
                             <p className="text-xs font-bold text-primary uppercase flex items-center gap-1">
                               <Building className="h-3 w-3" /> {req.company}
                             </p>
-                            <a href={`https://wa.me/55${req.phone?.replace(/\D/g, '')}`} target="_blank" className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+                            <a 
+                              href={`https://wa.me/55${req.phone?.replace(/\D/g, '')}`} 
+                              target="_blank" 
+                              className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                            >
                               <Phone className="h-3 w-3" /> {req.phone}
                             </a>
                           </div>
@@ -200,7 +203,7 @@ export default function AdminPage() {
                               {req.tipoEmbalagem}
                             </Badge>
                             <div className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground">
-                              <Package className="h-3 w-3" /> {req.quantidade} un.
+                              <Package className="h-3 w-3" /> {req.quantidade}
                             </div>
                             <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground/60 uppercase">
                               <MapPin className="h-2.5 w-2.5" /> {req.cidade}
