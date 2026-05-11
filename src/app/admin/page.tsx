@@ -49,7 +49,7 @@ export default function AdminPage() {
     try {
       setIsLoading(true);
       const { initializeFirebase } = await import('@/firebase');
-      const { collection, getDocs, orderBy, query, onSnapshot } = await import('firebase/firestore');
+      const { collection, orderBy, query, onSnapshot } = await import('firebase/firestore');
       const { firestore } = initializeFirebase();
 
       const q = query(
@@ -57,7 +57,6 @@ export default function AdminPage() {
         orderBy('requestDate', 'desc')
       );
 
-      // Usando onSnapshot para atualizações em tempo real sem refresh
       const unsubscribe = onSnapshot(q, (snap) => {
         setOrcamentos(snap.docs.map(doc => ({
           id: doc.id,
@@ -198,11 +197,10 @@ export default function AdminPage() {
     );
   }
 
-  const whatsappMessage = encodeURIComponent("Olá! Recebemos sua Solicitações de Orçamento na Pagani Embalagens! Para continuarmos, poderia confirmar seu nome?");
+  const whatsappMessage = encodeURIComponent("Olá! Recebemos sua Solicitações de Orçamento na Pagani Embalagens! Para continuarmos, poderia confirmar seu nome [        ]?\n\n");
 
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
-      {/* Header Simplificado para o Admin */}
       <header className="border-b border-white/5 bg-background/50 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Image 
