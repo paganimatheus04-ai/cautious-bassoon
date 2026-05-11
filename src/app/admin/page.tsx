@@ -5,8 +5,12 @@ import React from 'react';
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy } from 'firebase/firestore';
+import { collection, query, orderBy, doc } from 'firebase/firestore';
 import { useFirestore } from '@/firebase';
+import { 
+  updateDocumentNonBlocking, 
+  deleteDocumentNonBlocking 
+} from '@/firebase/non-blocking-updates';
 import { 
   Table, 
   TableBody, 
@@ -15,11 +19,31 @@ import {
   TableHeader, 
   TableRow 
 } from "@/components/ui/table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { Loader2, Inbox, Phone, Building, MapPin, Package, Clock, ExternalLink } from 'lucide-react';
+import { 
+  Loader2, 
+  Inbox, 
+  Phone, 
+  Building, 
+  MapPin, 
+  Package, 
+  Clock, 
+  ExternalLink,
+  MoreVertical,
+  Trash2,
+  CheckCircle2,
+  AlertCircle
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function AdminPage() {
@@ -32,11 +56,39 @@ export default function AdminPage() {
 
   const { data: requests, isLoading, error } = useCollection(quoteRequestsQuery);
 
+  const handleUpdateStatus = (id: string, newStatus: string) => {
+    if (!db) return;
+    const docRef = doc(db, 'quoteRequests', id);
+    updateDocumentNonBlocking(docRef, { status: newStatus });
+  };
+
+  const handleDelete = (id: string) => {
+    if (!db) return;
+    if (confirm('Tem certeza que deseja remover este orçamento permanentemente?')) {
+      const docRef = doc(db, 'quoteRequests', id);
+      deleteDocumentNonBlocking(docRef);
+    }
+  };
+
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'New':
+        return <Badge className="bg-primary text-white font-black">NOVO</Badge>;
+      case 'Pending':
+        return <Badge variant="outline" className="text-yellow-500 border-yellow-500">PENDENTE</Badge>;
+      case 'Processed':
+        return <Badge variant="outline" className="text-green-500 border-green-500">RESPONDIDO</Badge>;
+      case 'Archived':
+        return <Badge variant="secondary">ARQUIVADO</Badge>;
+      default:
+        return <Badge variant="outline">{status}</Badge>;
+    }
+  };
+
   return (
     <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-12 md:py-24 max-w-7xl">
-        {/* Header do Dashboard */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -45,14 +97,11 @@ export default function AdminPage() {
           >
             <div className="flex items-center gap-2 text-primary font-bold tracking-widest uppercase text-xs">
               <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-              Monitoramento em tempo real
+              Gestão de Leads em Tempo Real
             </div>
             <h1 className="text-4xl font-black tracking-tighter uppercase">
-              Painel de <span className="text-primary">Orçamentos</span>
+              Painel de <span className="text-primary">Controle</span>
             </h1>
-            <p className="text-muted-foreground font-medium">
-              Gerencie os leads industriais recebidos através da plataforma.
-            </p>
           </motion.div>
 
           <motion.div 
@@ -72,33 +121,28 @@ export default function AdminPage() {
           </motion.div>
         </div>
 
-        {/* Estado de Carregamento */}
         {isLoading ? (
           <div className="flex h-96 items-center justify-center flex-col gap-4">
             <Loader2 className="h-12 w-12 animate-spin text-primary" />
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Sincronizando com o banco...</p>
+            <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Sincronizando banco de dados...</p>
           </div>
         ) : error ? (
           <Card className="border-destructive bg-destructive/10 backdrop-blur-xl rounded-[2rem]">
             <CardContent className="pt-8 text-center space-y-4">
-              <div className="h-16 w-16 bg-destructive/20 rounded-full flex items-center justify-center mx-auto">
-                 <MapPin className="h-8 w-8 text-destructive" />
-              </div>
+              <AlertCircle className="h-12 w-12 text-destructive mx-auto" />
               <div className="space-y-2">
-                <h3 className="text-xl font-bold">Erro de Sincronização</h3>
-                <p className="text-muted-foreground max-w-md mx-auto">Não foi possível carregar os dados. Verifique se você tem permissões administrativas no Firebase Firestore.</p>
+                <h3 className="text-xl font-bold">Erro de Acesso</h3>
+                <p className="text-muted-foreground">Verifique suas permissões no Firestore para visualizar os dados.</p>
               </div>
             </CardContent>
           </Card>
         ) : !requests || requests.length === 0 ? (
           <Card className="bg-white/5 border-dashed border-white/10 rounded-[3rem] py-32">
             <CardContent className="flex flex-col items-center justify-center gap-6">
-              <div className="h-20 w-20 bg-white/5 rounded-full flex items-center justify-center">
-                <Inbox className="h-10 w-10 text-muted-foreground/30" />
-              </div>
+              <Inbox className="h-16 w-16 text-muted-foreground/20" />
               <div className="text-center space-y-2">
-                <h3 className="text-2xl font-black uppercase tracking-tight">Nenhuma solicitação ainda</h3>
-                <p className="text-muted-foreground font-medium">Assim que alguém preencher o formulário, <br/> os dados aparecerão aqui instantaneamente.</p>
+                <h3 className="text-2xl font-black uppercase tracking-tight">Sem orçamentos por enquanto</h3>
+                <p className="text-muted-foreground font-medium">Os novos pedidos aparecerão aqui instantaneamente.</p>
               </div>
             </CardContent>
           </Card>
@@ -108,86 +152,96 @@ export default function AdminPage() {
             animate={{ opacity: 1, y: 0 }}
             className="grid gap-6"
           >
-            <Card className="bg-white/5 border-white/10 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-2xl">
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader className="bg-white/5 border-b border-white/10">
-                    <TableRow className="hover:bg-transparent border-none">
-                      <TableHead className="text-xs font-black uppercase tracking-widest py-6 px-8">Data/Hora</TableHead>
-                      <TableHead className="text-xs font-black uppercase tracking-widest py-6">Cliente/Empresa</TableHead>
-                      <TableHead className="text-xs font-black uppercase tracking-widest py-6">Contato</TableHead>
-                      <TableHead className="text-xs font-black uppercase tracking-widest py-6">Especificação</TableHead>
-                      <TableHead className="text-xs font-black uppercase tracking-widest py-6 pr-8">Mensagem</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <AnimatePresence>
-                      {requests.map((req, index) => (
-                        <motion.tr 
-                          key={req.id}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.05 }}
-                          className="group border-b border-white/5 hover:bg-white/[0.02] transition-colors"
-                        >
-                          <TableCell className="py-6 px-8 align-top">
-                            <div className="flex items-center gap-2 text-muted-foreground group-hover:text-primary transition-colors">
+            <div className="overflow-hidden rounded-[2rem] border border-white/5 bg-white/5 backdrop-blur-2xl">
+              <Table>
+                <TableHeader className="bg-white/5">
+                  <TableRow className="border-b border-white/5 hover:bg-transparent">
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 px-8">Status / Data</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6">Cliente</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6">Especificação</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6">Mensagem</TableHead>
+                    <TableHead className="text-xs font-black uppercase tracking-widest py-6 pr-8 text-right">Ações</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <AnimatePresence>
+                    {requests.map((req, index) => (
+                      <motion.tr 
+                        key={req.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ delay: index * 0.03 }}
+                        className={`group border-b border-white/5 hover:bg-white/[0.02] transition-colors ${req.status === 'Archived' ? 'opacity-50' : ''}`}
+                      >
+                        <TableCell className="py-6 px-8 align-top">
+                          <div className="space-y-2">
+                            {getStatusBadge(req.status || 'New')}
+                            <div className="flex items-center gap-2 text-muted-foreground text-[10px] font-bold uppercase tracking-wider">
                               <Clock className="h-3 w-3" />
-                              <span className="text-xs font-bold whitespace-nowrap">
-                                {req.requestDate ? format(new Date(req.requestDate), "dd/MM/yyyy HH:mm", { locale: ptBR }) : 'N/A'}
-                              </span>
+                              {req.requestDate ? format(new Date(req.requestDate), "dd/MM HH:mm", { locale: ptBR }) : 'N/A'}
                             </div>
-                          </TableCell>
-                          <TableCell className="py-6 align-top">
-                            <div className="flex flex-col">
-                              <span className="font-black text-foreground text-base tracking-tight">{req.name}</span>
-                              <div className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                                <Building className="h-3 w-3 text-primary" />
-                                {req.company}
-                              </div>
-                            </div>
-                          </TableCell>
-                          <TableCell className="py-6 align-top">
-                            <div className="flex flex-col gap-2">
-                              <a 
-                                href={`https://wa.me/55${req.phone?.replace(/\D/g, '')}`} 
-                                target="_blank" 
-                                className="flex items-center gap-2 text-sm font-black hover:text-primary transition-colors group/link"
-                              >
-                                <Phone className="h-3 w-3 text-primary" />
-                                {req.phone}
-                                <ExternalLink className="h-3 w-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
-                              </a>
-                              <span className="text-xs font-medium text-muted-foreground">{req.email}</span>
-                              <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground/60 uppercase">
-                                <MapPin className="h-2.5 w-2.5" />
-                                {req.cidade || 'Local não informado'}
-                              </div>
-                            </div>
-                          </TableCell>
-                          <TableCell className="py-6 align-top">
-                            <div className="flex flex-col gap-2">
-                              <Badge variant="outline" className="w-fit text-[10px] font-black uppercase tracking-tighter border-primary/20 bg-primary/5 text-primary rounded-lg py-1 px-3">
-                                {req.tipoEmbalagem}
-                              </Badge>
-                              <div className="flex items-center gap-1.5 text-xs font-bold">
-                                <Package className="h-3 w-3 text-muted-foreground" />
-                                {req.quantidade} un.
-                              </div>
-                            </div>
-                          </TableCell>
-                          <TableCell className="py-6 align-top pr-8 max-w-xs">
-                            <p className="text-xs font-medium text-muted-foreground leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all">
-                              {req.message}
+                          </div>
+                        </TableCell>
+                        <TableCell className="py-6 align-top">
+                          <div className="space-y-1">
+                            <p className="font-black text-foreground tracking-tight">{req.name}</p>
+                            <p className="text-xs font-bold text-primary uppercase flex items-center gap-1">
+                              <Building className="h-3 w-3" /> {req.company}
                             </p>
-                          </TableCell>
-                        </motion.tr>
-                      ))}
-                    </AnimatePresence>
-                  </TableBody>
-                </Table>
-              </div>
-            </Card>
+                            <a href={`https://wa.me/55${req.phone?.replace(/\D/g, '')}`} target="_blank" className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+                              <Phone className="h-3 w-3" /> {req.phone}
+                            </a>
+                          </div>
+                        </TableCell>
+                        <TableCell className="py-6 align-top">
+                          <div className="space-y-1">
+                            <Badge variant="secondary" className="text-[9px] font-black uppercase tracking-tighter">
+                              {req.tipoEmbalagem}
+                            </Badge>
+                            <div className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground">
+                              <Package className="h-3 w-3" /> {req.quantidade} un.
+                            </div>
+                            <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground/60 uppercase">
+                              <MapPin className="h-2.5 w-2.5" /> {req.cidade}
+                            </div>
+                          </div>
+                        </TableCell>
+                        <TableCell className="py-6 align-top max-w-xs">
+                          <p className="text-xs font-medium text-muted-foreground leading-relaxed line-clamp-3 group-hover:line-clamp-none transition-all">
+                            {req.message}
+                          </p>
+                        </TableCell>
+                        <TableCell className="py-6 pr-8 align-top text-right">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-white/10">
+                                <MoreVertical className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end" className="bg-background/95 backdrop-blur-xl border-white/10">
+                              <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Pending')} className="gap-2 cursor-pointer">
+                                <Clock className="h-4 w-4 text-yellow-500" /> Marcar Pendente
+                              </DropdownMenuItem>
+                              <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Processed')} className="gap-2 cursor-pointer">
+                                <CheckCircle2 className="h-4 w-4 text-green-500" /> Marcar Respondido
+                              </DropdownMenuItem>
+                              <DropdownMenuItem onClick={() => handleUpdateStatus(req.id, 'Archived')} className="gap-2 cursor-pointer">
+                                <Inbox className="h-4 w-4 text-muted-foreground" /> Arquivar
+                              </DropdownMenuItem>
+                              <div className="h-px bg-white/10 my-1" />
+                              <DropdownMenuItem onClick={() => handleDelete(req.id)} className="gap-2 text-destructive cursor-pointer focus:text-destructive">
+                                <Trash2 className="h-4 w-4" /> Deletar Lead
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </motion.tr>
+                    ))}
+                  </AnimatePresence>
+                </TableBody>
+              </Table>
+            </div>
           </motion.div>
         )}
       </main>
