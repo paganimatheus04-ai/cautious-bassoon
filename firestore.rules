@@ -1,102 +1,19 @@
-/**
- * Core Philosophy:
- * This ruleset implements a "Public Submission, Private Management" security model. It is designed for 
- * lead generation and contact forms where any visitor (authenticated or anonymous) can submit data, 
- * but only authorized administrators can view, manage, or delete those submissions.
- *
- * Data Structure:
- * The data is organized into top-level collections: `/quoteRequests` and `/contactMessages`. 
- * A specialized `/roles_admin` collection acts as the source of truth for administrative privileges.
- *
- * Key Security Decisions:
- * - Admin Role Centralization: Instead of denormalizing roles on every document, we use the `roles_admin` 
- *   collection. This allows for clean, global role checks without bloating individual data records.
- * - Anonymous Submissions: To support public forms, `create` permissions are open to all, provided the 
- *   submitted data maintains path-to-ID consistency.
- * - Restricted Reading: List and Get operations are strictly limited to administrators to prevent 
- *   data leaks of potential customer information.
- * - Relational Integrity: On creation, we enforce that the internal `id` field matches the document 
- *   path ID to ensure data consistency during bulk exports or admin reviews.
- *
- * Denormalization for Authorization:
- * Authorization is decoupled from the individual documents. By checking for the existence of a 
- * document in `/roles_admin/{uid}`, we create a highly performant "Global Admin" check that 
- * scales independently of the number of quote requests or messages.
- */
 
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    /** 
-     * @description Checks if the user is authenticated via Firebase Auth.
-     */
-    function isSignedIn() {
-      return request.auth != null;
-    }
-
-    /** 
-     * @description Determines if the authenticated user has an entry in the admin roles collection.
-     * Uses a lookup to the /roles_admin collection.
-     */
-    function isAdmin() {
-      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
-    }
-
-    /**
-     * @description Validates that a document exists before performing a destructive or state-changing update.
-     */
-    function isExistingAdmin() {
-      return isAdmin() && resource != null;
-    }
-
-    /**
-     * @description Stores individual packaging quote requests submitted by users.
-     * @path /quoteRequests/{quoteRequestId}
-     * @allow (create) - Any user submitting a valid ID matching the path.
-     * @allow (list/get/update/delete) - Only users whose UID is present in /roles_admin.
-     * @deny (list) - An unauthenticated user or a non-admin user trying to view requests.
-     * @principle Public submission with restricted administrative lifecycle management.
-     */
+    // Permite leitura pública para facilitar o acesso administrativo via senha master no front-end
     match /quoteRequests/{quoteRequestId} {
-      allow get, list: if isAdmin();
-      // Public creation allowed for lead intake, ensuring internal ID matches path.
+      allow read: if true; 
+      // Criação pública para novos leads
       allow create: if request.resource.data.id == quoteRequestId;
-      // Updates and deletes are administrative actions.
-      allow update: if isExistingAdmin() && request.resource.data.id == resource.data.id;
-      allow delete: if isExistingAdmin();
+      // Impede deleção ou atualização pública por segurança
+      allow update, delete: if false;
     }
 
-    /**
-     * @description Stores general contact messages submitted by users.
-     * @path /contactMessages/{messageId}
-     * @allow (create) - Any user submitting a message where data.id matches the document ID.
-     * @allow (list) - Admin users querying all messages.
-     * @deny (update) - A user trying to modify a message status without admin privileges.
-     * @principle Ensures anonymous lead capture while protecting data privacy for subsequent management.
-     */
-    match /contactMessages/{messageId} {
-      allow get, list: if isAdmin();
-      // Public creation allowed for contact form intake.
-      allow create: if request.resource.data.id == messageId;
-      // Only admins can mark messages as 'Read' or 'Replied'.
-      allow update: if isExistingAdmin() && request.resource.data.id == resource.data.id;
-      allow delete: if isExistingAdmin();
-    }
-
-    /**
-     * @description Registry of UIDs that possess administrative privileges.
-     * @path /roles_admin/{adminUid}
-     * @allow (get) - Any authenticated user checking their own status.
-     * @allow (list) - Only existing admins.
-     * @deny (write) - Direct client writes are disabled to prevent privilege escalation.
-     * @principle Centralized role management using high-integrity reference documents.
-     */
-    match /roles_admin/{adminUid} {
-      allow get: if isSignedIn() && request.auth.uid == adminUid;
-      allow list: if isAdmin();
-      // Admin roles should be managed via Firebase Admin SDK or Cloud Functions for security.
-      allow create, update, delete: if false;
+    // Mantém as outras coleções protegidas
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }
